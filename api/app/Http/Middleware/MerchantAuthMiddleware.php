@@ -22,8 +22,13 @@ class MerchantAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $clientId = $request->input('client_id') ?? $request->header('X-PayHub-Client-ID');
-        $signature = $request->input('signature') ?? $request->header('X-PayHub-Signature');
+        $clientId = $request->input('client_id') 
+            ?? $request->header('X-PayHub-Client-ID') 
+            ?? $request->header('X-Client-ID');
+            
+        $signature = $request->input('signature') 
+            ?? $request->header('X-PayHub-Signature') 
+            ?? $request->header('X-Signature');
 
         if (!$clientId || !$signature) {
             return response()->json([
