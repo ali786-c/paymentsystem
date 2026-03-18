@@ -31,9 +31,8 @@ try {
 
     // 2. Run Migrations
     echo "Running Migrations...\n";
-    Artisan::call('migrate:fresh', [
-        '--force' => true,
-        '--seed' => true
+    Artisan::call('migrate', [
+        '--force' => true
     ]);
     
     echo Artisan::output();
