@@ -7,7 +7,7 @@ import {
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+import { API_BASE_URL } from '../apiConfig';
 
 export default function CheckoutPage() {
     const { invoiceId } = useParams();
@@ -25,8 +25,7 @@ export default function CheckoutPage() {
     const fetchInvoice = async () => {
         try {
             // Using a relative path to avoid CORS issues in local environments
-            const base = API_BASE_URL.startsWith('http') ? API_BASE_URL : window.location.origin + API_BASE_URL;
-            const response = await axios.get(`${base}/payment/status/${invoiceId}/data`);
+            const response = await axios.get(`${API_BASE_URL}/payment/status/${invoiceId}/data`);
             setInvoice(response.data.invoice);
         } catch (error) {
             console.error("Failed to fetch invoice", error);
@@ -39,8 +38,7 @@ export default function CheckoutPage() {
         if (!selectedGateway) return;
         setProcessing(true);
         try {
-            const base = API_BASE_URL.startsWith('http') ? API_BASE_URL : window.location.origin + API_BASE_URL;
-            const response = await axios.post(`${base}/payment/process`, {
+            const response = await axios.post(`${API_BASE_URL}/payment/process`, {
                 invoice_id: invoiceId,
                 gateway: selectedGateway
             });

@@ -9,7 +9,7 @@ import {
 import axios from 'axios';
 import ConfigModal from '../components/modals/ConfigModal';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+import { API_BASE_URL } from '../apiConfig';
 
 export default function DashboardPage() {
     const [activeTab, setActiveTab] = useState('merchants');
