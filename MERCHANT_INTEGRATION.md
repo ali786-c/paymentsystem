@@ -60,7 +60,7 @@ To prevent unauthorized requests, every API call must be signed.
 ```php
 $params = ['order_id' => '123', 'amount' => 99.99, 'currency' => 'USD'];
 ksort($params);
-$dataString = implode('', $params);
+$dataString = http_build_query($params);
 $signature = hash_hmac('sha256', $dataString, $YOUR_CLIENT_SECRET);
 ```
 

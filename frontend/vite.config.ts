@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: './', // Ensures assets are loaded Relatively
+  base: '/', // Use absolute paths for deep routing support
 })
