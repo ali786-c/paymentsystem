@@ -3,3 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/upgrnbzy/public_html/demo.upgraderproxy.com
     - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH2=/home/upgrnbzy/public_html/linkpaypro.online
+    - /bin/cp -R * $DEPLOYPATH2
