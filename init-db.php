@@ -1,18 +1,24 @@
-<?php
-/**
- * 🛠️ Database Initialization Script for Pay Hub
- * Visit: https://demo.upgraderproxy.com/init-db.php
- */
-
-use Illuminate\Support\Facades\Artisan;
-
-// 1. Bootstrap Laravel
-require __DIR__ . '/api/vendor/autoload.php';
-$app = require_once __DIR__ . '/api/bootstrap/app.php';
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-$kernel->handle(Illuminate\Http\Request::capture());
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 echo "<h1>🚀 Pay Hub Database Initializer</h1>";
+
+// 1. Check if bootstrap files exist
+$autoload = __DIR__ . '/api/vendor/autoload.php';
+$bootstrap = __DIR__ . '/api/bootstrap/app.php';
+
+if (!file_exists($autoload)) {
+    die("❌ Error: api/vendor/autoload.php not found. Please run 'composer install' in the api folder first.");
+}
+if (!file_exists($bootstrap)) {
+    die("❌ Error: api/bootstrap/app.php not found.");
+}
+
+// 2. Bootstrap Laravel
+require $autoload;
+$app = require_once $bootstrap;
 echo "<pre>";
 
 try {
