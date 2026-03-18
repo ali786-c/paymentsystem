@@ -10,8 +10,8 @@ Options +FollowSymLinks
     # Use [L,QSA] to ensure processing stops here and query strings are passed
     RewriteRule ^api/(.*)$ api/public/index.php [L,QSA]
 
-    # 2. Prevent rewrite loop for index.html
-    RewriteRule ^index\.html$ - [L]
+    # 2. Prevent rewrite loop for index.html and init-db.php
+    RewriteRule ^(index\.html|init-db\.php)$ - [L]
 
     # 3. Serve physical files if they exist
     RewriteCond %{REQUEST_FILENAME} -f [OR]
