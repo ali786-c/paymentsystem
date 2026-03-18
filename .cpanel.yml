@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/upgrnbzy/demo.upgraderproxy.com
+    - export DEPLOYPATH=/home/upgrnbzy/public_html/demo.upgraderproxy.com
     - /bin/cp -R * $DEPLOYPATH

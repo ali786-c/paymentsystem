@@ -1,22 +1,24 @@
+# 🛡️ Upgrader Pay Hub - LiteSpeed Optimized Config
+Options -Indexes
+Options +FollowSymLinks
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
-    # 1. Assets
-    RewriteRule ^(.*)assets/(.*)$ assets/$2 [L]
-
-    # 2. API Forwarding
-    # Forward /api/... to Laravel
+    # 1. API: Forward requests starting with /api to Laravel
+    # Use [L,QSA] to ensure processing stops here and query strings are passed
     RewriteRule ^api/(.*)$ api/public/index.php [L,QSA]
 
-    # 3. Handle physical files/folders
+    # 2. Prevent rewrite loop for index.html
+    RewriteRule ^index\.html$ - [L]
+
+    # 3. Serve physical files if they exist
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # 4. SPA Fallback
-    RewriteRule ^ index.html [L]
+    # 4. SPA Fallback: ALL other requests go to index.html
+    # We use (.*) and /index.html for absolute path lookup on LiteSpeed
+    RewriteRule ^(.*)$ /index.html [L]
 </IfModule>
-
-# Security
-Options -Indexes
