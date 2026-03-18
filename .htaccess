@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 1. Assets
+    RewriteRule ^(.*)assets/(.*)$ assets/$2 [L]
+
+    # 2. API Forwarding
+    # Forward /api/... to Laravel
+    RewriteRule ^api/(.*)$ api/public/index.php [L,QSA]
+
+    # 3. Handle physical files/folders
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # 4. SPA Fallback
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# Security
+Options -Indexes

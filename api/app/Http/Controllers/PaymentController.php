@@ -1,0 +1,272 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Invoice;
+use App\Models\GatewayConfig;
+use App\Services\PaymentService;
+use App\Services\SignatureService;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+
+class PaymentController extends Controller
+{
+    protected $paymentService;
+    protected $signatureService;
+
+    public function __construct(PaymentService $paymentService, SignatureService $signatureService)
+    {
+        $this->paymentService = $paymentService;
+        $this->signatureService = $signatureService;
+    }
+
+    /**
+     * Handle payment success callback from gateway.
+     */
+    public function success(Request $request, $invoiceId)
+    {
+        $invoice = Invoice::findOrFail($invoiceId);
+        
+        // This is a UI landing page, we usually just show success 
+        // and redirect back to the merchant site.
+        
+        return view('payment.status', [
+            'invoice' => $invoice,
+            'status' => 'success',
+            'return_url' => $this->getMerchantReturnUrl($invoice, 'success')
+        ]);
+    }
+
+    /**
+     * Handle payment cancellation.
+     */
+    public function cancel(Request $request, $invoiceId)
+    {
+        $invoice = Invoice::findOrFail($invoiceId);
+        $invoice->update(['status' => 'cancelled']);
+
+        return view('payment.status', [
+            'invoice' => $invoice,
+            'status' => 'cancelled',
+            'return_url' => $this->getMerchantReturnUrl($invoice, 'cancel')
+        ]);
+    }
+
+    /**
+     * Universal Webhook handler for gateways.
+     */
+    public function webhook(Request $request, $providerName)
+    {
+        Log::info("Webhook received for {$providerName}");
+
+        try {
+            $provider = $this->paymentService->getProvider($providerName);
+            $payload = $request->all();
+
+            // 1. Identify the invoice from the payload
+            // This is provider-specific logic
+            $externalId = null;
+            if ($providerName === 'stripe') {
+                $externalId = $payload['data']['object']['id'] ?? null;
+            } elseif ($providerName === 'cryptomus') {
+                $externalId = $payload['uuid'] ?? null;
+            } elseif ($providerName === 'cardlink') {
+                $externalId = $payload['txId'] ?? null;
+            }
+
+            if (!$externalId) {
+                return response()->json(['success' => false, 'message' => 'Invoice not found'], 404);
+            }
+
+            $invoice = Invoice::where('gateway_reference', $externalId)->first();
+
+            if (!$invoice) {
+                return response()->json(['success' => false, 'message' => 'Invoice not found'], 404);
+            }
+
+            // 2. Load Gateway Config
+            $config = GatewayConfig::where('gateway_name', $providerName)
+                ->where('merchant_id', $invoice->merchant_id)
+                ->first();
+
+            if (!$config) {
+                return response()->json(['success' => false, 'message' => 'Gateway configuration not found'], 404);
+            }
+
+            // 3. Verify the payment with the provider
+            $result = $provider->verifyWebhook($payload, $config->config_data);
+
+            if ($result['success']) {
+                $invoice->update([
+                    'status' => $result['status'],
+                    'payload' => array_merge($invoice->payload ?? [], ['webhook_raw' => $payload])
+                ]);
+
+                Log::info("Invoice #{$invoice->id} marked as {$result['status']}");
+
+                // 4. Notify the merchant (Phase 4 Relay)
+                $this->notifyMerchant($invoice);
+            }
+
+            return response()->json(['success' => $result['success']]);
+        } catch (\Exception $e) {
+            Log::error("Webhook Error ({$providerName}): " . $e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 400);
+        }
+    }
+
+    /**
+     * Phase 2.3: Create a checkout session (Merchant API)
+     */
+    public function createSession(Request $request)
+    {
+        $merchant = $request->merchant; // From MerchantAuthMiddleware
+
+        $validated = $request->validate([
+            'order_id' => 'required|string',
+            'amount' => 'required|numeric|min:0.01',
+            'currency' => 'required|string|size:3',
+            'customer_email' => 'nullable|email',
+            'success_url' => 'nullable|url',
+            'cancel_url' => 'nullable|url',
+        ]);
+
+        $invoice = Invoice::create([
+            'merchant_id' => $merchant->id,
+            'external_order_id' => $validated['order_id'],
+            'amount' => $validated['amount'],
+            'currency' => $validated['currency'],
+            'status' => 'pending',
+            'payload' => [
+                'customer_email' => $validated['customer_email'],
+                'custom_success_url' => $validated['success_url'],
+                'custom_cancel_url' => $validated['cancel_url'],
+            ]
+        ]);
+
+        // Generate a checkout URL for the Hub's frontend
+        // For now, we point to the Hub's UI (which we will build in Phase 3)
+        $checkoutUrl = url("/checkout/{$invoice->id}");
+
+        return response()->json([
+            'success' => true,
+            'checkout_url' => $checkoutUrl,
+            'invoice_id' => $invoice->id
+        ]);
+    }
+
+    protected function notifyMerchant(Invoice $invoice)
+    {
+        // Dispatch the asynchronous notification job to handle retries and reliability
+        \App\Jobs\NotifyMerchantJob::dispatch($invoice);
+    }
+
+    /**
+     * Fetch public invoice and merchant data for the frontend.
+     */
+    public function getData($invoiceId)
+    {
+        $invoice = Invoice::with('merchant:id,name,branding_settings')->findOrFail($invoiceId);
+        return response()->json(['invoice' => $invoice]);
+    }
+
+    /**
+     * Process the final gateway redirection from the selection page.
+     */
+    public function process(Request $request)
+    {
+        $validated = $request->validate([
+            'invoice_id' => 'required',
+            'gateway' => 'required|string'
+        ]);
+
+        $invoice = Invoice::findOrFail($validated['invoice_id']);
+        
+        try {
+            // Update the invoice with the chosen method
+            $invoice->update(['payment_method' => $validated['gateway']]);
+
+            $redirectUrl = $this->paymentService->processInvoice($invoice, $validated['gateway']);
+
+            return response()->json([
+                'success' => true,
+                'redirect_url' => $redirectUrl
+            ]);
+        } catch (\Exception $e) {
+            Log::error("Processing Error: " . $e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
+    }
+
+    public function cardlinkForm($invoiceId)
+    {
+        $invoice = Invoice::findOrFail($invoiceId);
+        
+        $gatewayName = 'cardlink';
+        $config = GatewayConfig::where('gateway_name', $gatewayName)
+            ->where('merchant_id', $invoice->merchant_id)
+            ->first();
+
+        if (!$config || !$config->is_active) {
+            return "Gateway not configured.";
+        }
+
+        $provider = $this->paymentService->getProvider($gatewayName);
+        
+        // We need to call a protected method or replicate logic to get params
+        // For simplicity, we replicate the parameter logic here for the view
+        $params = [
+            'mid' => $config->config_data['mid'],
+            'orderid' => $invoice->id,
+            'orderDesc' => "Order #{$invoice->external_order_id}",
+            'orderAmount' => $invoice->amount,
+            'currency' => strtoupper($invoice->currency),
+            'payerEmail' => $invoice->payload['customer_email'] ?? 'customer@example.com',
+            'trType' => '1',
+            'confirmUrl' => route('api.payment.webhook', ['provider' => 'cardlink']),
+            'cancelUrl' => route('api.payment.cancel', ['invoice_id' => $invoice->id]),
+            'returnUrl' => route('api.payment.success', ['invoice_id' => $invoice->id]),
+        ];
+
+        // Digest calculation
+        ksort($params);
+        $string = implode('', $params) . $config->config_data['shared_secret'];
+        $params['digest'] = base64_encode(hash('sha256', $string, true));
+
+        return view('payment.cardlink_form', [
+            'apiUrl' => 'https://epay.cardlink.gr/checkout', 
+            'params' => $params
+        ]);
+    }
+
+    protected function getMerchantReturnUrl(Invoice $invoice, $status)
+    {
+        $merchant = $invoice->merchant;
+        $payload = $invoice->payload ?? [];
+        
+        // 1. Check for custom redirect URLs in the payload (Phase 2.3)
+        $baseUrl = null;
+        if ($status === 'success') {
+            $baseUrl = $payload['custom_success_url'] ?? null;
+        } else {
+            $baseUrl = $payload['custom_cancel_url'] ?? null;
+        }
+
+        // 2. Fallback to merchant webhook URL or a placeholder
+        if (!$baseUrl) {
+            $baseUrl = $merchant->webhook_url ?? 'https://demo.com/callback';
+        }
+        
+        $params = [
+            'order_id' => $invoice->external_order_id,
+            'status' => $status,
+            'hub_reference' => $invoice->id,
+        ];
+
+        // Sign the return URL so the merchant can verify it
+        $params['signature'] = $this->signatureService->generate($params, $merchant->client_secret);
+
+        return $baseUrl . (strpos($baseUrl, '?') !== false ? '&' : '?') . http_build_query($params);
+    }
+}
