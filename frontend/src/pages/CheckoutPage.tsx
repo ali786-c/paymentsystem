@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-    ShieldCheck, CreditCard, Wallet, ArrowRight, Loader2, 
+import {
+    ShieldCheck, CreditCard, Wallet, ArrowRight, Loader2,
     Lock, HelpCircle, Check, Zap
 } from 'lucide-react';
 import axios from 'axios';
@@ -42,12 +42,14 @@ export default function CheckoutPage() {
                 invoice_id: invoiceId,
                 gateway: selectedGateway
             });
-            
+
             if (response.data.redirect_url) {
                 window.location.href = response.data.redirect_url;
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error("Payment failed", error);
+            const msg = error.response?.data?.message || error.message;
+            alert("Payment Error: " + msg);
         } finally {
             setProcessing(false);
         }
@@ -92,9 +94,9 @@ export default function CheckoutPage() {
                 </div>
                 <h1 className="text-3xl font-black text-slate-900 mb-2 tracking-tight">Session Expired</h1>
                 <p className="text-slate-500 max-w-sm font-medium">This secure payment link is no longer valid or the order has been cancelled.</p>
-                <button 
-                   onClick={() => window.location.reload()}
-                   className="mt-8 px-8 py-3 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all font-black text-[10px] uppercase tracking-widest text-slate-600 shadow-sm"
+                <button
+                    onClick={() => window.location.reload()}
+                    className="mt-8 px-8 py-3 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all font-black text-[10px] uppercase tracking-widest text-slate-600 shadow-sm"
                 >
                     Try Again
                 </button>
@@ -119,7 +121,7 @@ export default function CheckoutPage() {
                 <div className="flex items-center justify-between mb-16">
                     <div className="flex items-center space-x-3">
                         <div className="w-12 h-12 bg-white rounded-2xl border border-slate-200 flex items-center justify-center shadow-sm">
-                           <ShieldCheck className="text-blue-600 w-7 h-7" />
+                            <ShieldCheck className="text-blue-600 w-7 h-7" />
                         </div>
                         <div>
                             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 leading-none">UpgraderCX</p>
@@ -133,16 +135,16 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-start">
-                    
+
                     {/* Left Side: Order Detail */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="space-y-12"
                     >
                         <div className="space-y-6">
                             <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.95]">
-                                Secure Checkout<br/>
+                                Secure Checkout<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                                     Finalize Order
                                 </span>
@@ -179,8 +181,8 @@ export default function CheckoutPage() {
                             </div>
 
                             <div className="flex items-center space-x-6 px-4">
-                               <Feature icon={<Check size={14}/>} label="Instant confirmation" />
-                               <Feature icon={<Check size={14}/>} label="End-to-end encryption" />
+                                <Feature icon={<Check size={14} />} label="Instant confirmation" />
+                                <Feature icon={<Check size={14} />} label="End-to-end encryption" />
                             </div>
                         </div>
                     </motion.div>
@@ -192,7 +194,7 @@ export default function CheckoutPage() {
                         transition={{ delay: 0.2 }}
                         className="bg-white border border-slate-200 p-10 rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.05)] relative overflow-hidden"
                     >
-                         {/* Decorative inside */}
+                        {/* Decorative inside */}
                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl" />
 
                         <div className="relative z-10">
@@ -207,23 +209,21 @@ export default function CheckoutPage() {
                                         key={gw.id}
                                         className={`group relative block cursor-pointer transition-all duration-500 ${selectedGateway === gw.id ? 'scale-[1.02]' : 'hover:scale-[1.01]'}`}
                                     >
-                                        <input 
-                                            type="radio" 
-                                            name="gateway" 
-                                            className="sr-only" 
+                                        <input
+                                            type="radio"
+                                            name="gateway"
+                                            className="sr-only"
                                             onClick={() => setSelectedGateway(gw.id)}
                                         />
-                                        <div className={`flex items-center justify-between p-6 rounded-3xl border transition-all duration-500 ${
-                                            selectedGateway === gw.id 
-                                            ? 'bg-blue-50 border-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.08)]' 
-                                            : 'bg-slate-50/50 border-slate-200 hover:border-slate-300'
-                                        }`}>
+                                        <div className={`flex items-center justify-between p-6 rounded-3xl border transition-all duration-500 ${selectedGateway === gw.id
+                                                ? 'bg-blue-50 border-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.08)]'
+                                                : 'bg-slate-50/50 border-slate-200 hover:border-slate-300'
+                                            }`}>
                                             <div className="flex items-center space-x-4">
-                                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                                                    selectedGateway === gw.id 
-                                                    ? `bg-slate-900 text-white shadow-xl` 
-                                                    : 'bg-white border border-slate-200 text-slate-400 group-hover:text-slate-900 group-hover:border-slate-300 shadow-sm'
-                                                }`}>
+                                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${selectedGateway === gw.id
+                                                        ? `bg-slate-900 text-white shadow-xl`
+                                                        : 'bg-white border border-slate-200 text-slate-400 group-hover:text-slate-900 group-hover:border-slate-300 shadow-sm'
+                                                    }`}>
                                                     {gw.icon}
                                                 </div>
                                                 <div className="text-left">
@@ -235,9 +235,8 @@ export default function CheckoutPage() {
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
-                                                selectedGateway === gw.id ? 'border-blue-500 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.3)]' : 'border-slate-200 group-hover:border-slate-300'
-                                            }`}>
+                                            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-500 ${selectedGateway === gw.id ? 'border-blue-500 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.3)]' : 'border-slate-200 group-hover:border-slate-300'
+                                                }`}>
                                                 {selectedGateway === gw.id && <Check className="w-3.5 h-3.5 text-white" />}
                                             </div>
                                         </div>
@@ -248,11 +247,10 @@ export default function CheckoutPage() {
                             <button
                                 disabled={!selectedGateway || processing}
                                 onClick={handlePay}
-                                className={`w-full py-6 rounded-[2rem] font-black text-xl tracking-tight transition-all relative overflow-hidden group/btn flex items-center justify-center space-x-3 shadow-2xl shadow-slate-900/10 active:scale-95 ${
-                                    !selectedGateway || processing
-                                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
-                                    : 'bg-slate-900 text-white hover:bg-slate-800'
-                                }`}
+                                className={`w-full py-6 rounded-[2rem] font-black text-xl tracking-tight transition-all relative overflow-hidden group/btn flex items-center justify-center space-x-3 shadow-2xl shadow-slate-900/10 active:scale-95 ${!selectedGateway || processing
+                                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
+                                        : 'bg-slate-900 text-white hover:bg-slate-800'
+                                    }`}
                             >
                                 {processing ? (
                                     <Loader2 className="w-7 h-7 animate-spin" />
@@ -261,12 +259,12 @@ export default function CheckoutPage() {
                                         <span className="relative z-10 uppercase tracking-widest text-sm">COMPLETE PAYMENT</span>
                                         <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
                                         {selectedGateway && (
-                                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite] pointer-events-none" />
+                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite] pointer-events-none" />
                                         )}
                                     </>
                                 )}
                             </button>
-                            
+
                             <p className="text-center mt-8 text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] flex items-center justify-center space-x-2">
                                 <Lock className="w-3 h-3" />
                                 <span>256-bit AES Encrypted Session</span>
@@ -277,10 +275,10 @@ export default function CheckoutPage() {
 
                 {/* Footer Security Icons */}
                 <div className="mt-24 border-t border-slate-200 pt-12 flex flex-wrap justify-center items-center gap-12 opacity-30 hover:opacity-100 transition-all duration-1000">
-                     <span className="text-sm font-black tracking-widest uppercase text-slate-400">Verified by VISA</span>
-                     <span className="text-sm font-black tracking-widest uppercase text-slate-400">Mastercard ID Check</span>
-                     <span className="text-sm font-black tracking-widest uppercase text-slate-400">STRIKE SECURE</span>
-                     <span className="text-sm font-black tracking-widest uppercase text-slate-400">CRYPTOMUS ARMORED</span>
+                    <span className="text-sm font-black tracking-widest uppercase text-slate-400">Verified by VISA</span>
+                    <span className="text-sm font-black tracking-widest uppercase text-slate-400">Mastercard ID Check</span>
+                    <span className="text-sm font-black tracking-widest uppercase text-slate-400">STRIKE SECURE</span>
+                    <span className="text-sm font-black tracking-widest uppercase text-slate-400">CRYPTOMUS ARMORED</span>
                 </div>
             </div>
         </div>
