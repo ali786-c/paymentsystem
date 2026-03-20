@@ -201,8 +201,8 @@ class PaymentController extends Controller
 
     protected function notifyMerchant(Invoice $invoice)
     {
-        // Dispatch the asynchronous notification job to handle retries and reliability
-        \App\Jobs\NotifyMerchantJob::dispatch($invoice);
+        // Dispatch synchronously to ensure immediate update in cPanel environments without workers
+        \App\Jobs\NotifyMerchantJob::dispatchSync($invoice);
     }
 
     /**
