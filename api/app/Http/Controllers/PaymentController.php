@@ -118,8 +118,8 @@ class PaymentController extends Controller
 
             Log::info("Webhook Step 4.5: Merchant Details", [
                 'id' => $invoice->merchant_id,
-                'name' => $invoice->merchant->name ?? 'N/A',
-                'webhook_url' => $invoice->merchant->webhook_url ?? 'EMPTY!!'
+                'name' => $invoice->merchant ? $invoice->merchant->name : 'N/A',
+                'webhook_url' => $invoice->merchant ? $invoice->merchant->webhook_url : 'EMPTY!!'
             ]);
 
             // 3. Verify the payment with the provider
@@ -211,7 +211,8 @@ class PaymentController extends Controller
         $merchant = $invoice->merchant;
 
         if (!$merchant || !$merchant->webhook_url) {
-            Log::warning("Webhook Step 11 ERROR: No webhook URL configured for merchant #{$invoice->merchant_id} ({$merchant->name ?? 'Unknown'})");
+            $mName = $merchant ? $merchant->name : 'Unknown';
+            Log::warning("Webhook Step 11 ERROR: No webhook URL configured for merchant #{$invoice->merchant_id} ({$mName})");
             return;
         }
 
