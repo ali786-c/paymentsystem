@@ -61,7 +61,7 @@ class StripeProvider implements PaymentProviderInterface
 
         try {
             // Allow mock events for Phase 5 testing in local environment
-            if (app()->environment('local') && str_starts_with($eventId, 'evt_sim_')) {
+            if (app()->environment(['local', 'testing']) && str_starts_with($eventId, 'evt_sim_')) {
                 return [
                     'success' => true,
                     'status' => 'paid',

@@ -30,7 +30,7 @@ class NotifyMerchantJob implements ShouldQueue
      */
     public $backoff = [60, 300, 600, 1800, 3600]; // 1m, 5m, 10m, 30m, 1h
 
-    protected $invoice;
+    public $invoice;
 
     /**
      * Create a new job instance.
