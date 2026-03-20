@@ -58,7 +58,10 @@ class PaymentController extends Controller
      */
     public function webhook(Request $request, $providerName)
     {
-        Log::info("Webhook received for {$providerName}");
+        Log::info("Webhook received for {$providerName}", [
+            'payload' => $request->all(),
+            'headers' => $request->headers->all()
+        ]);
 
         try {
             $provider = $this->paymentService->getProvider($providerName);
@@ -105,18 +108,23 @@ class PaymentController extends Controller
             }
 
             // 3. Verify the payment with the provider
+            Log::info("Verifying webhook for Invoice #{$invoice->id} via {$providerName}");
             $result = $provider->verifyWebhook($payload, $config->config_data);
+            Log::info("Verification result for Invoice #{$invoice->id}: ", $result);
 
             if ($result['success']) {
+                Log::info("Updating Invoice #{$invoice->id} status to {$result['status']}");
                 $invoice->update([
                     'status' => $result['status'],
                     'payload' => array_merge($invoice->payload ?? [], ['webhook_raw' => $payload])
                 ]);
 
-                Log::info("Invoice #{$invoice->id} marked as {$result['status']}");
+                Log::info("Invoice #{$invoice->id} marked as {$result['status']} in DB");
 
                 // 4. Notify the merchant (Phase 4 Relay)
                 $this->notifyMerchant($invoice);
+            } else {
+                Log::warning("Webhook verification FAILED for Invoice #{$invoice->id}. Result: " . json_encode($result));
             }
 
             return response()->json(['success' => $result['success']]);

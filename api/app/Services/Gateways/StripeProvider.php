@@ -57,7 +57,11 @@ class StripeProvider implements PaymentProviderInterface
         $this->client = new StripeClient($config['secret_key']);
         
         $eventId = $payload['id'] ?? null;
-        if (!$eventId) return ['success' => false];
+        Log::info("StripeProvider: Verifying event ID: {$eventId}");
+        if (!$eventId) {
+            Log::warning("StripeProvider: No event ID found in payload");
+            return ['success' => false];
+        }
 
         try {
             // Allow mock events for Phase 5 testing in local environment
@@ -72,8 +76,14 @@ class StripeProvider implements PaymentProviderInterface
 
             $event = $this->client->events->retrieve($eventId);
             $object = $event->data->object;
+            
+            Log::info("StripeProvider: Event type: {$event->type}", [
+                'metadata' => $object->metadata ?? null,
+                'object_id' => $object->id ?? null
+            ]);
 
             if ($event->type === 'checkout.session.completed' || $event->type === 'payment_intent.succeeded') {
+                Log::info("StripeProvider: Valid success event detected: {$event->type}");
                 return [
                     'success' => true,
                     'status' => 'paid',
