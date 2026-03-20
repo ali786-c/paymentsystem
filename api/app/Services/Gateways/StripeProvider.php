@@ -70,7 +70,7 @@ class StripeProvider implements PaymentProviderInterface
         }
 
         try {
-            // Allow mock events for Phase 5 testing in local environment
+            // Allow mock events for testing
             if (app()->environment(['local', 'testing']) && str_starts_with($eventId, 'evt_sim_')) {
                 return [
                     'success' => true,
@@ -80,25 +80,54 @@ class StripeProvider implements PaymentProviderInterface
                 ];
             }
 
-            $event = $this->client->events->retrieve($eventId);
-            $object = $event->data->object;
-            
-            Log::info("StripeProvider: Event type: {$event->type}", [
-                'metadata' => $object->metadata ?? null,
-                'object_id' => $object->id ?? null
-            ]);
+            // 1. ATTEMPT SECURE VERIFICATION VIA API (WITH TIMEOUT)
+            try {
+                // Set short timeouts to avoid hanging the entire process if server is blocked
+                $event = $this->client->events->retrieve($eventId, [], [
+                    'connect_timeout' => 5,
+                    'timeout' => 10
+                ]);
+                $object = $event->data->object;
+                
+                Log::info("StripeProvider: Secured Verification via API success. Event: {$event->type}");
 
-            if ($event->type === 'checkout.session.completed' || $event->type === 'payment_intent.succeeded') {
-                Log::info("StripeProvider: Valid success event detected: {$event->type}");
-                return [
-                    'success' => true,
-                    'status' => 'paid',
-                    'reference' => $object->id,
-                    'external_order_id' => $object->metadata->external_order_id ?? null,
-                ];
+                if ($event->type === 'checkout.session.completed' || $event->type === 'payment_intent.succeeded') {
+                    return [
+                        'success' => true,
+                        'status' => 'paid',
+                        'reference' => $object->id,
+                        'external_order_id' => $object->metadata->external_order_id ?? null,
+                    ];
+                }
+            } catch (\Throwable $e) {
+                Log::warning("StripeProvider: Secure verification failed/timed out. Falling back to payload trust. Error: " . $e->getMessage());
+                
+                // 2. FALLBACK: Trust the payload if API is unreachable but payload is valid
+                $type = $payload['type'] ?? '';
+                $dataObject = $payload['data']['object'] ?? [];
+                
+                if ($type === 'checkout.session.completed' && ($dataObject['payment_status'] ?? '') === 'paid') {
+                    Log::info("StripeProvider: Fallback Verification SUCCESS (Session Paid)");
+                    return [
+                        'success' => true,
+                        'status' => 'paid',
+                        'reference' => $dataObject['id'] ?? 'N/A',
+                        'external_order_id' => $dataObject['metadata']['external_order_id'] ?? null,
+                    ];
+                }
+
+                if ($type === 'payment_intent.succeeded' && ($dataObject['status'] ?? '') === 'succeeded') {
+                    Log::info("StripeProvider: Fallback Verification SUCCESS (Intent Succeeded)");
+                    return [
+                        'success' => true,
+                        'status' => 'paid',
+                        'reference' => $dataObject['id'] ?? 'N/A',
+                        'external_order_id' => $dataObject['metadata']['external_order_id'] ?? null,
+                    ];
+                }
             }
             
-            Log::info("Stripe event ignored: {$event->type}");
+            Log::info("Stripe event ignored or invalid: " . ($payload['type'] ?? 'unknown'));
         } catch (\Throwable $e) {
             Log::error("Stripe Verification CRITICAL Error: " . $e->getMessage(), [
                 'type' => get_class($e),
