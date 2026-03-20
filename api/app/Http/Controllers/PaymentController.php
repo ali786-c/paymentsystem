@@ -207,8 +207,25 @@ class PaymentController extends Controller
 
     protected function notifyMerchant(Invoice $invoice)
     {
-        // Dispatch synchronously to ensure immediate update in cPanel environments without workers
-        \App\Jobs\NotifyMerchantJob::dispatchSync($invoice);
+        Log::info("Webhook Step 11: Attempting to notify merchant for Invoice #{$invoice->id}");
+        $merchant = $invoice->merchant;
+
+        if (!$merchant || !$merchant->webhook_url) {
+            Log::warning("Webhook Step 11 ERROR: No webhook URL configured for merchant #{$invoice->merchant_id} ({$merchant->name ?? 'Unknown'})");
+            return;
+        }
+
+        try {
+            Log::info("Webhook Step 12: Sending POST to {$merchant->webhook_url}");
+            
+            // We use the Job logic but run it synchronously here to bypass all queue issues
+            $job = new \App\Jobs\NotifyMerchantJob($invoice);
+            $job->handle(app(\App\Services\SignatureService::class));
+            
+            Log::info("Webhook Step 13: Notification successfully delivered to SaaS.");
+        } catch (\Throwable $e) {
+            Log::error("Webhook Step 12 FATAL: Merchant notification failed. " . $e->getMessage());
+        }
     }
 
     /**
