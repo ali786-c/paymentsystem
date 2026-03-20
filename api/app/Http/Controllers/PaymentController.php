@@ -96,35 +96,50 @@ class PaymentController extends Controller
                 return response()->json(['success' => false, 'message' => 'Invoice not found'], 404);
             }
 
-            Log::info("Processing webhook for Invoice #{$invoice->id} via {$providerName}");
+            Log::info("Webhook Step 1: Processing Invoice #{$invoice->id}");
 
             // 2. Load Gateway Config
+            Log::info("Webhook Step 2: Querying GatewayConfig for merchant: {$invoice->merchant_id}");
             $config = GatewayConfig::where('gateway_name', $providerName)
                 ->where('merchant_id', $invoice->merchant_id)
                 ->first();
 
+            Log::info("Webhook Step 3: GatewayConfig query finished. Found: " . ($config ? 'Yes' : 'No'));
+
             if (!$config) {
+                Log::warning("Webhook Step 4: Config missing for Invoice #{$invoice->id}");
                 return response()->json(['success' => false, 'message' => 'Gateway configuration not found'], 404);
             }
 
             // 3. Verify the payment with the provider
-            Log::info("Verifying webhook for Invoice #{$invoice->id} via {$providerName}");
-            $result = $provider->verifyWebhook($payload, $config->config_data);
-            Log::info("Verification result for Invoice #{$invoice->id}: ", $result);
+            Log::info("Webhook Step 5: Preparing to verify via {$providerName}");
+            
+            // We use try-catch specifically here to catch decryption errors
+            try {
+                $configData = $config->config_data;
+                Log::info("Webhook Step 6: Config data decrypted successfully");
+            } catch (\Throwable $de) {
+                Log::error("Webhook Step 6 ERROR: Decryption failed for config. " . $de->getMessage());
+                throw $de;
+            }
+
+            Log::info("Webhook Step 7: Calling provider verifyWebhook");
+            $result = $provider->verifyWebhook($payload, $configData);
+            Log::info("Webhook Step 8: Provider verification result: ", $result);
 
             if ($result['success']) {
-                Log::info("Updating Invoice #{$invoice->id} status to {$result['status']}");
+                Log::info("Webhook Step 9: Updating DB status to {$result['status']}");
                 $invoice->update([
                     'status' => $result['status'],
                     'payload' => array_merge($invoice->payload ?? [], ['webhook_raw' => $payload])
                 ]);
 
-                Log::info("Invoice #{$invoice->id} marked as {$result['status']} in DB");
-
+                Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
+                
                 // 4. Notify the merchant (Phase 4 Relay)
                 $this->notifyMerchant($invoice);
             } else {
-                Log::warning("Webhook verification FAILED for Invoice #{$invoice->id}. Result: " . json_encode($result));
+                Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result));
             }
 
             return response()->json(['success' => $result['success']]);
