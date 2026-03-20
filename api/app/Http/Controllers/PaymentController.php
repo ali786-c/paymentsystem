@@ -98,10 +98,14 @@ class PaymentController extends Controller
 
             Log::info("Webhook Step 1: Processing Invoice #{$invoice->id}");
 
-            // 2. Load Gateway Config
+            // 2. Load Gateway Config (Specific or Global Fallback)
             Log::info("Webhook Step 2: Querying GatewayConfig for merchant: {$invoice->merchant_id}");
             $config = GatewayConfig::where('gateway_name', $providerName)
-                ->where('merchant_id', $invoice->merchant_id)
+                ->where(function($query) use ($invoice) {
+                    $query->where('merchant_id', $invoice->merchant_id)
+                          ->orWhereNull('merchant_id');
+                })
+                ->orderBy('merchant_id', 'desc') // Prefer merchant-specific
                 ->first();
 
             Log::info("Webhook Step 3: GatewayConfig query finished. Found: " . ($config ? 'Yes' : 'No'));
