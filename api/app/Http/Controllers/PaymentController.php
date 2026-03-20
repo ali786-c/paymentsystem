@@ -107,8 +107,9 @@ class PaymentController extends Controller
             Log::info("Webhook Step 3: GatewayConfig query finished. Found: " . ($config ? 'Yes' : 'No'));
 
             if (!$config) {
-                Log::warning("Webhook Step 4: Config missing for Invoice #{$invoice->id}");
-                return response()->json(['success' => false, 'message' => 'Gateway configuration not found'], 404);
+                $allGateways = GatewayConfig::where('merchant_id', $invoice->merchant_id)->pluck('gateway_name')->toArray();
+                Log::warning("Webhook Step 4 ERROR: Config missing for '{$providerName}' for merchant #{$invoice->merchant_id}. Available gateways for this merchant: " . implode(', ', $allGateways));
+                return response()->json(['success' => false, 'message' => "Gateway '{$providerName}' not configured for merchant"], 404);
             }
 
             // 3. Verify the payment with the provider
