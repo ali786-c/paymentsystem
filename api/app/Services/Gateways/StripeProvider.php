@@ -80,49 +80,49 @@ class StripeProvider implements PaymentProviderInterface
                 ];
             }
 
-            // 1. ATTEMPT SECURE VERIFICATION VIA API (WITH TIMEOUT)
+            // 1. ATTEMPT SECURE VERIFICATION VIA API (WITH NO TIMEOUT OPTIONS FOR COMPATIBILITY)
             try {
-                // Set short timeouts to avoid hanging the entire process if server is blocked
-                $event = $this->client->events->retrieve($eventId, [], [
-                    'connect_timeout' => 5,
-                    'timeout' => 10
-                ]);
+                // We remove timeout/connect_timeout because some older SDKs on servers choke on unknown options
+                $event = $this->client->events->retrieve($eventId, [], []);
                 $object = $event->data->object;
                 
                 Log::info("StripeProvider: Secured Verification via API success. Event: {$event->type}");
 
                 if ($event->type === 'checkout.session.completed' || $event->type === 'payment_intent.succeeded') {
+                    $extOrderId = isset($object->metadata->external_order_id) ? $object->metadata->external_order_id : null;
                     return [
                         'success' => true,
                         'status' => 'paid',
                         'reference' => $object->id,
-                        'external_order_id' => $object->metadata->external_order_id ?? null,
+                        'external_order_id' => $extOrderId,
                     ];
                 }
             } catch (\Throwable $e) {
                 Log::warning("StripeProvider: Secure verification failed/timed out. Falling back to payload trust. Error: " . $e->getMessage());
                 
                 // 2. FALLBACK: Trust the payload if API is unreachable but payload is valid
-                $type = $payload['type'] ?? '';
-                $dataObject = $payload['data']['object'] ?? [];
+                $type = isset($payload['type']) ? $payload['type'] : '';
+                $dataObject = isset($payload['data']['object']) ? $payload['data']['object'] : [];
                 
-                if ($type === 'checkout.session.completed' && ($dataObject['payment_status'] ?? '') === 'paid') {
+                if ($type === 'checkout.session.completed' && (isset($dataObject['payment_status']) && $dataObject['payment_status'] === 'paid')) {
                     Log::info("StripeProvider: Fallback Verification SUCCESS (Session Paid)");
+                    $extId = isset($dataObject['metadata']['external_order_id']) ? $dataObject['metadata']['external_order_id'] : null;
                     return [
                         'success' => true,
                         'status' => 'paid',
-                        'reference' => $dataObject['id'] ?? 'N/A',
-                        'external_order_id' => $dataObject['metadata']['external_order_id'] ?? null,
+                        'reference' => isset($dataObject['id']) ? $dataObject['id'] : 'N/A',
+                        'external_order_id' => $extId,
                     ];
                 }
 
-                if ($type === 'payment_intent.succeeded' && ($dataObject['status'] ?? '') === 'succeeded') {
+                if ($type === 'payment_intent.succeeded' && (isset($dataObject['status']) && $dataObject['status'] === 'succeeded')) {
                     Log::info("StripeProvider: Fallback Verification SUCCESS (Intent Succeeded)");
+                    $extId = isset($dataObject['metadata']['external_order_id']) ? $dataObject['metadata']['external_order_id'] : null;
                     return [
                         'success' => true,
                         'status' => 'paid',
-                        'reference' => $dataObject['id'] ?? 'N/A',
-                        'external_order_id' => $dataObject['metadata']['external_order_id'] ?? null,
+                        'reference' => isset($dataObject['id']) ? $dataObject['id'] : 'N/A',
+                        'external_order_id' => $extId,
                     ];
                 }
             }
