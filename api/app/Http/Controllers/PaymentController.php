@@ -128,9 +128,14 @@ class PaymentController extends Controller
             }
 
             return response()->json(['success' => $result['success']]);
-        } catch (\Exception $e) {
-            Log::error("Webhook Error ({$providerName}): " . $e->getMessage());
-            return response()->json(['success' => false, 'error' => $e->getMessage()], 400);
+        } catch (\Throwable $e) {
+            Log::error("Webhook CRITICAL Error ({$providerName}): " . $e->getMessage(), [
+                'type' => get_class($e),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
 

@@ -36,6 +36,12 @@ class StripeProvider implements PaymentProviderInterface
                     'invoice_id' => $invoice->id,
                     'external_order_id' => $invoice->external_order_id,
                 ],
+                'payment_intent_data' => [
+                    'metadata' => [
+                        'invoice_id' => $invoice->id,
+                        'external_order_id' => $invoice->external_order_id,
+                    ],
+                ],
             ]);
 
             // Save the stripe session ID for later verification
@@ -93,8 +99,13 @@ class StripeProvider implements PaymentProviderInterface
             }
             
             Log::info("Stripe event ignored: {$event->type}");
-        } catch (\Exception $e) {
-            Log::error("Stripe Verification Error: " . $e->getMessage());
+        } catch (\Throwable $e) {
+            Log::error("Stripe Verification CRITICAL Error: " . $e->getMessage(), [
+                'type' => get_class($e),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
         }
 
         return ['success' => false];
