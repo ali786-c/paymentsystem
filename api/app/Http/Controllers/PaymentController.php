@@ -65,25 +65,35 @@ class PaymentController extends Controller
             $payload = $request->all();
 
             // 1. Identify the invoice from the payload
-            // This is provider-specific logic
+            $invoice = null;
             $externalId = null;
+
             if ($providerName === 'stripe') {
-                $externalId = $payload['data']['object']['id'] ?? null;
+                $object = $payload['data']['object'] ?? [];
+                $externalId = $object['id'] ?? null;
+                
+                // Prioritize metadata lookup for Stripe (more robust)
+                $invoiceId = $object['metadata']['invoice_id'] ?? null;
+                if ($invoiceId) {
+                    $invoice = Invoice::find($invoiceId);
+                }
             } elseif ($providerName === 'cryptomus') {
                 $externalId = $payload['uuid'] ?? null;
             } elseif ($providerName === 'cardlink') {
                 $externalId = $payload['txId'] ?? null;
             }
 
-            if (!$externalId) {
-                return response()->json(['success' => false, 'message' => 'Invoice not found'], 404);
+            // Fallback to gateway_reference lookup
+            if (!$invoice && $externalId) {
+                $invoice = Invoice::where('gateway_reference', $externalId)->first();
             }
-
-            $invoice = Invoice::where('gateway_reference', $externalId)->first();
 
             if (!$invoice) {
+                Log::warning("Invoice not found for {$providerName} webhook. ID: {$externalId}");
                 return response()->json(['success' => false, 'message' => 'Invoice not found'], 404);
             }
+
+            Log::info("Processing webhook for Invoice #{$invoice->id} via {$providerName}");
 
             // 2. Load Gateway Config
             $config = GatewayConfig::where('gateway_name', $providerName)

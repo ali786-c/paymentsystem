@@ -71,16 +71,18 @@ class StripeProvider implements PaymentProviderInterface
             }
 
             $event = $this->client->events->retrieve($eventId);
-            
-            if ($event->type === 'checkout.session.completed') {
-                $session = $event->data->object;
+            $object = $event->data->object;
+
+            if ($event->type === 'checkout.session.completed' || $event->type === 'payment_intent.succeeded') {
                 return [
                     'success' => true,
                     'status' => 'paid',
-                    'reference' => $session->id,
-                    'external_order_id' => $session->metadata->external_order_id ?? null,
+                    'reference' => $object->id,
+                    'external_order_id' => $object->metadata->external_order_id ?? null,
                 ];
             }
+            
+            Log::info("Stripe event ignored: {$event->type}");
         } catch (\Exception $e) {
             Log::error("Stripe Verification Error: " . $e->getMessage());
         }
