@@ -116,6 +116,12 @@ class PaymentController extends Controller
                 return response()->json(['success' => false, 'message' => "Gateway '{$providerName}' not configured for merchant"], 404);
             }
 
+            Log::info("Webhook Step 4.5: Merchant Details", [
+                'id' => $invoice->merchant_id,
+                'name' => $invoice->merchant->name ?? 'N/A',
+                'webhook_url' => $invoice->merchant->webhook_url ?? 'EMPTY!!'
+            ]);
+
             // 3. Verify the payment with the provider
             Log::info("Webhook Step 5: Preparing to verify via {$providerName}");
             
