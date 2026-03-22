@@ -68,6 +68,13 @@ class AdminController extends Controller
      */
     public function updateMerchantConfigs(Request $request, $merchantId)
     {
+        \Illuminate\Support\Facades\Log::info("Updating config for merchant: {$merchantId}", [
+            'merchant_id' => $merchantId,
+            'configs_count' => count($request->input('configs', [])),
+            'method' => $request->method(),
+            'url' => $request->fullUrl()
+        ]);
+        
         $id = $merchantId === 'global' ? null : $merchantId;
         
         $validated = $request->validate([
