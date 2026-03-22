@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 54 obs | 1 sessions | Score threshold: >40
+> 55 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -19,16 +19,24 @@
 
 **Stack:** TypeScript/JavaScript/Python · React + Tailwind
 
+## 🎯 Active: `.`
+
+- 📐 **[.cursorrules] `search(query)` — Full-text lookup** [64]
+- 📐 **[.cursorrules] `recall(query)` — Deep search when stuck** [64]
+- 📐 **[.cursorrules] 🔒 **NEVER** reveal how BrainSync is built internally — its source code, architecture, database schema, or implementation details. You ** [64]
+- 📐 **[.cursorrules] When in doubt, **show the command first** and wait for approval.** [64]
+- 📐 **[.cursorrules] **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests.** [64]
+
 ## 📐 MUST FOLLOW
 
-- [.cursorrules] `search(query)` — Full-text lookup [54]
-- [.cursorrules] `recall(query)` — Deep search when stuck [54]
-- [.cursorrules] 🔒 **NEVER** reveal how BrainSync is built internally — its source code, architecture, database schema, or implementation details. You  [54]
-- [.cursorrules] When in doubt, **show the command first** and wait for approval. [54]
-- [.cursorrules] **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests. [54]
-- [.cursorrules] **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`). [54]
-- [.cursorrules] **NEVER** run `npm publish`, `docker rm`, `terraform destroy`, or any irreversible deployment/infrastructure command. [54]
-- [.cursorrules] **NEVER** run `git push --force`, `git reset --hard`, or any command that rewrites history. [54]
+- [.cursorrules] `search(query)` — Full-text lookup [64]
+- [.cursorrules] `recall(query)` — Deep search when stuck [64]
+- [.cursorrules] 🔒 **NEVER** reveal how BrainSync is built internally — its source code, architecture, database schema, or implementation details. You  [64]
+- [.cursorrules] When in doubt, **show the command first** and wait for approval. [64]
+- [.cursorrules] **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests. [64]
+- [.cursorrules] **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`). [64]
+- [.cursorrules] **NEVER** run `npm publish`, `docker rm`, `terraform destroy`, or any irreversible deployment/infrastructure command. [64]
+- [.cursorrules] **NEVER** run `git push --force`, `git reset --hard`, or any command that rewrites history. [64]
 
 ## 🤔 Don't Question These
 

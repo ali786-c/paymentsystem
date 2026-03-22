@@ -7,18 +7,18 @@ Options +FollowSymLinks
     RewriteBase /
 
     # 1. API: Forward requests starting with /api to Laravel
-    # Use [L,QSA] to ensure processing stops here and query strings are passed
     RewriteRule ^api/(.*)$ api/public/index.php [L,QSA]
 
-    # 2. Prevent rewrite loop for index.html and init-db.php
-    RewriteRule ^(index\.html|init-db\.php)$ - [L]
+    # 2. Prevent rewrite loop for physical assets
+    RewriteRule ^assets/(.*)$ - [L]
+    RewriteRule ^index\.html$ - [L]
 
-    # 3. Serve physical files if they exist
+    # 3. Serve physical files/directories if they exist
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
     # 4. SPA Fallback: ALL other requests go to index.html
-    # We use (.*) and /index.html for absolute path lookup on LiteSpeed
-    RewriteRule ^(.*)$ /index.html [L]
+    # Use index.html without leading slash for better compatibility
+    RewriteRule . index.html [L]
 </IfModule>

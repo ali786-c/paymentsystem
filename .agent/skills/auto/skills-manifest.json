@@ -1,7 +1,7 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:11:12.623Z",
+    "lastGenerated": "2026-03-22T19:21:12.901Z",
     "observationCount": 45,
     "skillCount": 0,
     "domain": "project",
@@ -12,7 +12,7 @@
   },
   "convention": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:11:12.626Z",
+    "lastGenerated": "2026-03-22T19:21:12.905Z",
     "observationCount": 0,
     "skillCount": 10,
     "domain": "convention",
@@ -23,7 +23,7 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:11:12.625Z",
+    "lastGenerated": "2026-03-22T19:21:12.904Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "typescript-react",
@@ -34,7 +34,7 @@
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:11:12.624Z",
+    "lastGenerated": "2026-03-22T19:21:12.903Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "php",
@@ -45,7 +45,7 @@
   },
   "css": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:11:12.621Z",
+    "lastGenerated": "2026-03-22T19:21:12.892Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "css",
@@ -57,7 +57,7 @@
   },
   "html": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:11:12.622Z",
+    "lastGenerated": "2026-03-22T19:21:12.893Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "html",
@@ -65,5 +65,17 @@
       "**/*.html"
     ],
     "description": "Html for paymentsystem. ."
+  },
+  "javascript": {
+    "enabled": true,
+    "lastGenerated": "2026-03-22T19:21:12.891Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "javascript",
+    "triggerGlobs": [
+      "**/*.js",
+      "**/*.jsx"
+    ],
+    "description": "Javascript for paymentsystem. ."
   }
 }
