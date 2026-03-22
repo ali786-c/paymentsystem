@@ -1,7 +1,7 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:01:12.576Z",
+    "lastGenerated": "2026-03-22T19:11:12.623Z",
     "observationCount": 45,
     "skillCount": 0,
     "domain": "project",
@@ -12,7 +12,7 @@
   },
   "convention": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:01:12.580Z",
+    "lastGenerated": "2026-03-22T19:11:12.626Z",
     "observationCount": 0,
     "skillCount": 10,
     "domain": "convention",
@@ -23,7 +23,7 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:01:12.579Z",
+    "lastGenerated": "2026-03-22T19:11:12.625Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "typescript-react",
@@ -34,7 +34,7 @@
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T19:01:12.577Z",
+    "lastGenerated": "2026-03-22T19:11:12.624Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "php",
@@ -42,5 +42,28 @@
       "**/*.php"
     ],
     "description": "Php for paymentsystem. ."
+  },
+  "css": {
+    "enabled": true,
+    "lastGenerated": "2026-03-22T19:11:12.621Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "css",
+    "triggerGlobs": [
+      "**/*.css",
+      "**/*.scss"
+    ],
+    "description": "Css for paymentsystem. ."
+  },
+  "html": {
+    "enabled": true,
+    "lastGenerated": "2026-03-22T19:11:12.622Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "html",
+    "triggerGlobs": [
+      "**/*.html"
+    ],
+    "description": "Html for paymentsystem. ."
   }
 }
