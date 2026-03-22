@@ -19,6 +19,7 @@ Options +FollowSymLinks
     RewriteRule ^ - [L]
 
     # 4. SPA Fallback: ALL other requests go to index.html
-    # Use index.html without leading slash for better compatibility
-    RewriteRule . index.html [L]
+    # Using absolute path /index.html for best LiteSpeed compatibility
+    RewriteCond %{REQUEST_URI} !^/api
+    RewriteRule ^ /index.html [L]
 </IfModule>
