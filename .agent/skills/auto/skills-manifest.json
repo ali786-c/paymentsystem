@@ -1,7 +1,7 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T18:41:12.775Z",
+    "lastGenerated": "2026-03-22T19:01:12.576Z",
     "observationCount": 45,
     "skillCount": 0,
     "domain": "project",
@@ -12,7 +12,7 @@
   },
   "convention": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T18:41:12.779Z",
+    "lastGenerated": "2026-03-22T19:01:12.580Z",
     "observationCount": 0,
     "skillCount": 10,
     "domain": "convention",
@@ -23,7 +23,7 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T18:41:12.778Z",
+    "lastGenerated": "2026-03-22T19:01:12.579Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "typescript-react",
@@ -34,7 +34,7 @@
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T18:41:12.777Z",
+    "lastGenerated": "2026-03-22T19:01:12.577Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "php",
