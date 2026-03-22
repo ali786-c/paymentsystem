@@ -17,14 +17,14 @@ class AppServiceProvider extends ServiceProvider
 
         // Register Payment Providers
         $this->app->singleton(\App\Services\Gateways\StripeProvider::class);
-        $this->app->singleton(\App\Services\Gateways\CryptomusProvider::class);
+        $this->app->singleton(\App\Services\Gateways\NOWPaymentsProvider::class);
         $this->app->singleton(\App\Services\Gateways\CardlinkProvider::class);
 
         // Register Payment Gateway Manager
         $this->app->singleton(\App\Services\PaymentService::class, function ($app) {
             return new \App\Services\PaymentService(
                 $app->make(\App\Services\Gateways\StripeProvider::class),
-                $app->make(\App\Services\Gateways\CryptomusProvider::class),
+                $app->make(\App\Services\Gateways\NOWPaymentsProvider::class),
                 $app->make(\App\Services\Gateways\CardlinkProvider::class)
             );
         });

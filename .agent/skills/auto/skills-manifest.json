@@ -1,8 +1,8 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T20:11:13.439Z",
-    "observationCount": 47,
+    "lastGenerated": "2026-03-22T21:01:12.771Z",
+    "observationCount": 48,
     "skillCount": 0,
     "domain": "project",
     "triggerGlobs": [
@@ -12,7 +12,7 @@
   },
   "convention": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T20:11:13.448Z",
+    "lastGenerated": "2026-03-22T21:01:12.785Z",
     "observationCount": 0,
     "skillCount": 10,
     "domain": "convention",
@@ -23,7 +23,7 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T20:11:13.438Z",
+    "lastGenerated": "2026-03-22T21:01:12.777Z",
     "observationCount": 3,
     "skillCount": 0,
     "domain": "typescript-react",
@@ -34,8 +34,8 @@
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T20:11:12.952Z",
-    "observationCount": 9,
+    "lastGenerated": "2026-03-22T21:01:12.774Z",
+    "observationCount": 11,
     "skillCount": 0,
     "domain": "php",
     "triggerGlobs": [
@@ -45,7 +45,7 @@
   },
   "css": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T20:11:13.446Z",
+    "lastGenerated": "2026-03-22T21:01:12.783Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "css",
@@ -57,7 +57,7 @@
   },
   "html": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T20:11:13.281Z",
+    "lastGenerated": "2026-03-22T21:01:12.775Z",
     "observationCount": 3,
     "skillCount": 0,
     "domain": "html",
@@ -68,7 +68,7 @@
   },
   "javascript": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T20:11:13.444Z",
+    "lastGenerated": "2026-03-22T21:01:12.779Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "javascript",
