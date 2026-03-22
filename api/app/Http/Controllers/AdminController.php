@@ -1,11 +1,12 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
-
+ 
 use App\Models\Merchant;
 use App\Models\Invoice;
+use App\Models\GatewayConfig;
 use Illuminate\Http\Request;
-
+ 
 class AdminController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class AdminController extends Controller
     {
         return response()->json(Merchant::orderBy('created_at', 'desc')->get());
     }
-
+ 
     /**
      * List all transactions for the dashboard.
      */
@@ -28,7 +29,7 @@ class AdminController extends Controller
                 ->get()
         );
     }
-
+ 
     /**
      * Create a new merchant (Admin logic).
      */
@@ -38,7 +39,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'webhook_url' => 'nullable|url',
         ]);
-
+ 
         $merchant = Merchant::create([
             'name' => $validated['name'],
             'client_id' => 'hub_' . bin2hex(random_bytes(8)),
@@ -49,26 +50,26 @@ class AdminController extends Controller
                 'logo_url' => null
             ]
         ]);
-
+ 
         return response()->json($merchant, 201);
     }
-
+ 
     /**
      * Get all gateway configurations for a merchant.
      */
     public function getMerchantConfigs($merchantId)
     {
-        $id = $merchantId === 'global' ? null : $merchantId;
-        $configs = \App\Models\GatewayConfig::where('merchant_id', $id)->get();
+        $id = ($merchantId === 'global') ? null : $merchantId;
+        $configs = GatewayConfig::where('merchant_id', $id)->get();
         return response()->json($configs);
     }
-
+ 
     /**
      * Update or create gateway configurations for a merchant.
      */
     public function updateMerchantConfigs(Request $request, $merchantId)
     {
-        $id = $merchantId === 'global' ? null : $merchantId;
+        $id = ($merchantId === 'global') ? null : $merchantId;
         
         $validated = $request->validate([
             'configs' => 'required|array',
@@ -76,9 +77,9 @@ class AdminController extends Controller
             'configs.*.config_data' => 'required|array',
             'configs.*.is_active' => 'boolean',
         ]);
-
+ 
         foreach ($validated['configs'] as $config) {
-            \App\Models\GatewayConfig::updateOrCreate(
+            GatewayConfig::updateOrCreate(
                 [
                     'merchant_id' => $id,
                     'gateway_name' => $config['gateway_name']
@@ -89,7 +90,7 @@ class AdminController extends Controller
                 ]
             );
         }
-
+ 
         return response()->json(['success' => true, 'message' => 'Configurations updated successfully']);
     }
 }

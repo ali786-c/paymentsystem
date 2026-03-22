@@ -19,13 +19,6 @@
 
 **Stack:** TypeScript/JavaScript/Python · React + Tailwind
 
-## 🎯 Active: `api/app/Http/Controllers`
-
-- 🟢 **Updated schema Models — prevents null/undefined runtime crashes** [56]
-- 🟢 **Updated schema Models — prevents null/undefined runtime crashes** [56]
-- 🟢 **what-changed in AdminController.php** [56]
-- 🟢 **what-changed in PaymentController.php** [49]
-
 ## 📐 MUST FOLLOW
 
 - what-changed in index.html — confirmed 3x [54]
