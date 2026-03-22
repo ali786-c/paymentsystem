@@ -81,7 +81,11 @@ export default function ConfigModal({ isOpen, onClose, merchant }: ConfigModalPr
         setMessage(null);
         try {
             const token = localStorage.getItem('hub_token');
-            await axios.post(`${API_BASE_URL}/admin/merchants/${merchant.id}/configs`, {
+            const url = merchant.id === 'global' 
+                ? `${API_BASE_URL}/admin/merchants/global/save-configs` 
+                : `${API_BASE_URL}/admin/merchants/${merchant.id}/configs`;
+                
+            await axios.post(url, {
                 configs: [
                     {
                         gateway_name: 'stripe',

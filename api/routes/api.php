@@ -26,9 +26,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/merchants', [AdminController::class, 'merchants']);
         Route::post('/merchants', [AdminController::class, 'storeMerchant']);
         
-        // Explicit route for global to bypass potential parameter matching issues
+        // Explicit route for global with a unique path to avoid any ambiguity
         Route::get('/merchants/global/configs', [AdminController::class, 'getMerchantConfigs']);
-        Route::post('/merchants/global/configs', [AdminController::class, 'updateMerchantConfigs']);
+        Route::post('/merchants/global/save-configs', [AdminController::class, 'updateMerchantConfigs']);
+        
+        Route::post('/test-post', function() { return response()->json(['status' => 'ok']); });
         
         Route::get('/merchants/{id}/configs', [AdminController::class, 'getMerchantConfigs']);
         Route::post('/merchants/{id}/configs', [AdminController::class, 'updateMerchantConfigs']);
