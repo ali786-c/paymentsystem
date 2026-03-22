@@ -25,3 +25,7 @@ frontend/dist/
 .vscode/
 *.bak
 *.tmp
+
+AGENT.md
+CLAUDE.md
+.agent-mem/

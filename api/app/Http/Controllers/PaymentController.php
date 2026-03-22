@@ -80,8 +80,8 @@ class PaymentController extends Controller
                 if ($invoiceId) {
                     $invoice = Invoice::find($invoiceId);
                 }
-            } elseif ($providerName === 'cryptomus') {
-                $externalId = $payload['uuid'] ?? null;
+            } elseif ($providerName === 'nowpayments') {
+                $externalId = $payload['payment_id'] ?? $payload['invoice_id'] ?? null;
             } elseif ($providerName === 'cardlink') {
                 $externalId = $payload['txId'] ?? null;
             }

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Contracts\PaymentProviderInterface;
 use App\Services\Gateways\StripeProvider;
-use App\Services\Gateways\CryptomusProvider;
+use App\Services\Gateways\NOWPaymentsProvider;
 use App\Services\Gateways\CardlinkProvider;
 use App\Models\Invoice;
 use App\Models\GatewayConfig;
@@ -15,12 +15,12 @@ class PaymentService
 
     public function __construct(
         StripeProvider $stripe,
-        CryptomusProvider $cryptomus,
+        NOWPaymentsProvider $nowpayments,
         CardlinkProvider $cardlink
     ) {
         $this->providers = [
             'stripe' => $stripe,
-            'cryptomus' => $cryptomus,
+            'nowpayments' => $nowpayments,
             'cardlink' => $cardlink,
         ];
     }

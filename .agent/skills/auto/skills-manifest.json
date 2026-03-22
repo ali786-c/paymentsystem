@@ -1,0 +1,35 @@
+{
+  "project": {
+    "enabled": true,
+    "lastGenerated": "2026-03-22T18:31:13.693Z",
+    "observationCount": 41,
+    "skillCount": 0,
+    "domain": "project",
+    "triggerGlobs": [
+      "**/*"
+    ],
+    "description": "Project for paymentsystem. 30 conventions."
+  },
+  "convention": {
+    "enabled": true,
+    "lastGenerated": "2026-03-22T18:31:13.709Z",
+    "observationCount": 0,
+    "skillCount": 10,
+    "domain": "convention",
+    "triggerGlobs": [
+      "**/*"
+    ],
+    "description": "Convention for paymentsystem. ."
+  },
+  "typescript-react": {
+    "enabled": true,
+    "lastGenerated": "2026-03-22T18:31:13.691Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "typescript-react",
+    "triggerGlobs": [
+      "**/*.tsx"
+    ],
+    "description": "Typescript React for paymentsystem. ."
+  }
+}

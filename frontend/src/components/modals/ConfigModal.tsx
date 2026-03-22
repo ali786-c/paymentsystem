@@ -28,9 +28,9 @@ export default function ConfigModal({ isOpen, onClose, merchant }: ConfigModalPr
         is_active: true
     });
 
-    const [cryptoData, setCryptoData] = useState({
-        merchant_id: '',
+    const [nowpaymentsData, setNowpaymentsData] = useState({
         api_key: '',
+        ipn_secret: '',
         is_active: true
     });
 
@@ -60,9 +60,9 @@ export default function ConfigModal({ isOpen, onClose, merchant }: ConfigModalPr
                 setStripeData({ ...stripe.config_data, is_active: stripe.is_active });
             }
             
-            const crypto = data.find((c: any) => c.gateway_name === 'cryptomus');
-            if (crypto) {
-                setCryptoData({ ...crypto.config_data, is_active: crypto.is_active });
+            const nowpayments = data.find((c: any) => c.gateway_name === 'nowpayments');
+            if (nowpayments) {
+                setNowpaymentsData({ ...nowpayments.config_data, is_active: nowpayments.is_active });
             }
 
             const cardlink = data.find((c: any) => c.gateway_name === 'cardlink');
@@ -93,12 +93,12 @@ export default function ConfigModal({ isOpen, onClose, merchant }: ConfigModalPr
                         is_active: stripeData.is_active
                     },
                     {
-                        gateway_name: 'cryptomus',
+                        gateway_name: 'nowpayments',
                         config_data: {
-                            merchant_id: cryptoData.merchant_id,
-                            api_key: cryptoData.api_key
+                            api_key: nowpaymentsData.api_key,
+                            ipn_secret: nowpaymentsData.ipn_secret
                         },
-                        is_active: cryptoData.is_active
+                        is_active: nowpaymentsData.is_active
                     },
                     {
                         gateway_name: 'cardlink',
@@ -180,15 +180,15 @@ export default function ConfigModal({ isOpen, onClose, merchant }: ConfigModalPr
                         <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            onClick={() => setActiveTab('cryptomus')}
+                            onClick={() => setActiveTab('nowpayments')}
                             className={`flex-1 flex items-center justify-center space-x-2 py-3.5 rounded-xl font-black text-xs tracking-widest transition-all ${
-                                activeTab === 'cryptomus' 
+                                activeTab === 'nowpayments' 
                                 ? 'bg-white text-slate-900 shadow-sm border border-slate-200' 
                                 : 'text-slate-400 hover:text-slate-600'
                             }`}
                         >
                             <Bitcoin size={16} />
-                            <span>CRYPTOMUS</span>
+                            <span>NOWPAYMENTS</span>
                         </motion.button>
                         <motion.button 
                             whileHover={{ scale: 1.02 }}
@@ -254,26 +254,26 @@ export default function ConfigModal({ isOpen, onClose, merchant }: ConfigModalPr
                                             </div>
                                         </div>
                                     </div>
-                                ) : activeTab === 'cryptomus' ? (
+                                ) : activeTab === 'nowpayments' ? (
                                     <div className="space-y-6">
                                         <div className="bg-slate-50 border border-slate-200 p-6 rounded-[2rem] space-y-6">
                                             <Toggle 
-                                                label="Enable Cryptomus Flow" 
-                                                active={cryptoData.is_active} 
-                                                onChange={(val: boolean) => setCryptoData({...cryptoData, is_active: val})} 
+                                                label="Enable NOWPayments Flow" 
+                                                active={nowpaymentsData.is_active} 
+                                                onChange={(val: boolean) => setNowpaymentsData({...nowpaymentsData, is_active: val})} 
                                             />
                                             <div className="grid grid-cols-1 gap-6">
                                                 <Input 
-                                                    label="Merchant ID" 
-                                                    value={cryptoData.merchant_id} 
-                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCryptoData({...cryptoData, merchant_id: e.target.value})}
-                                                    placeholder="6853..."
+                                                    label="API Key" 
+                                                    value={nowpaymentsData.api_key} 
+                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNowpaymentsData({...nowpaymentsData, api_key: e.target.value})}
+                                                    placeholder="••••••••"
                                                 />
                                                 <Input 
-                                                    label="Payment API Key" 
+                                                    label="IPN Secret Key" 
                                                     type="password"
-                                                    value={cryptoData.api_key} 
-                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCryptoData({...cryptoData, api_key: e.target.value})}
+                                                    value={nowpaymentsData.ipn_secret} 
+                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNowpaymentsData({...nowpaymentsData, ipn_secret: e.target.value})}
                                                     placeholder="••••••••"
                                                 />
                                             </div>

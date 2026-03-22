@@ -106,7 +106,7 @@ export default function CheckoutPage() {
 
     const gateways = [
         { id: 'stripe', name: 'Credit / Debit Card', desc: 'Secure checkout via Stripe', icon: <CreditCard />, color: 'from-blue-600 to-indigo-600' },
-        { id: 'cryptomus', name: 'Cryptocurrency', desc: 'BTC, ETH, USDT & More', icon: <Wallet />, color: 'from-slate-700 to-slate-900' },
+        { id: 'nowpayments', name: 'Crypto (NOWPayments)', desc: 'BTC, ETH, USDT & 100+ Cryptos', icon: <Wallet />, color: 'from-slate-700 to-slate-900' },
         { id: 'cardlink', name: 'Cardlink Global', desc: 'International priority card processing', icon: <Zap />, color: 'from-blue-400 to-blue-600' },
     ];
 
