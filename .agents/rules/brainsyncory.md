@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 44 obs | 1 sessions | Score threshold: >40
+> 49 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -29,6 +29,10 @@
 - [.cursorrules] **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`). [54]
 - [.cursorrules] **NEVER** run `npm publish`, `docker rm`, `terraform destroy`, or any irreversible deployment/infrastructure command. [54]
 - [.cursorrules] **NEVER** run `git push --force`, `git reset --hard`, or any command that rewrites history. [54]
+
+## 🤔 Don't Question These
+
+- decision in task.md.resolved
 
 ## 🎯 Skills
 

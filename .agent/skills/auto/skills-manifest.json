@@ -1,18 +1,18 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T18:31:13.693Z",
-    "observationCount": 41,
+    "lastGenerated": "2026-03-22T18:41:12.775Z",
+    "observationCount": 45,
     "skillCount": 0,
     "domain": "project",
     "triggerGlobs": [
       "**/*"
     ],
-    "description": "Project for paymentsystem. 30 conventions."
+    "description": "Project for paymentsystem. 30 conventions, 2 fixes."
   },
   "convention": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T18:31:13.709Z",
+    "lastGenerated": "2026-03-22T18:41:12.779Z",
     "observationCount": 0,
     "skillCount": 10,
     "domain": "convention",
@@ -23,7 +23,7 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-03-22T18:31:13.691Z",
+    "lastGenerated": "2026-03-22T18:41:12.778Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "typescript-react",
@@ -31,5 +31,16 @@
       "**/*.tsx"
     ],
     "description": "Typescript React for paymentsystem. ."
+  },
+  "php": {
+    "enabled": true,
+    "lastGenerated": "2026-03-22T18:41:12.777Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "php",
+    "triggerGlobs": [
+      "**/*.php"
+    ],
+    "description": "Php for paymentsystem. ."
   }
 }
