@@ -68,35 +68,37 @@ class AdminController extends Controller
      */
     public function updateMerchantConfigs(Request $request, $merchantId)
     {
-        \Illuminate\Support\Facades\Log::info("Updating config for merchant: {$merchantId}", [
-            'merchant_id' => $merchantId,
-            'configs_count' => count($request->input('configs', [])),
-            'method' => $request->method(),
-            'url' => $request->fullUrl()
-        ]);
-        
-        $id = $merchantId === 'global' ? null : $merchantId;
-        
-        $validated = $request->validate([
-            'configs' => 'required|array',
-            'configs.*.gateway_name' => 'required|string',
-            'configs.*.config_data' => 'required|array',
-            'configs.*.is_active' => 'boolean',
-        ]);
+        try {
+            $id = $merchantId === 'global' ? null : $merchantId;
+            
+            $validated = $request->validate([
+                'configs' => 'required|array',
+                'configs.*.gateway_name' => 'required|string',
+                'configs.*.config_data' => 'required|array',
+                'configs.*.is_active' => 'boolean',
+            ]);
 
-        foreach ($validated['configs'] as $config) {
-            \App\Models\GatewayConfig::updateOrCreate(
-                [
-                    'merchant_id' => $id,
-                    'gateway_name' => $config['gateway_name']
-                ],
-                [
-                    'config_data' => $config['config_data'],
-                    'is_active' => $config['is_active'] ?? true
-                ]
-            );
+            foreach ($validated['configs'] as $config) {
+                \App\Models\GatewayConfig::updateOrCreate(
+                    [
+                        'merchant_id' => $id,
+                        'gateway_name' => $config['gateway_name']
+                    ],
+                    [
+                        'config_data' => $config['config_data'],
+                        'is_active' => $config['is_active'] ?? true
+                    ]
+                );
+            }
+
+            return response()->json(['success' => true, 'message' => 'Configurations updated successfully']);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'error' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ], 500);
         }
-
-        return response()->json(['success' => true, 'message' => 'Configurations updated successfully']);
     }
 }
