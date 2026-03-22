@@ -68,37 +68,28 @@ class AdminController extends Controller
      */
     public function updateMerchantConfigs(Request $request, $merchantId)
     {
-        try {
-            $id = $merchantId === 'global' ? null : $merchantId;
-            
-            $validated = $request->validate([
-                'configs' => 'required|array',
-                'configs.*.gateway_name' => 'required|string',
-                'configs.*.config_data' => 'required|array',
-                'configs.*.is_active' => 'boolean',
-            ]);
+        $id = $merchantId === 'global' ? null : $merchantId;
+        
+        $validated = $request->validate([
+            'configs' => 'required|array',
+            'configs.*.gateway_name' => 'required|string',
+            'configs.*.config_data' => 'required|array',
+            'configs.*.is_active' => 'boolean',
+        ]);
 
-            foreach ($validated['configs'] as $config) {
-                \App\Models\GatewayConfig::updateOrCreate(
-                    [
-                        'merchant_id' => $id,
-                        'gateway_name' => $config['gateway_name']
-                    ],
-                    [
-                        'config_data' => $config['config_data'],
-                        'is_active' => $config['is_active'] ?? true
-                    ]
-                );
-            }
-
-            return response()->json(['success' => true, 'message' => 'Configurations updated successfully']);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'error' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine()
-            ], 500);
+        foreach ($validated['configs'] as $config) {
+            \App\Models\GatewayConfig::updateOrCreate(
+                [
+                    'merchant_id' => $id,
+                    'gateway_name' => $config['gateway_name']
+                ],
+                [
+                    'config_data' => $config['config_data'],
+                    'is_active' => $config['is_active'] ?? true
+                ]
+            );
         }
+
+        return response()->json(['success' => true, 'message' => 'Configurations updated successfully']);
     }
 }

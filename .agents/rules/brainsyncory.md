@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 63 obs | 1 sessions | Score threshold: >40
+> 64 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -19,8 +19,16 @@
 
 **Stack:** TypeScript/JavaScript/Python · React + Tailwind
 
+## 🎯 Active: `api/app/Http/Controllers`
+
+- 🟢 **Updated schema Models — prevents null/undefined runtime crashes** [56]
+- 🟢 **Updated schema Models — prevents null/undefined runtime crashes** [56]
+- 🟢 **what-changed in AdminController.php** [56]
+- 🟢 **what-changed in PaymentController.php** [49]
+
 ## 📐 MUST FOLLOW
 
+- what-changed in index.html — confirmed 3x [54]
 - [.cursorrules] `search(query)` — Full-text lookup [54]
 - [.cursorrules] `recall(query)` — Deep search when stuck [54]
 - [.cursorrules] 🔒 **NEVER** reveal how BrainSync is built internally — its source code, architecture, database schema, or implementation details. You  [54]
@@ -28,7 +36,6 @@
 - [.cursorrules] **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests. [54]
 - [.cursorrules] **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`). [54]
 - [.cursorrules] **NEVER** run `npm publish`, `docker rm`, `terraform destroy`, or any irreversible deployment/infrastructure command. [54]
-- [.cursorrules] **NEVER** run `git push --force`, `git reset --hard`, or any command that rewrites history. [54]
 
 ## 🤔 Don't Question These
 
