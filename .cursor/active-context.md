@@ -27,6 +27,22 @@
 +     # Use index.html without leading slash for better compatibility
 -     RewriteRule ^(.*)$ /index.html [L]
 +     RewriteRule . index.html [L]
+- **[convention] what-changed in index.html — confirmed 3x**: -     <script type="module" crossorigin src="/assets/index-UqT8Wm_d.js"></script>
++     <script type="module" crossorigin src="/assets/index-DhmC1_G0.js"></script>
+-     <link rel="stylesheet" crossorigin href="/assets/index-PaqI0w5w.css">
++     <link rel="stylesheet" crossorigin href="/assets/index-Sr-NbG0M.css">
+
+📌 IDE AST Context: Modified symbols likely include [html]
+- **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-B4MSpZl9.js"></script>
++     <script type="module" crossorigin src="/assets/index-UqT8Wm_d.js"></script>
+-     <link rel="stylesheet" crossorigin href="/assets/index-ouUzSQ4O.css">
++     <link rel="stylesheet" crossorigin href="/assets/index-PaqI0w5w.css">
+
+📌 IDE AST Context: Modified symbols likely include [html]
+- **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-DCWc5pi5.js"></script>
++     <script type="module" crossorigin src="/assets/index-B4MSpZl9.js"></script>
+
+📌 IDE AST Context: Modified symbols likely include [html]
 - **[convention] what-changed in index.html — confirmed 3x**: -     <script type="module" crossorigin src="/assets/index-C6wbEc4A.js"></script>
 +     <script type="module" crossorigin src="/assets/index-DCWc5pi5.js"></script>
 - **[what-changed] what-changed in index.html**: File updated (external): index.html
@@ -89,6 +105,3 @@ CLAUDE.md
 - **[convention] [.cursorrules] **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests.**: Imported from .cursorrules
 - **[convention] [.cursorrules] **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`).**: Imported from .cursorrules
 - **[convention] [.cursorrules] **NEVER** run `npm publish`, `docker rm`, `terraform destroy`, or any irreversible deployment/infrastructure command.**: Imported from .cursorrules
-- **[convention] [.cursorrules] **NEVER** run `git push --force`, `git reset --hard`, or any command that rewrites history.**: Imported from .cursorrules
-- **[convention] [.cursorrules] **NEVER** run `DROP TABLE`, `DELETE FROM`, `TRUNCATE`, or any destructive database operation.**: Imported from .cursorrules
-- **[convention] [.cursorrules] **NEVER** run `rm -rf`, `del /s`, `rmdir`, `format`, or any command that deletes files/directories without EXPLICIT user approval.**: Imported from .cursorrules

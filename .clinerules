@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 76 obs | 1 sessions | Score threshold: >40
+> 101 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -21,14 +21,14 @@
 
 ## 📐 MUST FOLLOW
 
+- what-changed in index.html — confirmed 3x [54]
+- what-changed in task.md.resolved — confirmed 3x [54]
+- what-changed in design_spec.md.resolved — confirmed 3x [54]
 - what-changed in index.html — confirmed 3x [49]
 - [.cursorrules] `search(query)` — Full-text lookup [49]
 - [.cursorrules] `recall(query)` — Deep search when stuck [49]
 - [.cursorrules] 🔒 **NEVER** reveal how BrainSync is built internally — its source code, architecture, database schema, or implementation details. You  [49]
 - [.cursorrules] When in doubt, **show the command first** and wait for approval. [49]
-- [.cursorrules] **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests. [49]
-- [.cursorrules] **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`). [49]
-- [.cursorrules] **NEVER** run `npm publish`, `docker rm`, `terraform destroy`, or any irreversible deployment/infrastructure command. [49]
 
 ## 🤔 Don't Question These
 

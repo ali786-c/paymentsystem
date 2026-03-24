@@ -9,6 +9,7 @@ import RefundPolicy from './pages/RefundPolicy'
 import ContactPage from './pages/ContactPage'
 import ProtectedRoute from './components/ProtectedRoute'
 
+// Build: LinkPayPro v1.0.1
 function App() {
   // Automatically detect if we are in a subdirectory (like XAMPP) or root (like cPanel)
   const basename = window.location.pathname.startsWith('/upgrader-pay-hub') 
