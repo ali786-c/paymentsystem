@@ -1,8 +1,8 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T12:36:28.682Z",
-    "observationCount": 56,
+    "lastGenerated": "2026-03-24T12:46:28.767Z",
+    "observationCount": 57,
     "skillCount": 0,
     "domain": "project",
     "triggerGlobs": [
@@ -12,7 +12,7 @@
   },
   "convention": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T12:36:28.688Z",
+    "lastGenerated": "2026-03-24T12:46:28.781Z",
     "observationCount": 0,
     "skillCount": 10,
     "domain": "convention",
@@ -23,7 +23,7 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T12:36:28.674Z",
+    "lastGenerated": "2026-03-24T12:46:28.777Z",
     "observationCount": 32,
     "skillCount": 0,
     "domain": "typescript-react",
@@ -34,7 +34,7 @@
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T12:36:28.683Z",
+    "lastGenerated": "2026-03-24T12:46:28.780Z",
     "observationCount": 12,
     "skillCount": 0,
     "domain": "php",
@@ -45,8 +45,8 @@
   },
   "css": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T12:36:28.676Z",
-    "observationCount": 5,
+    "lastGenerated": "2026-03-24T12:46:28.763Z",
+    "observationCount": 6,
     "skillCount": 0,
     "domain": "css",
     "triggerGlobs": [
@@ -57,18 +57,18 @@
   },
   "html": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T12:36:28.672Z",
-    "observationCount": 10,
+    "lastGenerated": "2026-03-24T12:46:28.764Z",
+    "observationCount": 11,
     "skillCount": 0,
     "domain": "html",
     "triggerGlobs": [
       "**/*.html"
     ],
-    "description": "Html for paymentsystem. 3 conventions."
+    "description": "Html for paymentsystem. 4 conventions."
   },
   "javascript": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T12:36:28.677Z",
+    "lastGenerated": "2026-03-24T12:46:28.779Z",
     "observationCount": 5,
     "skillCount": 0,
     "domain": "javascript",
@@ -77,5 +77,17 @@
       "**/*.jsx"
     ],
     "description": "Javascript for paymentsystem. ."
+  },
+  "typescript": {
+    "enabled": true,
+    "lastGenerated": "2026-03-24T12:46:28.765Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "typescript",
+    "triggerGlobs": [
+      "**/*.ts",
+      "**/*.tsx"
+    ],
+    "description": "Typescript for paymentsystem. ."
   }
 }

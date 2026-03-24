@@ -17,8 +17,16 @@ const TermsConditions: React.FC = () => {
         <p>Users may not use the platform for fraudulent transactions, illegal gambling, or any activities that violate financial compliance regulations in their respective jurisdictions.</p>
       </section>
       <section>
-        <h2>4. Platform Availability</h2>
+        <h2>4. Intellectual Property</h2>
+        <p>The LinkPayPro engine, algorithms, and dashboard UI are the exclusive property of LinkPayPro. Unauthorized reverse engineering is strictly prohibited.</p>
+      </section>
+      <section>
+        <h2>5. Platform Availability</h2>
         <p>While we strive for 99.9% uptime, LinkPayPro is not liable for indirect losses caused by secondary gateway failures or network interruptions beyond our control.</p>
+      </section>
+      <section>
+        <h2>6. Termination</h2>
+        <p>We reserve the right to suspend accounts that violate our security protocols or fail to maintain valid KYB status.</p>
       </section>
     </PolicyLayout>
   );
