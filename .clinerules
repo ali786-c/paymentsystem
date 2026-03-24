@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 136 obs | 1 sessions | Score threshold: >40
+> 143 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -21,6 +21,7 @@
 
 ## 📐 MUST FOLLOW
 
+- what-changed in index.html — confirmed 3x [54]
 - Added session cookies authentication — improves module reusability — confirmed 4x [54]
 - Strengthened types index [54]
 - Replaced lucide-react with lucide-react — confirmed 6x [54]
@@ -28,14 +29,13 @@
 - what-changed in index.html — confirmed 3x [54]
 - what-changed in task.md.resolved — confirmed 3x [54]
 - what-changed in design_spec.md.resolved — confirmed 3x [54]
-- what-changed in index.html — confirmed 3x [49]
 
 ## 🤔 Don't Question These
 
-- decision in Footer.tsx
-- decision in SupportPage.tsx
-- decision in vite.config.ts
-- decision in Footer.tsx
+- Optimized Gateways — improves module reusability
+- Optimized React — improves module reusability
+- decision in Hero.tsx
+- decision in Navbar.tsx
 
 ## 🎯 Skills
 
