@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
-import { Mail, MessageSquare, Globe } from 'lucide-react';
+import { Mail, MessageSquare } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {

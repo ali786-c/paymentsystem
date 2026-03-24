@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../components/landing/Navbar';
-import Footer from '../components/landing/Footer';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import { motion } from 'framer-motion';
 
 interface PolicyLayoutProps {

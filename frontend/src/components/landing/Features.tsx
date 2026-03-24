@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Zap, BarChart3, Globe, Code2, Users } from 'lucide-react';
+import { Shield, Zap, BarChart3, Globe, Code2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Features: React.FC = () => {
