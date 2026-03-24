@@ -43,10 +43,10 @@ const Footer: React.FC = () => {
           <div>
             <h5 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-8">Resources</h5>
             <ul className="space-y-4">
-              <li><Link to="/contact" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Documentation</Link></li>
-              <li><Link to="/contact" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">API Reference</Link></li>
-              <li><Link to="/contact" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Support Center</Link></li>
-              <li><Link to="/contact" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">System Status</Link></li>
+              <li><Link to="/docs" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Documentation</Link></li>
+              <li><Link to="/api" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">API Reference</Link></li>
+              <li><Link to="/support" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Support Center</Link></li>
+              <li><Link to="/status" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">System Status</Link></li>
             </ul>
           </div>
 
@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
               <li><Link to="/privacy" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Privacy Policy</Link></li>
               <li><Link to="/terms" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Terms of Service</Link></li>
               <li><Link to="/refund" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Refund Policy</Link></li>
-              <li><Link to="/contact" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Merchant KYB</Link></li>
+              <li><Link to="/kyb" className="text-slate-500 font-medium hover:text-blue-600 transition-colors">Merchant KYB</Link></li>
             </ul>
           </div>
         </div>

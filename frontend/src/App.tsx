@@ -9,6 +9,12 @@ import RefundPolicy from './pages/RefundPolicy'
 import ContactPage from './pages/ContactPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import ScrollToTop from './components/utils/ScrollToTop'
+import DevelopersPage from './pages/DevelopersPage'
+import DocsPage from './pages/DocsPage'
+import ApiPage from './pages/ApiPage'
+import SupportPage from './pages/SupportPage'
+import StatusPage from './pages/StatusPage'
+import KybPage from './pages/KybPage'
 
 // Build: LinkPayPro v1.0.1
 function App() {
@@ -28,6 +34,12 @@ function App() {
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/refund" element={<RefundPolicy />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/developers" element={<DevelopersPage />} />
+          <Route path="/docs" element={<DocsPage />} />
+          <Route path="/api" element={<ApiPage />} />
+          <Route path="/support" element={<SupportPage />} />
+          <Route path="/status" element={<StatusPage />} />
+          <Route path="/kyb" element={<KybPage />} />
           <Route path="/checkout/:invoiceId" element={<CheckoutPage />} />
           <Route 
             path="/admin/*" 

@@ -27,12 +27,12 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <Link to="#features" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Features</Link>
-          <Link to="#solutions" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Solutions</Link>
-          <Link to="#pricing" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Pricing</Link>
-          <Link to="/developers" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Developers</Link>
-        </div>
+        <div className="hidden md:flex items-center space-x-10">
+              <Link to="/#features" className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors">Features</Link>
+              <Link to="/#solutions" className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors">Solutions</Link>
+              <Link to="/#pricing" className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors">Pricing</Link>
+              <Link to="/developers" className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors">Developers</Link>
+            </div>
 
         <div className="hidden md:flex items-center space-x-4">
           <Link to="/login" className="text-sm font-bold text-slate-600 px-6 py-2.5 hover:bg-slate-100 rounded-2xl transition-colors">Login</Link>

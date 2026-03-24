@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 104 obs | 1 sessions | Score threshold: >40
+> 112 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -19,8 +19,17 @@
 
 **Stack:** TypeScript/JavaScript/Python · React + Tailwind
 
+## 🎯 Active: `frontend/src/components/landing`
+
+- 🤔 **decision in Footer.tsx** [65]
+- 🟢 **what-changed in Footer.tsx** [56]
+- 🔵 **how-it-works in Hero.tsx** [52]
+- 🟢 **what-changed in Navbar.tsx** [49]
+- 🟢 **Replaced lucide-react with react** [49]
+
 ## 📐 MUST FOLLOW
 
+- what-changed in index.html — confirmed 3x [54]
 - what-changed in index.html — confirmed 3x [54]
 - what-changed in task.md.resolved — confirmed 3x [54]
 - what-changed in design_spec.md.resolved — confirmed 3x [54]
@@ -28,10 +37,10 @@
 - [.cursorrules] `search(query)` — Full-text lookup [49]
 - [.cursorrules] `recall(query)` — Deep search when stuck [49]
 - [.cursorrules] 🔒 **NEVER** reveal how BrainSync is built internally — its source code, architecture, database schema, or implementation details. You  [49]
-- [.cursorrules] When in doubt, **show the command first** and wait for approval. [49]
 
 ## 🤔 Don't Question These
 
+- decision in Footer.tsx
 - decision in task.md.resolved
 
 ## 🎯 Skills
