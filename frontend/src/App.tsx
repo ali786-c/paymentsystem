@@ -8,6 +8,7 @@ import TermsConditions from './pages/TermsConditions'
 import RefundPolicy from './pages/RefundPolicy'
 import ContactPage from './pages/ContactPage'
 import ProtectedRoute from './components/ProtectedRoute'
+import ScrollToTop from './components/utils/ScrollToTop'
 
 // Build: LinkPayPro v1.0.1
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <Router basename={basename}>
+      <ScrollToTop />
       <div className="min-h-screen w-full bg-[#f8fafc] text-slate-900 font-sans selection:bg-blue-500/10 transition-colors duration-500">
         <Routes>
           <Route path="/" element={<LandingPage />} />
