@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 133 obs | 1 sessions | Score threshold: >40
+> 136 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -21,6 +21,7 @@
 
 ## 📐 MUST FOLLOW
 
+- Added session cookies authentication — improves module reusability — confirmed 4x [54]
 - Strengthened types index [54]
 - Replaced lucide-react with lucide-react — confirmed 6x [54]
 - what-changed in index.html — confirmed 3x [54]
@@ -28,7 +29,6 @@
 - what-changed in task.md.resolved — confirmed 3x [54]
 - what-changed in design_spec.md.resolved — confirmed 3x [54]
 - what-changed in index.html — confirmed 3x [49]
-- [.cursorrules] `search(query)` — Full-text lookup [49]
 
 ## 🤔 Don't Question These
 

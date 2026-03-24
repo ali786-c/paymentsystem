@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
 
         <div className="hidden md:flex items-center space-x-4">
           <Link to="/login" className="text-sm font-bold text-slate-600 px-6 py-2.5 hover:bg-slate-100 rounded-2xl transition-colors">Login</Link>
-          <Link to="/get-started" className="text-sm font-bold text-white bg-blue-600 px-8 py-2.5 rounded-2xl shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition-all transform hover:-translate-y-0.5">Get Started</Link>
+          <Link to="/contact" className="text-sm font-bold text-white bg-blue-600 px-8 py-2.5 rounded-2xl shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition-all transform hover:-translate-y-0.5">Get Started</Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
             <Link to="/developers" className="text-lg font-bold text-slate-900 py-2">Developers</Link>
             <div className="pt-4 flex flex-col space-y-3">
               <Link to="/login" className="text-center font-bold text-slate-900 border border-slate-200 py-3 rounded-2xl">Login</Link>
-              <Link to="/get-started" className="text-center font-bold text-white bg-blue-600 py-3 rounded-2xl">Get Started</Link>
+              <Link to="/contact" className="text-center font-bold text-white bg-blue-600 py-3 rounded-2xl">Get Started</Link>
             </div>
           </div>
         </div>

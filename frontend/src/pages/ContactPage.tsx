@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
-import { Mail, MessageSquare } from 'lucide-react';
+import { Mail, ShieldCheck } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   return (
@@ -29,11 +29,11 @@ const ContactPage: React.FC = () => {
                 
                 <div className="flex items-start space-x-6 p-6 bg-slate-50 border border-slate-100 rounded-3xl">
                   <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                    <MessageSquare className="text-emerald-500 w-6 h-6" />
+                    <ShieldCheck className="text-emerald-500 w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-slate-900 mb-1">Live Chat</h4>
-                    <p className="text-slate-500 font-medium">Available M-F, 9am - 6pm EST</p>
+                    <h4 className="text-lg font-bold text-slate-900 mb-1">Global Compliance</h4>
+                    <p className="text-slate-500 font-medium">PCI DSS Level 1 Certified</p>
                   </div>
                 </div>
               </div>

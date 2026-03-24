@@ -1,6 +1,6 @@
-import React from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
@@ -36,13 +36,13 @@ const Hero: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
-              <button className="w-full sm:w-auto px-10 py-4 bg-slate-900 text-white rounded-2xl font-bold flex items-center justify-center space-x-2 group hover:shadow-2xl hover:shadow-slate-500/20 transition-all transform hover:-translate-y-1">
+              <Link to="/contact" className="w-full sm:w-auto px-10 py-4 bg-slate-900 text-white rounded-2xl font-bold flex items-center justify-center space-x-2 group hover:shadow-2xl hover:shadow-slate-500/20 transition-all transform hover:-translate-y-1">
                 <span>Talk to Sales</span>
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="w-full sm:w-auto px-10 py-4 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold hover:bg-slate-50 transition-colors">
+              </Link>
+              <Link to="/docs" className="w-full sm:w-auto px-10 py-4 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold hover:bg-slate-50 transition-colors text-center">
                 View Documentation
-              </button>
+              </Link>
             </div>
 
             <div className="flex flex-wrap items-center gap-6">
