@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-52 md:pb-40 overflow-hidden bg-[#fdfdfd]">
+    <section className="relative pt-24 pb-20 md:pt-36 md:pb-32 overflow-hidden bg-[#fdfdfd]">
       {/* 🔮 High-End Background Layering */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse:60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* 🚀 Left Column: High-Texture Content */}
           <motion.div 
             variants={containerVariants}
