@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 125 obs | 1 sessions | Score threshold: >40
+> 133 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -32,9 +32,10 @@
 
 ## 🤔 Don't Question These
 
+- decision in Footer.tsx
+- decision in SupportPage.tsx
 - decision in vite.config.ts
 - decision in Footer.tsx
-- decision in task.md.resolved
 
 ## 🎯 Skills
 

@@ -2,15 +2,15 @@ import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
 import { motion } from 'framer-motion';
-import { Search, MessageCircle, Mail, Phone, ExternalLink, LifeBuoy } from 'lucide-react';
+import { Search, Mail, Phone, ExternalLink, LifeBuoy } from 'lucide-react';
 
 const SupportPage: React.FC = () => {
     const contactOptions = [
         {
-            title: 'Live Chat',
-            desc: 'Average response: < 2 mins',
-            icon: <MessageCircle className="text-blue-600" />,
-            action: 'Start Chat',
+            title: 'Help Center',
+            desc: 'Search our knowledge base',
+            icon: <LifeBuoy className="text-blue-600" />,
+            action: 'Browse Docs',
             color: 'bg-blue-50'
         },
         {
