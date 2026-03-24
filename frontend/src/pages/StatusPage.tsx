@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
 import { motion } from 'framer-motion';
-import { CheckCircle2, AlertTriangle, Clock, Server, Monitor, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, Clock, Server, Monitor, ShieldCheck } from 'lucide-react';
 
 const StatusPage: React.FC = () => {
     const services = [

@@ -1,7 +1,7 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T11:46:28.686Z",
+    "lastGenerated": "2026-03-24T12:26:28.736Z",
     "observationCount": 56,
     "skillCount": 0,
     "domain": "project",
@@ -12,7 +12,7 @@
   },
   "convention": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T11:46:28.689Z",
+    "lastGenerated": "2026-03-24T12:26:28.762Z",
     "observationCount": 0,
     "skillCount": 10,
     "domain": "convention",
@@ -23,18 +23,18 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T11:46:28.682Z",
-    "observationCount": 20,
+    "lastGenerated": "2026-03-24T12:26:28.701Z",
+    "observationCount": 32,
     "skillCount": 0,
     "domain": "typescript-react",
     "triggerGlobs": [
       "**/*.tsx"
     ],
-    "description": "Typescript React for paymentsystem. 1 fixes."
+    "description": "Typescript React for paymentsystem. 1 conventions, 2 fixes."
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T11:46:28.687Z",
+    "lastGenerated": "2026-03-24T12:26:28.752Z",
     "observationCount": 12,
     "skillCount": 0,
     "domain": "php",
@@ -45,7 +45,7 @@
   },
   "css": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T11:46:28.683Z",
+    "lastGenerated": "2026-03-24T12:26:28.728Z",
     "observationCount": 5,
     "skillCount": 0,
     "domain": "css",
@@ -57,7 +57,7 @@
   },
   "html": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T11:46:28.680Z",
+    "lastGenerated": "2026-03-24T12:26:28.727Z",
     "observationCount": 9,
     "skillCount": 0,
     "domain": "html",
@@ -68,7 +68,7 @@
   },
   "javascript": {
     "enabled": true,
-    "lastGenerated": "2026-03-24T11:46:28.685Z",
+    "lastGenerated": "2026-03-24T12:26:28.729Z",
     "observationCount": 5,
     "skillCount": 0,
     "domain": "javascript",

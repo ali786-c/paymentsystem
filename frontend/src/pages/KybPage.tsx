@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
 import { motion } from 'framer-motion';
-import { FileText, Building2, UserCheck, ShieldSecurity, ArrowRight, CheckCircle } from 'lucide-react';
+import { FileText, Building2, UserCheck, ArrowRight, CheckCircle } from 'lucide-react';
 
 const KybPage: React.FC = () => {
     const steps = [

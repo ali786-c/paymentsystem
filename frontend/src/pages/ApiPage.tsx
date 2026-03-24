@@ -1,8 +1,7 @@
 import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
-import { motion } from 'framer-motion';
-import { Terminal, Send, Lock, Zap, Box, Key } from 'lucide-react';
+import { Lock, Zap, Box, Key } from 'lucide-react';
 
 const ApiPage: React.FC = () => {
     const endpoints = [
@@ -102,7 +101,7 @@ const ApiPage: React.FC = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-xl font-black text-slate-900 mb-2 tracking-tight">Low Latency</h4>
-                                        <p className="text-slate-500 font-medium leading-relaxed">Globally distributed edge nodes for < 100ms API response.</p>
+                                        <p className="text-slate-500 font-medium leading-relaxed">Globally distributed edge nodes for &lt; 100ms API response.</p>
                                     </div>
                                 </div>
                             </div>

@@ -16,7 +16,7 @@ import SupportPage from './pages/SupportPage'
 import StatusPage from './pages/StatusPage'
 import KybPage from './pages/KybPage'
 
-// Build: LinkPayPro v1.0.1
+// Build: LinkPayPro v1.0.2 - Fixed Navigation
 function App() {
   // Automatically detect if we are in a subdirectory (like XAMPP) or root (like cPanel)
   const basename = window.location.pathname.startsWith('/upgrader-pay-hub') 
