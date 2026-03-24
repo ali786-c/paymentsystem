@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 143 obs | 1 sessions | Score threshold: >40
+> 148 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -32,10 +32,10 @@
 
 ## 🤔 Don't Question These
 
+- Optimized ArrowRight — improves module reusability
 - Optimized Gateways — improves module reusability
 - Optimized React — improves module reusability
 - decision in Hero.tsx
-- decision in Navbar.tsx
 
 ## 🎯 Skills
 
