@@ -57,7 +57,7 @@ export default function LoginPage() {
                     <div className="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center shadow-[0_20px_40px_rgba(37,99,235,0.25)] mb-6 transform rotate-12">
                         <Layers className="text-white w-8 h-8" />
                     </div>
-                    <h1 className="text-4xl font-black text-slate-900 tracking-tight leading-none mb-2">PAYHUB</h1>
+                    <h1 className="text-4xl font-black text-slate-900 tracking-tight leading-none mb-2">LINKPAYPRO</h1>
                     <div className="flex items-center space-x-2">
                         <div className="h-[1px] w-4 bg-slate-300" />
                         <span className="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase">Control Center</span>
@@ -88,7 +88,7 @@ export default function LoginPage() {
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="admin@payhub.com"
+                                        placeholder="admin@linkpaypro.com"
                                         className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 pl-14 pr-6 text-slate-900 placeholder:text-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500 transition-all font-medium"
                                     />
                                 </div>

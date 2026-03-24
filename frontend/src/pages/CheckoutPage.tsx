@@ -125,7 +125,7 @@ export default function CheckoutPage() {
                         </div>
                         <div>
                             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 leading-none">UpgraderCX</p>
-                            <h2 className="text-lg font-black tracking-tight mt-0.5 text-slate-900">PAYHUB SECURE</h2>
+                            <h2 className="text-lg font-black tracking-tight mt-0.5 text-slate-900">LINKPAYPRO SECURE</h2>
                         </div>
                     </div>
                     <div className="hidden sm:flex items-center space-x-2 bg-emerald-50 border border-emerald-100 px-4 py-1.5 rounded-full shadow-sm">

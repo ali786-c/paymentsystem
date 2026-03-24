@@ -89,7 +89,7 @@ export default function DashboardPage() {
                             <Layers className="text-white w-6 h-6" />
                         </div>
                         <div>
-                            <h1 className="text-lg font-black tracking-tight leading-none text-slate-900">PAYHUB</h1>
+                            <h1 className="text-lg font-black tracking-tight leading-none text-slate-900">LINKPAYPRO</h1>
                             <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">Control Center</span>
                         </div>
                     </div>
