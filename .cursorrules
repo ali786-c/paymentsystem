@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 148 obs | 1 sessions | Score threshold: >40
+> 153 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -19,16 +19,24 @@
 
 **Stack:** TypeScript/JavaScript/Python · React + Tailwind
 
+## 🎯 Active: `.`
+
+- 📐 **what-changed in index.html — confirmed 3x** [64]
+- 📐 **what-changed in index.html — confirmed 3x** [64]
+- 📐 **Strengthened types index** [64]
+- 📐 **what-changed in index.html — confirmed 3x** [64]
+- 📐 **what-changed in index.html — confirmed 3x** [64]
+
 ## 📐 MUST FOLLOW
 
-- what-changed in index.html — confirmed 3x [54]
-- Added session cookies authentication — improves module reusability — confirmed 4x [54]
-- Strengthened types index [54]
-- Replaced lucide-react with lucide-react — confirmed 6x [54]
-- what-changed in index.html — confirmed 3x [54]
-- what-changed in index.html — confirmed 3x [54]
-- what-changed in task.md.resolved — confirmed 3x [54]
-- what-changed in design_spec.md.resolved — confirmed 3x [54]
+- what-changed in index.html — confirmed 3x [64]
+- what-changed in index.html — confirmed 3x [64]
+- Strengthened types index [64]
+- what-changed in index.html — confirmed 3x [64]
+- what-changed in index.html — confirmed 3x [64]
+- what-changed in index.html — confirmed 3x [59]
+- [.cursorrules] `search(query)` — Full-text lookup [59]
+- [.cursorrules] `recall(query)` — Deep search when stuck [59]
 
 ## 🤔 Don't Question These
 

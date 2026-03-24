@@ -36,9 +36,10 @@ Options +FollowSymLinks
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
 
-# 🕒 Performance: Browser Caching (1 Year for Assets)
+# 🕒 Performance: Browser Caching (1 Year for Assets, 0 for HTML)
 <IfModule mod_expires.c>
     ExpiresActive On
+    ExpiresByType text/html "access plus 0 seconds"
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/gif "access plus 1 year"
@@ -47,4 +48,13 @@ Options +FollowSymLinks
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 year"
     ExpiresByType application/x-javascript "access plus 1 year"
+</IfModule>
+
+# 🛡️ Security & Cache Control
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
 </IfModule>
