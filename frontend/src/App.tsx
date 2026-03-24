@@ -3,6 +3,10 @@ import CheckoutPage from './pages/CheckoutPage'
 import DashboardPage from './pages/DashboardPage'
 import LoginPage from './pages/LoginPage'
 import LandingPage from './pages/LandingPage'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsConditions from './pages/TermsConditions'
+import RefundPolicy from './pages/RefundPolicy'
+import ContactPage from './pages/ContactPage'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -17,6 +21,10 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsConditions />} />
+          <Route path="/refund" element={<RefundPolicy />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/checkout/:invoiceId" element={<CheckoutPage />} />
           <Route 
             path="/admin/*" 
