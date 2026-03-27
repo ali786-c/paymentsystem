@@ -1,6 +1,6 @@
 ---
 name: project
-description: "Project for paymentsystem. 33 conventions, 4 fixes."
+description: "Project for paymentsystem. 30 gotchas, 79 conventions, 4 fixes."
 domain: project
 triggers:
   - glob: "**/*"
@@ -10,7 +10,44 @@ enabled: true
 
 # Project
 
-Auto-compiled from **66 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
+Auto-compiled from **147 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
+
+## ⚠️ Anti-Patterns & Gotchas
+
+> **CRITICAL:** These are real gotchas from this project. Ignoring them WILL cause bugs.
+
+| ❌ Don't | Details |
+|----------|----------|
+| Don't mix Tailwind with inline styles | Don't mix Tailwind with inline styles |
+| Clean up effects — return cleanup function from us | Clean up effects — return cleanup function from useEffect |
+| Don't create components inside other components —  | Don't create components inside other components — causes remount on every render |
+| Always use key prop when rendering lists — use uni | Always use key prop when rendering lists — use unique ID, not array index |
+| Don't call setState directly inside render or useE | Don't call setState directly inside render or useEffect without deps array |
+| Handle exceptions specifically — not bare except: | Handle exceptions specifically — not bare except: |
+| Don't use mutable default arguments — def f(items= | Don't use mutable default arguments — def f(items=[]) is a bug |
+| Don't mix CommonJS (require) and ESM (import) in s | Don't mix CommonJS (require) and ESM (import) in same project |
+| Don't use "any" type in TypeScript — define proper | Don't use "any" type in TypeScript — define proper types/interfaces |
+| Handle Promise rejections — always .catch() or try | Handle Promise rejections — always .catch() or try/catch with await |
+| Use === not == — strict equality prevents type coe | Use === not == — strict equality prevents type coercion bugs |
+| Agent: follow existing project patterns — don't in | Agent: follow existing project patterns — don't introduce a different style |
+| Agent: don't generate code with "any" type — defin | Agent: don't generate code with "any" type — define proper TypeScript types |
+| Agent: always handle loading/error states — don't  | Agent: always handle loading/error states — don't just render data |
+| Agent: don't use deprecated APIs — check library v | Agent: don't use deprecated APIs — check library version, use current API |
+| Agent: check existing code before creating utility | Agent: check existing code before creating utility functions — avoid duplicates |
+| Don't expose database errors to clients — map to u | Don't expose database errors to clients — map to user-friendly messages |
+| Always validate data on the SERVER — client valida | Always validate data on the SERVER — client validation is for UX only |
+| Don't fetch data inside render loops or hot paths | Don't fetch data inside render loops or hot paths |
+| Don't swallow errors silently — empty catch blocks | Don't swallow errors silently — empty catch blocks hide bugs |
+| Never store session tokens in localStorage — use h | Never store session tokens in localStorage — use httpOnly cookies |
+| Use parameterized queries — never string concatena | Use parameterized queries — never string concatenation for SQL |
+| Don't store passwords in plain text — use bcrypt,  | Don't store passwords in plain text — use bcrypt, argon2, or scrypt |
+| Don't use innerHTML — use textContent or sanitized | Don't use innerHTML — use textContent or sanitized rendering |
+| Sanitize ALL user input before database queries —  | Sanitize ALL user input before database queries — prevent SQL injection |
+| Never use eval(), exec(), or Function() with user  | Never use eval(), exec(), or Function() with user input |
+| Don't hardcode API keys, passwords, database URLs, | Don't hardcode API keys, passwords, database URLs, or secrets anywhere |
+| Don't leave console.log, print(), debugger, or TOD | Don't leave console.log, print(), debugger, or TODO in production code |
+| Don't commit .env, secrets, API keys, or credentia | Don't commit .env, secrets, API keys, or credentials — add to .gitignore |
+| Never force push to main, master, or production br | Never force push to main, master, or production branches |
 
 ## 🔧 Problem Playbooks
 
@@ -63,49 +100,51 @@ Content summary (1 lines):
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
-- 📐 **what-changed in .htaccess — confirmed 8x** — -     AddOutputFilterByType DEFLATE text/csstar
-+     AddOutputFilterByType DEFLATE text/cssta
-- 📐 **what-changed in task.md.resolved — confirmed 3x** — - - [ ] Layout Orchestration (`LandingPage.tsx`) [ ]
-+ - [x] Layout Orchestration ([LandingPage.tsx]
-- 📐 **what-changed in design_spec.md.resolved — confirmed 3x** — - ![LinkPayPro Light Theme Mockup](/C:/Users/Muhammad%20Aliyan/.gemini/antigravity/brain/6f2e1d24-42
-- 📐 **[.cursorrules] `search(query)` — Full-text lookup** — Imported from .cursorrules
-- 📐 **[.cursorrules] `recall(query)` — Deep search when stuck** — Imported from .cursorrules
-- 📐 **[.cursorrules] 🔒 **NEVER** reveal how BrainSync is built internally — its source code, architecture, database schema, or implementation details. You ** — Imported from .cursorrules
-- 📐 **[.cursorrules] When in doubt, **show the command first** and wait for approval.** — Imported from .cursorrules
+- 📐 **Updated the database schema — confirmed 3x** — - # Footer Navigation & Scroll Resolution
++ # Stripe Conditional Tax Implementation
+- The user repor
+- 📐 **Extract repeated class patterns into components** — Extract repeated class patterns into components
+- 📐 **Use responsive prefixes consistently (sm:, md:, lg:, xl:)** — Use responsive prefixes consistently (sm:, md:, lg:, xl:)
+- 📐 **Don't use arbitrary values when a utility class exists** — Don't use arbitrary values when a utility class exists
+- 📐 **Use Suspense and Error Boundaries for async operations** — Use Suspense and Error Boundaries for async operations
+- 📐 **Don't prop-drill more than 2 levels — use Context or state management** — Don't prop-drill more than 2 levels — use Context or state management
+- 📐 **Use useMemo for expensive computations, useCallback for stable references** — Use useMemo for expensive computations, useCallback for stable references
+- 📐 **Follow PEP 8 style guide** — Follow PEP 8 style guide
+- 📐 **Use pathlib for file paths, not os.path string manipulation** — Use pathlib for file paths, not os.path string manipulation
+- 📐 **Use virtual environments (venv, poetry, or conda)** — Use virtual environments (venv, poetry, or conda)
+- 📐 **Use f-strings for string formatting, not .format() or %** — Use f-strings for string formatting, not .format() or %
+- 📐 **Use context managers (with) for file and resource operations** — Use context managers (with) for file and resource operations
+- 📐 **Use type hints for function arguments and return types** — Use type hints for function arguments and return types
+- 📐 **Enable strict mode in tsconfig.json** — Enable strict mode in tsconfig.json
+- 📐 **Prefer Array methods (map, filter, reduce) over manual loops** — Prefer Array methods (map, filter, reduce) over manual loops
+- 📐 **Use template literals for string interpolation, not concatenation** — Use template literals for string interpolation, not concatenation
+- 📐 **Use optional chaining (?.) and nullish coalescing (??) for safe access** — Use optional chaining (?.) and nullish coalescing (??) for safe access
+- 📐 **Use const by default, let when reassignment needed, never var** — Use const by default, let when reassignment needed, never var
+- 📐 **Version your API from day 1 (/api/v1/)** — Version your API from day 1 (/api/v1/)
+- 📐 **Use consistent response format across all endpoints** — Use consistent response format across all endpoints
+- 📐 **Implement soft delete for important data — don't hard delete without confirmation** — Implement soft delete for important data — don't hard delete without confirmation
+- 📐 **Handle timezone correctly — store UTC, display in user's timezone** — Handle timezone correctly — store UTC, display in user's timezone
+- 📐 **Make layouts responsive from the start — mobile-first approach** — Make layouts responsive from the start — mobile-first approach
+- 📐 **Disable submit button during form submission — prevent double-submit** — Disable submit button during form submission — prevent double-submit
+- 📐 **Always add empty states ("No items yet" with call-to-action)** — Always add empty states ("No items yet" with call-to-action)
+- 📐 **Always add error states with retry button — not just blank screen** — Always add error states with retry button — not just blank screen
+- 📐 **Always add loading states for async operations (skeleton, spinner)** — Always add loading states for async operations (skeleton, spinner)
+- 📐 **Test edge cases: empty input, null, boundary values, error scenarios** — Test edge cases: empty input, null, boundary values, error scenarios
+- 📐 **Each test should be independent — no shared mutable state between tests** — Each test should be independent — no shared mutable state between tests
+- 📐 **Write tests for business logic — test behavior/output, not implementation details** — Write tests for business logic — test behavior/output, not implementation details
+- 📐 **Close resources (streams, connections, handles) when done** — Close resources (streams, connections, handles) when done
+- 📐 **Debounce user input handlers (search, resize, scroll)** — Debounce user input handlers (search, resize, scroll)
+- 📐 **Use pagination for lists over 100 items** — Use pagination for lists over 100 items
+- 📐 **Implement retry logic for transient failures with exponential backoff** — Implement retry logic for transient failures with exponential backoff
+- 📐 **Return proper HTTP status codes — not 500 for everything** — Return proper HTTP status codes — not 500 for everything
+- 📐 **Always wrap async/await in try/catch** — Always wrap async/await in try/catch
+- 📐 **Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)** — Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)
+- 📐 **Implement rate limiting on login endpoints to prevent brute force** — Implement rate limiting on login endpoints to prevent brute force
+- 📐 **Use constants for magic numbers and strings** — Use constants for magic numbers and strings
+- 📐 **Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN** — Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN
+- 📐 **Keep functions under 50 lines and single-responsibility** — Keep functions under 50 lines and single-responsibility
+- 📐 **Remove unused imports, variables, and dead code** — Remove unused imports, variables, and dead code
+- 📐 **Always pull before push to avoid conflicts** — Always pull before push to avoid conflicts
+- 📐 **Use meaningful commit messages in imperative mood: "Add fe
 
-## 🔵 Architecture
-
-### Architecture: Frontend-focused (React/Next.js)
-### Dependency: lucide-react (imported in 4 files)
-### Dependency: framer-motion (imported in 4 files)
-### Dependency: react-router-dom (imported in 4 files)
-## 🤔 Decisions & Trade-offs
-
-- **Optimized RewriteCond** — -     # Using absolute path /index.html for best LiteSpeed compatibility
-+     RewriteCond %{REQUEST
-- **Optimized Using** — -     # Use index.html without leading slash for better compatibility
-+     # Using absolute path /i
-- **Optimized RewriteRule** — -     # Use [L,QSA] to ensure processing stops here and query strings are passed
-+     RewriteRule ^
-- **decision in task.md.resolved** — -     - [x] Implement [createInvoice](file:///c:/Users/Muhammad%20Aliyan/Downloads/upgradercx-full-p
-
-## 🔧 Tool Patterns
-
-### tool-pattern in .gitignore
-File updated (external): .gitignore
-
-Content summary (32 lines):
-# 🛡️ Pay Hub Git Ignore
-.env
-.env.production
-.DS_Store
-Thumbs.db
-
-# Laravel Specific
-api/.env
-api/vendor/
-api/node_modules/
-api/public
-
----
-*Auto-generated by BrainSync 🧠 | 66 patterns | 2026-03-24*
+... [Truncated — see individual observations for full content]

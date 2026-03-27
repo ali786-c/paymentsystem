@@ -1,7 +1,7 @@
 
 
 # 🧠 BrainSync Memory — paymentsystem
-> 164 obs | 1 sessions | Score threshold: >40
+> 166 obs | 1 sessions | Score threshold: >40
 
 ## 🛡️ SAFETY — NEVER RUN DESTRUCTIVE COMMANDS
 
@@ -47,3 +47,50 @@
 - `recall(query)` — Deep search when stuck
 - `search(query)` — Full-text lookup
 > Context above IS your context. Do NOT call get_context() at startup.
+
+# Project Memory — paymentsystem
+> 166 notes | Score threshold: >40
+
+## Safety — Never Run Destructive Commands
+
+> Dangerous commands are actively monitored.
+> Critical/high risk commands trigger error notifications in real-time.
+
+- **NEVER** run `rm -rf`, `del /s`, `rmdir`, `format`, or any command that deletes files/directories without EXPLICIT user approval.
+- **NEVER** run `DROP TABLE`, `DELETE FROM`, `TRUNCATE`, or any destructive database operation.
+- **NEVER** run `git push --force`, `git reset --hard`, or any command that rewrites history.
+- **NEVER** run `npm publish`, `docker rm`, `terraform destroy`, or any irreversible deployment/infrastructure command.
+- **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`).
+- **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests.
+- When in doubt, **show the command first** and wait for approval.
+
+**Stack:** TypeScript/JavaScript/Python · React + Tailwind
+
+## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Project Standards
+
+- what-changed in .htaccess — confirmed 8x
+- Strengthened types ArrowRight — improves module reusability
+- what-changed in index.html — confirmed 3x
+- Replaced lucide-react with lucide-react — confirmed 3x
+- what-changed in index.html — confirmed 3x
+- Added session cookies authentication — improves module reusability — confirmed 4x
+- Strengthened types index
+- Replaced lucide-react with lucide-react — confirmed 6x
+
+## Recent Decisions
+
+- Optimized ArrowRight — improves module reusability
+- Optimized Gateways — improves module reusability
+- Optimized React — improves module reusability
+- decision in Hero.tsx
+
+## Learned Patterns
+
+- Always: [.cursorrules] **NEVER** pipe remote scripts to shell (`curl | bash`, `wget | sh`). (seen 3x)
+- Always: [.cursorrules] **ALWAYS** ask the user before running commands that modify system state, install packages, or make network requests. (seen 3x)
+- Always: [.cursorrules] When in doubt, **show the command first** and wait for approval. (seen 3x)
+
+## Available Tools (ON-DEMAND only)
+- `query(q)` — Deep search when stuck
+- `find(query)` — Full-text lookup
+> Context above IS your context. Do NOT call load() at startup.

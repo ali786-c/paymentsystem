@@ -165,16 +165,44 @@ export default function CheckoutPage() {
                                         <span className="text-slate-400 font-bold uppercase tracking-widest text-[11px]">Merchant Portal</span>
                                         <span className="text-slate-900 font-black">{invoice.merchant.name}</span>
                                     </div>
+
                                     <div className="h-px bg-slate-100" />
+
+                                    {/* 🧾 Bill Breakdown */}
+                                    <div className="space-y-3">
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-slate-400 font-bold text-[11px] uppercase tracking-wider">Subtotal</span>
+                                            <span className="text-slate-600 font-bold">{invoice.currency} {parseFloat(invoice.amount).toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                                        </div>
+
+                                        {selectedGateway === 'stripe' && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                className="flex justify-between items-center"
+                                            >
+                                                <span className="text-blue-600 font-black text-[11px] uppercase tracking-wider flex items-center">
+                                                    Stripe Service Tax (20%)
+                                                    <Zap size={10} className="ml-1 animate-pulse" />
+                                                </span>
+                                                <span className="text-blue-600 font-black">
+                                                    +{invoice.currency} {(invoice.amount * 0.2).toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                                                </span>
+                                            </motion.div>
+                                        )}
+                                    </div>
+
+                                    <div className="h-px bg-slate-100" />
+
                                     <div className="flex justify-between items-end">
                                         <div>
-                                            <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em]">Total Outstanding</span>
+                                            <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em]">Total Due</span>
                                             <p className="text-5xl font-black text-slate-900 mt-1 leading-none tracking-tighter">
-                                                {invoice.currency} {invoice.amount}
+                                                {invoice.currency} {(selectedGateway === 'stripe' ? invoice.amount * 1.2 : invoice.amount).toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                             </p>
                                         </div>
-                                        <div className="bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">
-                                            <span className="text-[10px] font-black text-blue-600 uppercase">Guaranteed</span>
+                                        <div className="bg-blue-50 px-3 py-1 rounded-lg border border-blue-100 hidden sm:block">
+                                            <span className="text-[10px] font-black text-blue-600 uppercase">Secured</span>
                                         </div>
                                     </div>
                                 </div>
@@ -216,13 +244,13 @@ export default function CheckoutPage() {
                                             onClick={() => setSelectedGateway(gw.id)}
                                         />
                                         <div className={`flex items-center justify-between p-6 rounded-3xl border transition-all duration-500 ${selectedGateway === gw.id
-                                                ? 'bg-blue-50 border-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.08)]'
-                                                : 'bg-slate-50/50 border-slate-200 hover:border-slate-300'
+                                            ? 'bg-blue-50 border-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.08)]'
+                                            : 'bg-slate-50/50 border-slate-200 hover:border-slate-300'
                                             }`}>
                                             <div className="flex items-center space-x-4">
                                                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${selectedGateway === gw.id
-                                                        ? `bg-slate-900 text-white shadow-xl`
-                                                        : 'bg-white border border-slate-200 text-slate-400 group-hover:text-slate-900 group-hover:border-slate-300 shadow-sm'
+                                                    ? `bg-slate-900 text-white shadow-xl`
+                                                    : 'bg-white border border-slate-200 text-slate-400 group-hover:text-slate-900 group-hover:border-slate-300 shadow-sm'
                                                     }`}>
                                                     {gw.icon}
                                                 </div>
@@ -248,8 +276,8 @@ export default function CheckoutPage() {
                                 disabled={!selectedGateway || processing}
                                 onClick={handlePay}
                                 className={`w-full py-6 rounded-[2rem] font-black text-xl tracking-tight transition-all relative overflow-hidden group/btn flex items-center justify-center space-x-3 shadow-2xl shadow-slate-900/10 active:scale-95 ${!selectedGateway || processing
-                                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
-                                        : 'bg-slate-900 text-white hover:bg-slate-800'
+                                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
+                                    : 'bg-slate-900 text-white hover:bg-slate-800'
                                     }`}
                             >
                                 {processing ? (

@@ -251,8 +251,30 @@ class PaymentController extends Controller
         $invoice = Invoice::findOrFail($validated['invoice_id']);
         
         try {
-            // Update the invoice with the chosen method
-            $invoice->update(['payment_method' => $validated['gateway']]);
+            // --- 💡 TAX LOGIC START 💡 ---
+            // Keep track of the original "base" amount in the payload to allow reverting
+            $payload = $invoice->payload ?? [];
+            if (!isset($payload['base_amount'])) {
+                $payload['base_amount'] = $invoice->amount;
+                $invoice->payload = $payload; // Save the reference
+            }
+
+            $baseAmount = $payload['base_amount'];
+
+            // If Stripe is selected, add 20% tax. Otherwise, revert to base amount.
+            if ($validated['gateway'] === 'stripe') {
+                $invoice->amount = $baseAmount * 1.20;
+            } else {
+                $invoice->amount = $baseAmount;
+            }
+            // --- 💡 TAX LOGIC END 💡 ---
+
+            // Update the invoice with the chosen method and (potentially) new amount
+            $invoice->update([
+                'payment_method' => $validated['gateway'],
+                'amount' => $invoice->amount,
+                'payload' => $payload
+            ]);
 
             $redirectUrl = $this->paymentService->processInvoice($invoice, $validated['gateway']);
 

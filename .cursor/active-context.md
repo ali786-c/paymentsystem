@@ -2,6 +2,8 @@
 > Dynamically loaded for active file: `.htaccess` (Domain: **Generic Logic**)
 
 ### 📐 Generic Logic Conventions & Fixes
+- **[convention] what-changed in .htaccess — confirmed 8x**: -     AddOutputFilterByType DEFLATE text/csstar
++     AddOutputFilterByType DEFLATE text/cssta
 - **[problem-fix] Patched security issue Performance**: - # 🕒 Performance: Browser Caching (1 Year for Assets)
 + # 🕒 Performance: Browser Caching (1 Year for Assets, 0 for HTML)
 -     ExpiresByType image/jpg "access plus 1 year"
@@ -94,6 +96,49 @@
 +     # Use index.html without leading slash for better compatibility
 -     RewriteRule ^(.*)$ /index.html [L]
 +     RewriteRule . index.html [L]
+- **[convention] convention in .gitignore**: File updated (external): .gitignore
+
+Content summary (35 lines):
+# 🛡️ Pay Hub Git Ignore
+.env
+.env.production
+.DS_Store
+Thumbs.db
+
+# Laravel Specific
+api/.env
+api/vendor/
+api/node_modules/
+api/public/storage
+api/storage/*.key
+api/storage/framework/cache/data/*
+api/storage/framework/sessions/*
+api/storage/framework/views/*.php
+api/storage/logs/*.log
+api/*.log
+
+# Frontend Specific
+frontend/node_modules/
+frontend/dist/
+
+# System Files
+.idea/
+.vscode/
+*.bak
+*.tmp
+
+AGENT.md
+CLAUDE.md
+.agent-mem/
+
+# Auto-generated agent rules (personalized per developer)
+.brainsyn
+- **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-B_52Ohy5.js"></script>
++     <script type="module" crossorigin src="/assets/index-Cu0gWI7K.js"></script>
+-     <link rel="stylesheet" crossorigin href="/assets/index-CZeN-4_9.css">
++     <link rel="stylesheet" crossorigin href="/assets/index-Gm7RaDzs.css">
+
+📌 IDE AST Context: Modified symbols likely include [html]
 - **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-CKejYS6M.js"></script>
 +     <script type="module" crossorigin src="/assets/index-B_52Ohy5.js"></script>
 -     <link rel="modulepreload" crossorigin href="/assets/vendor-Coa8jgCD.js">
@@ -110,30 +155,10 @@
 +     <link rel="stylesheet" crossorigin href="/assets/index-CePD2NlC.css">
 
 📌 IDE AST Context: Modified symbols likely include [html]
-- **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-DjwwSNUK.js"></script>
-+     <script type="module" crossorigin src="/assets/index-Fh-V3bMO.js"></script>
--     <link rel="stylesheet" crossorigin href="/assets/index-DPYR_ymg.css">
-+     <link rel="stylesheet" crossorigin href="/assets/index-C7g4zysY.css">
-
-📌 IDE AST Context: Modified symbols likely include [html]
-- **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-BHDunr-j.js"></script>
-+     <script type="module" crossorigin src="/assets/index-DjwwSNUK.js"></script>
--     <link rel="modulepreload" crossorigin href="/assets/vendor-DLFzZtnp.js">
-+     <link rel="modulepreload" crossorigin href="/assets/vendor-D4tobTwW.js">
-
-📌 IDE AST Context: Modified symbols likely include [html]
 - **[convention] what-changed in index.html — confirmed 3x**: -     <script type="module" crossorigin src="/assets/index-lk991wii.js"></script>
 +     <script type="module" crossorigin src="/assets/index-BHDunr-j.js"></script>
 -     <link rel="modulepreload" crossorigin href="/assets/vendor-CowRQVzI.js">
 +     <link rel="modulepreload" crossorigin href="/assets/vendor-DLFzZtnp.js">
-
-📌 IDE AST Context: Modified symbols likely include [html]
-- **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-_Js5rtkt.js"></script>
-+     <script type="module" crossorigin src="/assets/index-lk991wii.js"></script>
--     <link rel="modulepreload" crossorigin href="/assets/vendor-DBHrDuQ0.js">
-+     <link rel="modulepreload" crossorigin href="/assets/vendor-CowRQVzI.js">
--     <link rel="stylesheet" crossorigin href="/assets/index-DHXcs1OY.css">
-+     <link rel="stylesheet" crossorigin href="/assets/index-DPYR_ymg.css">
 
 📌 IDE AST Context: Modified symbols likely include [html]
 - **[convention] Strengthened types index**: -     <script type="module" crossorigin src="/assets/index-z_C_8jjS.js"></script>
@@ -156,18 +181,8 @@
 + 
 
 📌 IDE AST Context: Modified symbols likely include [html]
-- **[what-changed] what-changed in index.html**: -     <script type="module" crossorigin src="/assets/index-C4APPrXz.js"></script>
-+     <script type="module" crossorigin src="/assets/index-z_C_8jjS.js"></script>
--     <link rel="stylesheet" crossorigin href="/assets/index-Sr-NbG0M.css">
-+     <link rel="stylesheet" crossorigin href="/assets/index-DHXcs1OY.css">
-
-📌 IDE AST Context: Modified symbols likely include [html]
 - **[convention] what-changed in index.html — confirmed 3x**: -     <script type="module" crossorigin src="/assets/index-DhmC1_G0.js"></script>
 +     <script type="module" crossorigin src="/assets/index-C4APPrXz.js"></script>
-
-📌 IDE AST Context: Modified symbols likely include [html]
-- **[what-changed] what-changed in index.html**: -     <title>frontend</title>
-+     <title>LinkPayPro - Payment Orchestration</title>
 
 📌 IDE AST Context: Modified symbols likely include [html]
 - **[convention] what-changed in index.html — confirmed 3x**: -     <script type="module" crossorigin src="/assets/index-UqT8Wm_d.js"></script>
@@ -176,3 +191,40 @@
 +     <link rel="stylesheet" crossorigin href="/assets/index-Sr-NbG0M.css">
 
 📌 IDE AST Context: Modified symbols likely include [html]
+- **[convention] what-changed in index.html — confirmed 3x**: -     <script type="module" crossorigin src="/assets/index-C6wbEc4A.js"></script>
++     <script type="module" crossorigin src="/assets/index-DCWc5pi5.js"></script>
+- **[tool-pattern] tool-pattern in .gitignore**: File updated (external): .gitignore
+
+Content summary (32 lines):
+# 🛡️ Pay Hub Git Ignore
+.env
+.env.production
+.DS_Store
+Thumbs.db
+
+# Laravel Specific
+api/.env
+api/vendor/
+api/node_modules/
+api/public/storage
+api/storage/*.key
+api/storage/framework/cache/data/*
+api/storage/framework/sessions/*
+api/storage/framework/views/*.php
+api/storage/logs/*.log
+api/*.log
+
+# Frontend Specific
+frontend/node_modules/
+frontend/dist/
+
+# System Files
+.idea/
+.vscode/
+*.bak
+*.tmp
+
+AGENT.md
+CLAUDE.md
+.agent-mem/
+
