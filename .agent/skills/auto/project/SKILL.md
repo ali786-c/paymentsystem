@@ -1,6 +1,6 @@
 ---
 name: project
-description: "Project for paymentsystem. 30 gotchas, 79 conventions, 4 fixes."
+description: "Project for paymentsystem. 30 gotchas, 80 conventions, 5 fixes."
 domain: project
 triggers:
   - glob: "**/*"
@@ -10,7 +10,7 @@ enabled: true
 
 # Project
 
-Auto-compiled from **147 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
+Auto-compiled from **157 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
 
 ## ⚠️ Anti-Patterns & Gotchas
 
@@ -50,6 +50,17 @@ Auto-compiled from **147 real patterns** in **paymentsystem**. This skill is aut
 | Never force push to main, master, or production br | Never force push to main, master, or production branches |
 
 ## 🔧 Problem Playbooks
+
+### problem-fix in implementation_plan.md
+File updated (external): c:\Users\Muhammad Aliyan\.gemini\antigravity\brain\80bf63eb-f353-40b7-8777-646f751b310e\implementation_plan.md
+
+Content summary (29 lines):
+# Implementation Plan - Fix Stripe Live Payments
+
+The user reports that Stripe live payments are not being marked as paid. Logs show that `checkout.session.expired` events are correctly identified and ignored, but there is no evidenc
+
+**Actionable Steps:**
+1. Modified 1 files
 
 ### Patched security issue Performance
 - # 🕒 Performance: Browser Caching (1 Year for Assets)
@@ -100,6 +111,7 @@ Content summary (1 lines):
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
+- 📐 **Added session cookies authentication — hardens HTTP security headers — confirmed 3x** — - [2026-03-18 04:44:22] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE cons
 - 📐 **Updated the database schema — confirmed 3x** — - # Footer Navigation & Scroll Resolution
 + # Stripe Conditional Tax Implementation
 - The user repor
@@ -139,12 +151,6 @@ Content summary (1 lines):
 - 📐 **Return proper HTTP status codes — not 500 for everything** — Return proper HTTP status codes — not 500 for everything
 - 📐 **Always wrap async/await in try/catch** — Always wrap async/await in try/catch
 - 📐 **Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)** — Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)
-- 📐 **Implement rate limiting on login endpoints to prevent brute force** — Implement rate limiting on login endpoints to prevent brute force
-- 📐 **Use constants for magic numbers and strings** — Use constants for magic numbers and strings
-- 📐 **Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN** — Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN
-- 📐 **Keep functions under 50 lines and single-responsibility** — Keep functions under 50 lines and single-responsibility
-- 📐 **Remove unused imports, variables, and dead code** — Remove unused imports, variables, and dead code
-- 📐 **Always pull before push to avoid conflicts** — Always pull before push to avoid conflicts
-- 📐 **Use meaningful commit messages in imperative mood: "Add fe
+- 📐 **Implement rate limiting on login endpoints to prevent brute force** — Implement rate limiting on lo
 
 ... [Truncated — see individual observations for full content]

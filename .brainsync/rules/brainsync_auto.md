@@ -1,7 +1,7 @@
 
 
 # Project Memory — paymentsystem
-> 255 notes | Score threshold: >40
+> 266 notes | Score threshold: >40
 
 ## Safety — Never Run Destructive Commands
 
@@ -20,21 +20,12 @@
 
 ## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Project Standards
 
+- Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x
+- Added session cookies authentication — hardens HTTP security headers — confirmed 3x
 - what-changed in index.html — confirmed 3x
 - what-changed in CheckoutPage.tsx — confirmed 3x
 - Updated the database schema — confirmed 3x
 - convention in .gitignore
-- what-changed in .htaccess — confirmed 8x
-- Strengthened types ArrowRight — improves module reusability
-- what-changed in index.html — confirmed 3x
-- Replaced lucide-react with lucide-react — confirmed 3x
-
-## Recent Decisions
-
-- decision in task.md
-- Optimized ArrowRight — improves module reusability
-- Optimized Gateways — improves module reusability
-- Optimized React — improves module reusability
 
 ## Learned Patterns
 
