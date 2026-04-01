@@ -74,9 +74,14 @@ class PaymentController extends Controller
             if ($providerName === 'stripe') {
                 $object = $payload['data']['object'] ?? [];
                 $externalId = $object['id'] ?? null;
+                $type = $payload['type'] ?? 'unknown';
+
+                Log::info("Webhook [Stripe]: Extracted ID {$externalId} from event {$type}");
                 
                 // Prioritize metadata lookup for Stripe (more robust)
                 $invoiceId = $object['metadata']['invoice_id'] ?? null;
+                Log::info("Webhook [Stripe]: Metadata Invoice ID: " . ($invoiceId ?? 'NULL'));
+
                 if ($invoiceId) {
                     $invoice = Invoice::find($invoiceId);
                 }
