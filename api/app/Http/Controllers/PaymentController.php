@@ -86,7 +86,14 @@ class PaymentController extends Controller
                     $invoice = Invoice::find($invoiceId);
                 }
             } elseif ($providerName === 'nowpayments') {
+                // NOWPayments puts our Invoice ID in order_id
+                $orderId = $payload['order_id'] ?? null;
                 $externalId = $payload['payment_id'] ?? $payload['invoice_id'] ?? null;
+                
+                if ($orderId) {
+                    $invoice = Invoice::find($orderId);
+                    Log::info("Webhook [NOWPayments]: Found via order_id #{$orderId}");
+                }
             } elseif ($providerName === 'cardlink') {
                 $externalId = $payload['txId'] ?? null;
             }
@@ -94,6 +101,7 @@ class PaymentController extends Controller
             // Fallback to gateway_reference lookup
             if (!$invoice && $externalId) {
                 $invoice = Invoice::where('gateway_reference', $externalId)->first();
+                if ($invoice) Log::info("Webhook [{$providerName}]: Found via gateway_reference lookup");
             }
 
             if (!$invoice) {
@@ -269,6 +277,12 @@ class PaymentController extends Controller
             // If Stripe is selected, add 20% tax. Otherwise, revert to base amount.
             if ($validated['gateway'] === 'stripe') {
                 $invoice->amount = $baseAmount * 1.20;
+                
+                // Stripe minimum check (0.50 units e.g. 50 cents)
+                if ($invoice->amount < 0.50) {
+                    Log::warning("Stripe Minimum Block: Amount " . $invoice->amount . " " . $invoice->currency . " is too low.");
+                    throw new \Exception("Stripe requires a minimum amount of 0.50 {$invoice->currency}. Please increase the order total.");
+                }
             } else {
                 $invoice->amount = $baseAmount;
             }
