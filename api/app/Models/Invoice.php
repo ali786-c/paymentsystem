@@ -14,6 +14,8 @@ class Invoice extends Model
         'status',
         'payment_method',
         'gateway_reference',
+        'card_last4',
+        'card_brand',
         'payload'
     ];
 

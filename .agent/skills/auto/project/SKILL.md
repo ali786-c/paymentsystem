@@ -1,6 +1,6 @@
 ---
 name: project
-description: "Project for paymentsystem. 30 gotchas, 80 conventions, 5 fixes."
+description: "Project for paymentsystem. 31 gotchas, 45 conventions, 1 fixes."
 domain: project
 triggers:
   - glob: "**/*"
@@ -10,7 +10,7 @@ enabled: true
 
 # Project
 
-Auto-compiled from **158 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
+Auto-compiled from **79 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
 
 ## ⚠️ Anti-Patterns & Gotchas
 
@@ -18,6 +18,7 @@ Auto-compiled from **158 real patterns** in **paymentsystem**. This skill is aut
 
 | ❌ Don't | Details |
 |----------|----------|
+| sys_03 in agent-rules.md | File updated (external): .bsync_core/agent-rules.md  Content summary (62 lines): # Project Intellige |
 | Don't mix Tailwind with inline styles | Don't mix Tailwind with inline styles |
 | Clean up effects — return cleanup function from us | Clean up effects — return cleanup function from useEffect |
 | Don't create components inside other components —  | Don't create components inside other components — causes remount on every render |
@@ -51,70 +52,28 @@ Auto-compiled from **158 real patterns** in **paymentsystem**. This skill is aut
 
 ## 🔧 Problem Playbooks
 
-### problem-fix in implementation_plan.md
-File updated (external): c:\Users\Muhammad Aliyan\.gemini\antigravity\brain\80bf63eb-f353-40b7-8777-646f751b310e\implementation_plan.md
-
-Content summary (29 lines):
-# Implementation Plan - Fix Stripe Live Payments
-
-The user reports that Stripe live payments are not being marked as paid. Logs show that `checkout.session.expired` events are correctly identified and ignored, but there is no evidenc
-
-**Actionable Steps:**
-1. Modified 1 files
-
-### Patched security issue Performance
-- # 🕒 Performance: Browser Caching (1 Year for Assets)
-+ # 🕒 Performance: Browser Caching (1 Year for Assets, 0 for HTML)
--     ExpiresByType image/jpg "access plus 1 year"
-+     ExpiresByType text/html "access plus 0 seconds"
--     ExpiresByType image/jpeg "access plus 1 year"
-+     ExpiresByType image/jpg "access plus 1 year"
--     ExpiresByType image/gif "access plus 1 year"
-+     ExpiresByTy
+### Fixed null crash in Tailwind
+- - Don't mix Tailwind with inline styles
++ - sys_03 in agent-rules.md
+- - Don't expose database errors to clients — map to user-friendly messages
++ - Don't mix Tailwind with inline styles
+- - Agent: check existing code before creating utility functions — avoid duplicates
++ - Don't expose database errors to clients — map to user-friendly messages
+- - Agent: don't use deprecated APIs — check librar
 
 **Actionable Steps:**
 1. Modified 1 files
-2. identifier: Performance
-3. identifier: Browser
-4. identifier: Caching
-5. identifier: Year
-
-### problem-fix in scratchpad_a2wennuf.md.resolved
-- - Browser tools appear to be failing with "local chrome mode is only supported on Linux".
-+ - Tried to navigate to `https://linkpaypro.online/` multiple times.
-- - Investigating if anyway to browse or checking local code.
-+ - Both `https://linkpaypro.online/` and `https://www.google.com` fail with "local chrome mode is only supported on Linux".
-- 
-+ - This error suggests the browser tool is not 
-
-**Actionable Steps:**
-1. Modified 1 files
-
-### problem-fix in laravel.log
-File updated (external): api/storage/logs/laravel.log
-
-Content summary (821 lines):
-[2026-03-18 04:44:22] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: merchants.client_id (Connection: sqlite, Database: C:\Users\Muhammad Aliyan\Downloads\upgradercx-full-project\upgrader-pay-hub\api\database\database.sqlite, SQL: insert into "merchants" ("name", "client_
-
-**Actionable Steps:**
-1. Modified 1 files
-
-### problem-fix in .phpunit.result.cache
-File updated (external): api/.phpunit.result.cache
-
-Content summary (1 lines):
-{"version":2,"defects":{"Tests\\Feature\\StripeWebhookTest::test_stripe_webhook_updates_invoice_status_via_metadata":8},"times":{"Tests\\Feature\\StripeWebhookTest::test_stripe_webhook_updates_invoice_status_via_metadata":0.339,"Tests\\Feature\\Gateways\\NOWPaymentsTest::test_create_invoice_success":17.675,"Tests\\Featu
-
-**Actionable Steps:**
-1. Modified 1 files
+2. identifier: Don
+3. identifier: Tailwind
+4. identifier: Agent
+5. identifier: APIs
 
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
-- 📐 **Added session cookies authentication — hardens HTTP security headers — confirmed 3x** — - [2026-03-18 04:44:22] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE cons
-- 📐 **Updated the database schema — confirmed 3x** — - # Footer Navigation & Scroll Resolution
-+ # Stripe Conditional Tax Implementation
-- The user repor
+- 📐 **Strengthened types Recent** — - ## 📚 Comprehensive Expert Skills (READ THESE)
++ ## Recent fixes
+- > **CRITICAL:** BrainSync has p
 - 📐 **Extract repeated class patterns into components** — Extract repeated class patterns into components
 - 📐 **Use responsive prefixes consistently (sm:, md:, lg:, xl:)** — Use responsive prefixes consistently (sm:, md:, lg:, xl:)
 - 📐 **Don't use arbitrary values when a utility class exists** — Don't use arbitrary values when a utility class exists
@@ -151,6 +110,14 @@ Content summary (1 lines):
 - 📐 **Return proper HTTP status codes — not 500 for everything** — Return proper HTTP status codes — not 500 for everything
 - 📐 **Always wrap async/await in try/catch** — Always wrap async/await in try/catch
 - 📐 **Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)** — Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)
-- 📐 **Implement rate limiting on login endpoints to prevent brute force** — Implement rate limiting on lo
+- 📐 **Implement rate limiting on login endpoints to prevent brute force** — Implement rate limiting on login endpoints to prevent brute force
+- 📐 **Use constants for magic numbers and strings** — Use constants for magic numbers and strings
+- 📐 **Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN** — Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN
+- 📐 **Keep functions under 50 lines and single-responsibility** — Keep functions under 50 lines and single-responsibility
+- 📐 **Remove unused imports, variables, and dead code** — Remove unused imports, variables, and dead code
+- 📐 **Always pull before push to avoid conflicts** — Always pull before push to avoid conflicts
+- 📐 **Use meaningful commit messages in imperative mood: "Add feature" not "Added feature"** — Use meaningful commit messages in imperative mood: "Add feature" not "Added feature"
+- 📐 **Don't commit node_modules, __pycache__, build/, dist/ — add to .gitignore** — Don't commit node_modules, __pycache__, build/, dist/ — add to .gitignore
 
-... [Truncated — see individual observations for full content]
+---
+*Auto-generated by BrainSync 🧠 | 79 patterns | 2026-04-05*

@@ -90,11 +90,38 @@ class StripeProvider implements PaymentProviderInterface
 
                 if ($event->type === 'checkout.session.completed' || $event->type === 'payment_intent.succeeded') {
                     $extOrderId = isset($object->metadata->external_order_id) ? $object->metadata->external_order_id : null;
+                    
+                    $cardDetails = [
+                        'last4' => null,
+                        'brand' => null,
+                    ];
+
+                    try {
+                        $paymentIntentId = null;
+                        if ($event->type === 'checkout.session.completed') {
+                            $paymentIntentId = $object->payment_intent;
+                        } else {
+                            $paymentIntentId = $object->id;
+                        }
+
+                        if ($paymentIntentId) {
+                            $intent = $this->client->paymentIntents->retrieve($paymentIntentId, ['expand' => ['payment_method']]);
+                            if ($intent->payment_method && $intent->payment_method->type === 'card') {
+                                $cardDetails['last4'] = $intent->payment_method->card->last4;
+                                $cardDetails['brand'] = $intent->payment_method->card->brand;
+                                Log::info("StripeProvider: Extracted card details: {$cardDetails['brand']} **** {$cardDetails['last4']}");
+                            }
+                        }
+                    } catch (\Throwable $ce) {
+                        Log::warning("StripeProvider: Failed to extract card details. " . $ce->getMessage());
+                    }
+
                     return [
                         'success' => true,
                         'status' => 'paid',
                         'reference' => $object->id,
                         'external_order_id' => $extOrderId,
+                        'card_details' => $cardDetails
                     ];
                 }
             } catch (\Throwable $e) {

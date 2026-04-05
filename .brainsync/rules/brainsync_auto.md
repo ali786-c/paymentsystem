@@ -1,7 +1,7 @@
 
 
 # Project Memory — paymentsystem
-> 270 notes | Score threshold: >40
+> 288 notes | Score threshold: >40
 
 ## Safety — Never Run Destructive Commands
 
@@ -20,12 +20,14 @@
 
 ## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Project Standards
 
+- what-changed in temp_refund.php — confirmed 3x
 - Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x
 - Added session cookies authentication — hardens HTTP security headers — confirmed 3x
 - what-changed in index.html — confirmed 3x
 - what-changed in CheckoutPage.tsx — confirmed 3x
 - Updated the database schema — confirmed 3x
 - convention in .gitignore
+- Git Commit: fix: NOWPayments webhook lookup and Stripe minimum amount va — confirmed 3x
 
 ## Learned Patterns
 

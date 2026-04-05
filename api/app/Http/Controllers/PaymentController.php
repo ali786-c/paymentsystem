@@ -153,10 +153,18 @@ class PaymentController extends Controller
 
             if ($result['success']) {
                 Log::info("Webhook Step 9: Updating DB status to {$result['status']}");
-                $invoice->update([
+                
+                $updateData = [
                     'status' => $result['status'],
                     'payload' => array_merge($invoice->payload ?? [], ['webhook_raw' => $payload])
-                ]);
+                ];
+
+                if (isset($result['card_details'])) {
+                    $updateData['card_last4'] = $result['card_details']['last4'];
+                    $updateData['card_brand'] = $result['card_details']['brand'];
+                }
+
+                $invoice->update($updateData);
 
                 Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
                 

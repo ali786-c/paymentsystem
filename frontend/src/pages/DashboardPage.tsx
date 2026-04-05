@@ -381,13 +381,20 @@ function TransactionList({ items, loading }: { items: any[], loading: boolean })
                                 <span className="text-lg font-black text-slate-900">{tx.currency} {tx.amount}</span>
                             </td>
                             <td className="px-10 py-6">
-                                <div className="flex items-center space-x-2">
-                                    <div className="w-6 h-6 rounded-lg bg-slate-100 flex items-center justify-center">
-                                        <Activity className="w-3 h-3 text-blue-600" />
+                                <div className="flex items-center space-x-3">
+                                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center shadow-sm ${tx.card_last4 ? 'bg-blue-50 text-blue-600' : 'bg-slate-50 text-slate-400'}`}>
+                                        {tx.card_last4 ? <CreditCard size={14} /> : <Activity size={14} />}
                                     </div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-blue-600 transition-colors">
-                                        {tx.payment_method || 'PENDING'}
-                                    </span>
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">
+                                            {tx.payment_method || 'PENDING'}
+                                        </span>
+                                        {tx.card_last4 && (
+                                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter mt-0.5">
+                                                {tx.card_brand} •••• {tx.card_last4}
+                                            </span>
+                                        )}
+                                    </div>
                                 </div>
                             </td>
                             <td className="px-10 py-6">

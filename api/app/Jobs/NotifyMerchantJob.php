@@ -59,6 +59,8 @@ class NotifyMerchantJob implements ShouldQueue
             'currency' => $this->invoice->currency,
             'hub_reference' => $this->invoice->id,
             'payment_method' => $this->invoice->payment_method,
+            'card_last4' => $this->invoice->card_last4,
+            'card_brand' => $this->invoice->card_brand,
             'timestamp' => now()->toIso8601String(),
         ];
 
