@@ -1,7 +1,7 @@
 
 
 # Project Memory — paymentsystem
-> 83 notes | Score threshold: >40
+> 222 notes | Score threshold: >40
 
 ## Safety — Never Run Destructive Commands
 
@@ -20,23 +20,64 @@
 
 ## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Important Warnings
 
-- **sys_03 in agent-rules.md** — File updated (external): .bsync_core/agent-rules.md
-
-Content summary (
+- **sys_03 in shared-context.json** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "cbb366d3ff2279c3",
++
+- **⚠️ GOTCHA: sys_02 in NotifyMerchantJob.php** — -             'timestamp' => now()->toIso8601String(),
++             '
+- **⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes** — -                 }
++                     $updateData['card_holder_nam
+- **⚠️ GOTCHA: Optimized GOTCHA** — - - ⚠️ GOTCHA: Optimized Optimized
++ - sys_03 in shared-context.json
+-
+- **sys_03 in shared-context.json** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "5ca8b7bd801a75f5",
++
+- **sys_03 in shared-context.json** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "2269b35116784631",
++
 
 ## Project Standards
 
-- Strengthened types Recent
-- Extract repeated class patterns into components
-- Use responsive prefixes consistently (sm:, md:, lg:, xl:)
-- Don't use arbitrary values when a utility class exists
-- Use Suspense and Error Boundaries for async operations
-- Don't prop-drill more than 2 levels — use Context or state management
-- Use useMemo for expensive computations, useCallback for stable references
-- Follow PEP 8 style guide
+- sys_01 in shared-context.json — confirmed 5x
+- Added session cookies authentication — prevents null/undefined runtime crashes — confirmed 3x
+- Optimized Score — parallelizes async operations for speed — confirmed 6x
+- Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x
+- Patched security issue Muhammad — confirmed 3x
+- sys_09 in shared-context.json — confirmed 3x
+- sys_01 in shared-context.json — confirmed 7x
+- Optimized Optimized — confirmed 3x
 
-## Verified Best Practices
+## Known Fixes
 
+- ❌ -                 Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result → ✅ Fixed null crash in Webhook — prevents null/undefined runtime crashes
+- ❌ -         if ($response->failed()) { → ✅ sys_02 in NotifyMerchantJob.php
+- ❌ + - Fixed null crash in Webhook — prevents null/undefined runtime crashes → ✅ sys_02 in agent-rules.md
+
+## Recent Decisions
+
+- Optimized Score — parallelizes async operations for speed
+- Optimized Score — parallelizes async operations for speed
+- Optimized Score — parallelizes async operations for speed
+- Optimized Score — parallelizes async operations for speed
+
+## Learned Patterns
+
+- Avoid: ⚠️ GOTCHA: Optimized GOTCHA (seen 5x)
+- Decision: Optimized Score — parallelizes async operations for speed (seen 2x)
+- Avoid: ⚠️ GOTCHA: Optimized Optimized (seen 2x)
 - Agent generates new migration for every change (squash related changes)
 - Agent installs packages without checking if already installed
 

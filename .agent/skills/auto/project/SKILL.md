@@ -1,6 +1,6 @@
 ---
 name: project
-description: "Project for paymentsystem. 31 gotchas, 45 conventions, 1 fixes."
+description: "Project for paymentsystem. 44 gotchas, 57 conventions, 3 fixes."
 domain: project
 triggers:
   - glob: "**/*"
@@ -10,7 +10,7 @@ enabled: true
 
 # Project
 
-Auto-compiled from **79 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
+Auto-compiled from **135 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
 
 ## ⚠️ Anti-Patterns & Gotchas
 
@@ -18,6 +18,19 @@ Auto-compiled from **79 real patterns** in **paymentsystem**. This skill is auto
 
 | ❌ Don't | Details |
 |----------|----------|
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: Optimized Optimized + - sys_03 in shared-context.json - - ⚠️ GOTCHA: Optimized GOTCHA |
+| ⚠️ GOTCHA: Optimized Optimized | - - Optimized Score — parallelizes async operations for speed + - Optimized Architectural - - Optimi |
+| ⚠️ GOTCHA: Optimized Optimized | -  + - Optimized Optimized - ## Recent fixes +  -  + ## Recent fixes - - sys_02 in shared-context.js |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: Optimized GOTCHA + - ⚠️ GOTCHA: Optimized Optimized - - ⚠️ GOTCHA: sys_02 in agent-ru |
+| ⚠️ GOTCHA: Optimized Optimized | -  + - Optimized GOTCHA - ## Recent fixes +  -  + ## Recent fixes - - sys_02 in laravel.log +  - - P |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: sys_02 in agent-rules.md + - ⚠️ GOTCHA: Optimized GOTCHA - - sys_03 in shared-context |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: sys_02 in agent-rules.md + - ⚠️ GOTCHA: Optimized GOTCHA - - sys_03 in shared-context |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: sys_02 in agent-rules.md + - ⚠️ GOTCHA: Optimized GOTCHA - - sys_03 in shared-context |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: sys_02 in agent-rules.md + - ⚠️ GOTCHA: Optimized GOTCHA - - sys_03 in shared-context |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: sys_02 in agent-rules.md + - ⚠️ GOTCHA: Optimized GOTCHA - - sys_03 in shared-context |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - sys_03 in shared-context.json + - ⚠️ GOTCHA: sys_02 in agent-rules.md - - ⚠️ GOTCHA: Optimized O |
+| ⚠️ GOTCHA: sys_02 in agent-rules.md | - - Patched security issue Muhammad + - sys_02 in laravel.log - - sys_02 in NotifyMerchantJob.php +  |
+| ⚠️ GOTCHA: Optimized Optimized | -  + - Optimized Architectural - ## Recent fixes +  -  + ## Recent fixes - - sys_02 in NotifyMerchan |
 | sys_03 in agent-rules.md | File updated (external): .bsync_core/agent-rules.md  Content summary (62 lines): # Project Intellige |
 | Don't mix Tailwind with inline styles | Don't mix Tailwind with inline styles |
 | Clean up effects — return cleanup function from us | Clean up effects — return cleanup function from useEffect |
@@ -52,6 +65,29 @@ Auto-compiled from **79 real patterns** in **paymentsystem**. This skill is auto
 
 ## 🔧 Problem Playbooks
 
+### sys_02 in agent-rules.md
+- - Patched security issue Muhammad
++ - sys_02 in NotifyMerchantJob.php
+- - Patched security issue Muhammad
++ - Fixed null crash in Webhook — prevents null/undefined runtime crashes
+- - sys_02 in shared-context.json
++ - Patched security issue Muhammad
+- - sys_02 in shared-context.json
++ - Patched security issue Muhammad
+
+📌 IDE AST Context: Modified symbols likely include [# Project Intelligence (
+
+**Actionable Steps:**
+1. Modified 1 files
+
+### sys_02 in laravel.log
+- 
++ [2026-04-05 10:59:54] local.ERROR: Webhook Step 12 FATAL: Merchant notification failed. cURL error 77: error setting certificate file: C:\laragon\etc\ssl\cacert.pem (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://example.com/webhook  
++ 
+
+**Actionable Steps:**
+1. Modified 1 files
+
 ### Fixed null crash in Tailwind
 - - Don't mix Tailwind with inline styles
 + - sys_03 in agent-rules.md
@@ -71,6 +107,39 @@ Auto-compiled from **79 real patterns** in **paymentsystem**. This skill is auto
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
+- 📐 **Optimized GOTCHA — confirmed 4x** — - - ⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes
++ - ⚠️ GOTCHA: 
+- 📐 **Optimized Score — parallelizes async operations for speed — confirmed 6x** — - > 190 notes | Score threshold: >40
++ > 194 notes | Score threshold: >40
+- ## Active: `api/app/Mode
+- 📐 **Optimized Optimized — confirmed 3x** — - 
++ - Optimized Score — parallelizes async operations for speed
+- ## Recent fixes
++ 
+- 
++ ## Recent
+- 📐 **Optimized Score — parallelizes async operations for speed — confirmed 3x** — - > 121 notes | Score threshold: >40
++ > 161 notes | Score threshold: >40
+- - **⚠️ GOTCHA: Optimized
+- 📐 **Optimized GOTCHA — confirmed 4x** — - - ⚠️ GOTCHA: Optimized Optimized
++ - ⚠️ GOTCHA: Optimized GOTCHA
+- - ⚠️ GOTCHA: Optimized GOTCHA
++
+- 📐 **sys_01 in laravel.log — confirmed 3x** — - 
++ [2026-04-05 10:59:48] local.INFO: Dispatching webhook to https://example.com/webhook for Invoic
+- 📐 **Added session cookies authentication — confirmed 5x** — - 
++ [2026-04-05 10:59:48] local.INFO: Webhook received for stripe {"payload":{"id":"evt_sim_e1867d6
+- 📐 **Strengthened types Comprehensive** — - ## 📚 Comprehensive Expert Skills (READ THESE)
++ ## How things work
+- > **CRITICAL:** BrainSync ha
+- 📐 **Added session cookies authentication — evolves the database schema to support... — confirmed 3x** — - - [/] Create database migration for card details columns
++ - [x] Create database migration for car
+- 📐 **Strengthened types NotifyMerchantJob** — - - Fixed null crash in Webhook — prevents null/undefined runtime crashes
++ - sys_02 in NotifyMercha
+- 📐 **Strengthened types Fixed** — - - Fixed null crash in Tailwind
++ - Fixed null crash in Webhook — prevents null/undefined runtime c
+- 📐 **sys_08 in agent-rules.md** — - - **convention**: Read `.agent/skills/auto/convention/SKILL.md`
++ - **config**: Read `.agent/skill
 - 📐 **Strengthened types Recent** — - ## 📚 Comprehensive Expert Skills (READ THESE)
 + ## Recent fixes
 - > **CRITICAL:** BrainSync has p
@@ -93,31 +162,6 @@ Auto-compiled from **79 real patterns** in **paymentsystem**. This skill is auto
 - 📐 **Use const by default, let when reassignment needed, never var** — Use const by default, let when reassignment needed, never var
 - 📐 **Version your API from day 1 (/api/v1/)** — Version your API from day 1 (/api/v1/)
 - 📐 **Use consistent response format across all endpoints** — Use consistent response format across all endpoints
-- 📐 **Implement soft delete for important data — don't hard delete without confirmation** — Implement soft delete for important data — don't hard delete without confirmation
-- 📐 **Handle timezone correctly — store UTC, display in user's timezone** — Handle timezone correctly — store UTC, display in user's timezone
-- 📐 **Make layouts responsive from the start — mobile-first approach** — Make layouts responsive from the start — mobile-first approach
-- 📐 **Disable submit button during form submission — prevent double-submit** — Disable submit button during form submission — prevent double-submit
-- 📐 **Always add empty states ("No items yet" with call-to-action)** — Always add empty states ("No items yet" with call-to-action)
-- 📐 **Always add error states with retry button — not just blank screen** — Always add error states with retry button — not just blank screen
-- 📐 **Always add loading states for async operations (skeleton, spinner)** — Always add loading states for async operations (skeleton, spinner)
-- 📐 **Test edge cases: empty input, null, boundary values, error scenarios** — Test edge cases: empty input, null, boundary values, error scenarios
-- 📐 **Each test should be independent — no shared mutable state between tests** — Each test should be independent — no shared mutable state between tests
-- 📐 **Write tests for business logic — test behavior/output, not implementation details** — Write tests for business logic — test behavior/output, not implementation details
-- 📐 **Close resources (streams, connections, handles) when done** — Close resources (streams, connections, handles) when done
-- 📐 **Debounce user input handlers (search, resize, scroll)** — Debounce user input handlers (search, resize, scroll)
-- 📐 **Use pagination for lists over 100 items** — Use pagination for lists over 100 items
-- 📐 **Implement retry logic for transient failures with exponential backoff** — Implement retry logic for transient failures with exponential backoff
-- 📐 **Return proper HTTP status codes — not 500 for everything** — Return proper HTTP status codes — not 500 for everything
-- 📐 **Always wrap async/await in try/catch** — Always wrap async/await in try/catch
-- 📐 **Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)** — Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)
-- 📐 **Implement rate limiting on login endpoints to prevent brute force** — Implement rate limiting on login endpoints to prevent brute force
-- 📐 **Use constants for magic numbers and strings** — Use constants for magic numbers and strings
-- 📐 **Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN** — Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN
-- 📐 **Keep functions under 50 lines and single-responsibility** — Keep functions under 50 lines and single-responsibility
-- 📐 **Remove unused imports, variables, and dead code** — Remove unused imports, variables, and dead code
-- 📐 **Always pull before push to avoid conflicts** — Always pull before push to avoid conflicts
-- 📐 **Use meaningful commit messages in imperative mood: "Add feature" not "Added feature"** — Use meaningful commit messages in imperative mood: "Add feature" not "Added feature"
-- 📐 **Don't commit node_modules, __pycache__, build/, dist/ — add to .gitignore** — Don't commit node_modules, __pycache__, build/, dist/ — add to .gitignore
+- 📐 **Implement soft d
 
----
-*Auto-generated by BrainSync 🧠 | 79 patterns | 2026-04-05*
+... [Truncated — see individual observations for full content]

@@ -1,19 +1,19 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T10:32:41.738Z",
-    "observationCount": 79,
+    "lastGenerated": "2026-04-05T11:42:41.037Z",
+    "observationCount": 135,
     "skillCount": 0,
     "domain": "project",
     "triggerGlobs": [
       "**/*"
     ],
-    "description": "Project for paymentsystem. 31 gotchas, 45 conventions, 1 fixes."
+    "description": "Project for paymentsystem. 44 gotchas, 57 conventions, 3 fixes."
   },
   "config": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T10:32:41.739Z",
-    "observationCount": 4,
+    "lastGenerated": "2026-04-05T11:42:41.035Z",
+    "observationCount": 59,
     "skillCount": 0,
     "domain": "config",
     "triggerGlobs": [
@@ -22,6 +22,51 @@
       "**/*.json",
       "**/*.toml"
     ],
-    "description": "Config for paymentsystem. 1 conventions."
+    "description": "Config for paymentsystem. 4 gotchas, 10 conventions, 6 fixes."
+  },
+  "javascript": {
+    "enabled": true,
+    "lastGenerated": "2026-04-05T11:42:41.039Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "javascript",
+    "triggerGlobs": [
+      "**/*.js",
+      "**/*.jsx"
+    ],
+    "description": "Javascript for paymentsystem. ."
+  },
+  "php": {
+    "enabled": true,
+    "lastGenerated": "2026-04-05T11:42:41.038Z",
+    "observationCount": 23,
+    "skillCount": 0,
+    "domain": "php",
+    "triggerGlobs": [
+      "**/*.php"
+    ],
+    "description": "Php for paymentsystem. 2 gotchas, 3 conventions, 4 fixes, 1 error→fix pairs."
+  },
+  "sys-03": {
+    "enabled": true,
+    "lastGenerated": "2026-04-05T11:42:41.075Z",
+    "observationCount": 0,
+    "skillCount": 3,
+    "domain": "sys_03",
+    "triggerGlobs": [
+      "**/*"
+    ],
+    "description": "Sys 03 for paymentsystem. ."
+  },
+  "sys-04": {
+    "enabled": true,
+    "lastGenerated": "2026-04-05T11:42:41.077Z",
+    "observationCount": 0,
+    "skillCount": 2,
+    "domain": "sys_04",
+    "triggerGlobs": [
+      "**/*"
+    ],
+    "description": "Sys 04 for paymentsystem. ."
   }
 }

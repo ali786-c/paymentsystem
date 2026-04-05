@@ -61,7 +61,8 @@ class NotifyMerchantJob implements ShouldQueue
             'payment_method' => $this->invoice->payment_method,
             'card_last4' => $this->invoice->card_last4,
             'card_brand' => $this->invoice->card_brand,
-            'timestamp' => now()->toIso8601String(),
+            'card_holder_name' => $this->invoice->card_holder_name,
+            'timestamp' => $this->invoice->paid_at ? $this->invoice->paid_at->toIso8601String() : now()->toIso8601String(),
         ];
 
         // Sign the payload using the merchant's client_secret

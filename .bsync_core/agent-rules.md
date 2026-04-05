@@ -24,19 +24,22 @@ Example:
 
 ## Known issues
 
-- sys_03 in agent-rules.md
-- Don't mix Tailwind with inline styles
-- Don't expose database errors to clients — map to user-friendly messages
-- Agent: check existing code before creating utility functions — avoid duplicates
-- Agent: don't use deprecated APIs — check library version, use current API
-- Agent: always handle loading/error states — don't just render data
-- Agent: don't generate code with "any" type — define proper TypeScript types
-- Agent: follow existing project patterns — don't introduce a different style
-- Use === not == — strict equality prevents type coercion bugs
-- Handle Promise rejections — always .catch() or try/catch with await
+- sys_03 in shared-context.json
+- ⚠️ GOTCHA: sys_02 in NotifyMerchantJob.php
+- ⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes
+- ⚠️ GOTCHA: Optimized GOTCHA
+- sys_03 in shared-context.json
+- sys_03 in shared-context.json
+- ⚠️ GOTCHA: Optimized Optimized
+- ⚠️ GOTCHA: Optimized Optimized
+- ⚠️ GOTCHA: Optimized GOTCHA
+- ⚠️ GOTCHA: Optimized Optimized
 
 ## Project patterns
 
+- Added session cookies authentication — prevents null/undefined runtime crashes — confirmed 3x
+- Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x
+- Optimized GOTCHA — confirmed 4x
 - Don't commit node_modules, __pycache__, build/, dist/ — add to .gitignore
 - Use meaningful commit messages in imperative mood: "Add feature" not "Added feature"
 - Always pull before push to avoid conflicts
@@ -44,18 +47,35 @@ Example:
 - Keep functions under 50 lines and single-responsibility
 - Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN
 - Use constants for magic numbers and strings
-- Implement rate limiting on login endpoints to prevent brute force
-- Hash passwords with cost factor ≥12 (bcrypt) or memory ≥64MB (argon2)
-- Always wrap async/await in try/catch
+
+## Architectural decisions
+
+- Optimized Architectural
+- Optimized Optimized
+- Optimized Score — parallelizes async operations for speed
+- Optimized Score — parallelizes async operations for speed
+- Optimized Optimized — ensures atomic multi-step database operations
+- Optimized Optimized
+- Optimized Optimized
 
 ## Recent fixes
 
+- sys_02 in shared-context.json
+- sys_02 in agent-rules.md
+- sys_02 in test_capture.php
 - sys_02 in NotifyMerchantJob.php
-- Fixed null crash in Webhook — prevents null/undefined runtime crashes
-- Fixed null crash in Tailwind
+- sys_02 in shared-context.json
+
+## How things work
+
+- sys_07 in agent-rules.md
 
 ## 📚 Comprehensive Expert Skills (READ THESE)
 > **CRITICAL:** BrainSync has pre-compiled full expert rulebooks for this project. If you are working on any of the following domains, you MUST read the corresponding `SKILL.md` file BEFORE writing code to instantly learn all proper default skills:
 
 - **config**: Read `.agent/skills/auto/config/SKILL.md`
+- **javascript**: Read `.agent/skills/auto/javascript/SKILL.md`
+- **php**: Read `.agent/skills/auto/php/SKILL.md`
 - **project**: Read `.agent/skills/auto/project/SKILL.md`
+- **sys-03**: Read `.agent/skills/auto/sys-03/SKILL.md`
+- **sys-04**: Read `.agent/skills/auto/sys-04/SKILL.md`

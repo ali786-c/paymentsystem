@@ -1,6 +1,6 @@
 ---
 name: config
-description: "Config for paymentsystem. 1 conventions."
+description: "Config for paymentsystem. 4 gotchas, 10 conventions, 6 fixes."
 domain: config
 triggers:
   - glob: "**/*.yaml"
@@ -13,7 +13,120 @@ enabled: true
 
 # Config
 
-Auto-compiled from **4 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on config files.
+Auto-compiled from **59 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on config files.
+
+## ⚠️ Anti-Patterns & Gotchas
+
+> **CRITICAL:** These are real gotchas from this project. Ignoring them WILL cause bugs.
+
+| ❌ Don't | Details |
+|----------|----------|
+| sys_03 in shared-context.json | -     } +     }, -   ] +     { - } +       "id": "cbb366d3ff2279c3", +       "ts": "2026-04-05T11:40 |
+| sys_03 in shared-context.json | -     } +     }, -   ] +     { - } +       "id": "5ca8b7bd801a75f5", +       "ts": "2026-04-05T11:23 |
+| sys_03 in shared-context.json | -     } +     }, -   ] +     { - } +       "id": "2269b35116784631", +       "ts": "2026-04-05T11:23 |
+| sys_03 in shared-context.json | -     } +     }, -   ] +     { - } +       "id": "d8af848c4ea3d7e7", +       "ts": "2026-04-05T10:52 |
+
+## 🔧 Problem Playbooks
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "aa557d4beed3e3f5",
++       "ts": "2026-04-05T11:19:55.766Z",
++       "by": "Muhammad Aliyan",
++       "data": "a3NmblhzH75ss9u12sJM15G3lygSWJmzbYptJRbjAZISmgbBCE6RBlEZWAQboRc2TEEGx9IWEgFc9QMYNfz+/ixuN+DePdDo/JO6ZKk3pPO/6pEju8Sv43Gu+RWHckKI2vkR5g2huRzg/Hl8ICyYLOf1k/Tcw+QDMxotfS2I7FfqgCaWxwqxpKsoMsePBn4y5KtG953/ekSO7IRZKrPsHe6PRK9hcBfmLm6klnJ7o4MDXB0
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: DePdDo
+5. identifier: Tcw
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "f04f1aaf2e1dc02f",
++       "ts": "2026-04-05T11:12:43.242Z",
++       "by": "Muhammad Aliyan",
++       "data": "3Nxp0w1wYOF/63QiD2uz+d4LOZ7wFnxiAB5yeuYvuR+9EfJhLndMWPe2WgjT2WTuzlYBZC7zkINfK6bOStj2votF52B4vYyQX0PCOSb/QTHW7/DqVy6nyDQlTba4xL40RP2Zc2kxH3Cp8jS4kFaswlWEOQZGWAbhd21wKfF6X79B7Wm76zfcOj+MaXJlEYzrHW1cvc3iWWMcBiazWYlKv7WgPbUJJ1s8oCEzVA7BdoIvZh+
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: SfA
+5. identifier: UrL
+
+### sys_02 in shared-context.json
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "e301ece91d9dfb7d",
++       "ts": "2026-04-05T11:03:05.318Z",
++       "by": "Muhammad Aliyan",
++       "data": "mKx+T7wozEmc2ZUgzOPVfvyDcrlZCaIBO3fDXJZOzLBxyTJA5jrGlGfPUuc6xxEaWV8XJarnrSdm9C7IgRPxhCZZZCZ2tjT1h66EUiqo+lftqpYhRD6D43dJWyT2VeZvLOr1Ob+NgbzOQHEGPWpJfWmkXXMBBzd0Xts8Bw3YYo2ENQpxQdfAtPW95mKx9BbgZgMz8xA5TCM0Jbg0ahpK1DpMAdWyq5WY0jFsr2sNOkKuwSy
+
+**Actionable Steps:**
+1. Modified 1 files
+
+### sys_02 in shared-context.json
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "328f6d03a040f218",
++       "ts": "2026-04-05T11:01:01.729Z",
++       "by": "Muhammad Aliyan",
++       "data": "5VLSBzGxWIqf3t3Huo/GzD5EH8aydBTLE3WPNW+qBk3ZNUJVHnxr3INXpCjMXPoIWc8fJI3M6o76HxMj+2c2pzOy+4XpQ2sYeIIMuBGMHiFFvwOq8bXl/L1Afh/wotnnGQB6FkFYFEUHB0Y3dheHzu36WimzmOCAPqGfT8Z2j8nNvIKD94hcinv2FUqzhHT8YYDDl9WYX65nI5kNn6NnNl2+px6WThH4HOcwLBIuF6o5DFU
+
+**Actionable Steps:**
+1. Modified 1 files
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "b8388bac65578d09",
++       "ts": "2026-04-05T10:52:45.294Z",
++       "by": "Muhammad Aliyan",
++       "data": "kYWN3ZXgbcY402cmREdeIzgyCaL7vA0stqQnvhZkUeg9oxjjxJLFElCgIV0kiwWfnMOCfan+9Y2pfGwXsSXvm43Z4zVpnyhI9WGJ55l97jR1ySG9hrHJopIrodpYIQ0ZB1S2fVElLrM55Vbvb6ylD0LAfWnpNk9NsFTHzcNYynYnp/ZrSrC6ME50wagutxWB2cwb5EsPYuYPsx1HgRbMKlPa8LCXRm+sV9goFJRAl2sKygi
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: HlgIK
+5. identifier: YpqXWCqO
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "918a159e0c77c60e",
++       "ts": "2026-04-05T10:43:09.306Z",
++       "by": "Muhammad Aliyan",
++       "data": "XLDcbNmBsyAgnL+6gQQJ1nRmiNIbLvWJ43CxOpznta/V0XyCEJ6xJVZaaLdNgPeyekAupaGh3BpHfRIEWXdthK5SPD3C4V6im7ymMxss8Eab/pUt8qvXkdWGM8DYgbxh3TWH+3nuQzhaa8/aXewEHpHaheXHMCOTn3m3Nkw2ln5ujRnjdf5Q7NxW4wR5JZz0t9OE0l87ywPb7GXKYOBvUWYRsdP+0DrfvJG2QO8+GT1uTVv
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: XLDcbNmBsyAgnL
+5. identifier: BsfWyAJFZqR
 
 ## 📐 Conventions & Best Practices
 
@@ -23,8 +136,88 @@ Auto-compiled from **4 real patterns** in **paymentsystem**. This skill is auto-
 -   ]
 +     {
 - }
++       "id": "c6028369f485c415",
++       "ts": "2026-04-05T11:40
+- 📐 **sys_01 in shared-context.json — confirmed 5x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "3cdc4336dfbd6c72",
++       "ts": "2026-04-05T11:28
+- 📐 **Patched security issue Muhammad — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "5ced4272a5e95d48",
++       "ts": "2026-04-05T11:23
+- 📐 **sys_09 in shared-context.json — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "1c7c09a04adfa32e",
++       "ts": "2026-04-05T11:22
+- 📐 **sys_01 in shared-context.json — confirmed 7x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "96ca48259fbb1499",
++       "ts": "2026-04-05T11:20
+- 📐 **sys_05 in shared-context.json — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "6a1d6c208422ba2e",
++       "ts": "2026-04-05T11:03
+- 📐 **sys_01 in shared-context.json — confirmed 14x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "eae74d594ced8763",
++       "ts": "2026-04-05T11:01
+- 📐 **Patched security issue Muhammad — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "7cf10e09d229c053",
++       "ts": "2026-04-05T11:01
+- 📐 **sys_01 in shared-context.json — confirmed 6x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "701196619dfbb317",
++       "ts": "2026-04-05T10:43
+- 📐 **sys_01 in shared-context.json — confirmed 4x** — -     }
++     },
+-   ]
++     {
+- }
 +       "id": "628fdc89286cbb3b",
 +       "ts": "2026-04-05T10:23
 
+## 🤔 Decisions & Trade-offs
+
+- **sys_05 in shared-context.json** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "e0c25546cf0dfd32",
++       "ts": "2026-04-05T11:02
+- **sys_05 in shared-context.json** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "60df80d0866ddc0b",
++       "ts": "2026-04-05T10:52
+
 ---
-*Auto-generated by BrainSync 🧠 | 4 patterns | 2026-04-05*
+*Auto-generated by BrainSync 🧠 | 59 patterns | 2026-04-05*

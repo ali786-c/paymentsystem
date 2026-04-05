@@ -16,11 +16,14 @@ class Invoice extends Model
         'gateway_reference',
         'card_last4',
         'card_brand',
+        'card_holder_name',
+        'paid_at',
         'payload'
     ];
 
     protected $casts = [
-        'payload' => 'array'
+        'payload' => 'array',
+        'paid_at' => 'datetime'
     ];
 
     public function merchant()

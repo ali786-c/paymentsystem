@@ -162,6 +162,8 @@ class PaymentController extends Controller
                 if (isset($result['card_details'])) {
                     $updateData['card_last4'] = $result['card_details']['last4'];
                     $updateData['card_brand'] = $result['card_details']['brand'];
+                    $updateData['card_holder_name'] = $result['card_details']['holder_name'] ?? null;
+                    $updateData['paid_at'] = $result['card_details']['paid_at'] ?? now();
                 }
 
                 $invoice->update($updateData);

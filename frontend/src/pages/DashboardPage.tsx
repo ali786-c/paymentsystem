@@ -390,9 +390,16 @@ function TransactionList({ items, loading }: { items: any[], loading: boolean })
                                             {tx.payment_method || 'PENDING'}
                                         </span>
                                         {tx.card_last4 && (
-                                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter mt-0.5">
-                                                {tx.card_brand} •••• {tx.card_last4}
-                                            </span>
+                                            <div className="flex flex-col mt-0.5">
+                                                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">
+                                                    {tx.card_brand} •••• {tx.card_last4}
+                                                </span>
+                                                {tx.card_holder_name && (
+                                                    <span className="text-[8px] font-medium text-slate-400 truncate max-w-[120px]">
+                                                        {tx.card_holder_name}
+                                                    </span>
+                                                )}
+                                            </div>
                                         )}
                                     </div>
                                 </div>

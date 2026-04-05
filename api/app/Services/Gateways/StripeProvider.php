@@ -77,6 +77,10 @@ class StripeProvider implements PaymentProviderInterface
                     'status' => 'paid',
                     'reference' => 'sim_ref_' . time(),
                     'external_order_id' => 'TRX-SIM-123',
+                    'card_details' => [
+                        'last4' => '4242',
+                        'brand' => 'visa'
+                    ]
                 ];
             }
 
@@ -109,7 +113,9 @@ class StripeProvider implements PaymentProviderInterface
                             if ($intent->payment_method && $intent->payment_method->type === 'card') {
                                 $cardDetails['last4'] = $intent->payment_method->card->last4;
                                 $cardDetails['brand'] = $intent->payment_method->card->brand;
-                                Log::info("StripeProvider: Extracted card details: {$cardDetails['brand']} **** {$cardDetails['last4']}");
+                                $cardDetails['holder_name'] = $intent->payment_method->billing_details->name ?? null;
+                                $cardDetails['paid_at'] = date('Y-m-d H:i:s', $intent->created);
+                                Log::info("StripeProvider: Extracted card details: {$cardDetails['brand']} **** {$cardDetails['last4']} for {$cardDetails['holder_name']}");
                             }
                         }
                     } catch (\Throwable $ce) {
