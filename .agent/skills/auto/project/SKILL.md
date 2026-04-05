@@ -1,6 +1,6 @@
 ---
 name: project
-description: "Project for paymentsystem. 44 gotchas, 57 conventions, 3 fixes."
+description: "Project for paymentsystem. 47 gotchas, 65 conventions, 3 fixes."
 domain: project
 triggers:
   - glob: "**/*"
@@ -10,7 +10,7 @@ enabled: true
 
 # Project
 
-Auto-compiled from **135 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
+Auto-compiled from **160 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
 
 ## ⚠️ Anti-Patterns & Gotchas
 
@@ -18,6 +18,9 @@ Auto-compiled from **135 real patterns** in **paymentsystem**. This skill is aut
 
 | ❌ Don't | Details |
 |----------|----------|
+| ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: Optimized Strengthened + - ⚠️ GOTCHA: Optimized GOTCHA - - sys_03 in shared-context.j |
+| ⚠️ GOTCHA: Optimized GOTCHA | - - sys_03 in shared-context.json + - ⚠️ GOTCHA: Optimized Strengthened - - ⚠️ GOTCHA: sys_02 in Not |
+| ⚠️ GOTCHA: Optimized Strengthened | - - Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x + - Strengt |
 | ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: Optimized Optimized + - sys_03 in shared-context.json - - ⚠️ GOTCHA: Optimized GOTCHA |
 | ⚠️ GOTCHA: Optimized Optimized | - - Optimized Score — parallelizes async operations for speed + - Optimized Architectural - - Optimi |
 | ⚠️ GOTCHA: Optimized Optimized | -  + - Optimized Optimized - ## Recent fixes +  -  + ## Recent fixes - - sys_02 in shared-context.js |
@@ -107,6 +110,46 @@ Auto-compiled from **135 real patterns** in **paymentsystem**. This skill is aut
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
+- 📐 **sys_07 in agent-rules.md — confirmed 4x** — - - Patched security issue Muhammad
++ - Patched security issue Muhammad — hardens HTTP security head
+- 📐 **Strengthened types Optimized** — - 
++ - Optimized Strengthened — ensures atomic multi-step database operations
+- ## Recent fixes
++ 
+-
+- 📐 **Strengthened types Optimized** — - - Optimized Score
++ - Optimized Optimized — ensures atomic multi-step database operations
+- - Opti
+- 📐 **Optimized Score — confirmed 3x** — - > 248 notes | Score threshold: >40
++ > 252 notes | Score threshold: >40
+- - Strengthened types Com
+- 📐 **Strengthened types Optimized** — - 
++ - Optimized Score
+- ## Recent fixes
++ 
+- 
++ ## Recent fixes
+- - sys_02 in shared-context.json
++
+- 📐 **Strengthened types Comprehensive** — - 
++ - sys_07 in agent-rules.md
+- ## 📚 Comprehensive Expert Skills (READ THESE)
++ 
+- > **CRITICAL:*
+- 📐 **Strengthened types Optimized** — - 
++ - Optimized Optimized — ensures atomic multi-step database operations
+- ## Recent fixes
++ 
+- 
++
+- 📐 **Optimized Optimized — confirmed 3x** — - 
++ - Optimized Optimized
+- ## Recent fixes
++ 
+- 
++ ## Recent fixes
+- - sys_02 in agent-rules.md
++ 
 - 📐 **Optimized GOTCHA — confirmed 4x** — - - ⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes
 + - ⚠️ GOTCHA: 
 - 📐 **Optimized Score — parallelizes async operations for speed — confirmed 6x** — - > 190 notes | Score threshold: >40
@@ -148,20 +191,6 @@ Auto-compiled from **135 real patterns** in **paymentsystem**. This skill is aut
 - 📐 **Don't use arbitrary values when a utility class exists** — Don't use arbitrary values when a utility class exists
 - 📐 **Use Suspense and Error Boundaries for async operations** — Use Suspense and Error Boundaries for async operations
 - 📐 **Don't prop-drill more than 2 levels — use Context or state management** — Don't prop-drill more than 2 levels — use Context or state management
-- 📐 **Use useMemo for expensive computations, useCallback for stable references** — Use useMemo for expensive computations, useCallback for stable references
-- 📐 **Follow PEP 8 style guide** — Follow PEP 8 style guide
-- 📐 **Use pathlib for file paths, not os.path string manipulation** — Use pathlib for file paths, not os.path string manipulation
-- 📐 **Use virtual environments (venv, poetry, or conda)** — Use virtual environments (venv, poetry, or conda)
-- 📐 **Use f-strings for string formatting, not .format() or %** — Use f-strings for string formatting, not .format() or %
-- 📐 **Use context managers (with) for file and resource operations** — Use context managers (with) for file and resource operations
-- 📐 **Use type hints for function arguments and return types** — Use type hints for function arguments and return types
-- 📐 **Enable strict mode in tsconfig.json** — Enable strict mode in tsconfig.json
-- 📐 **Prefer Array methods (map, filter, reduce) over manual loops** — Prefer Array methods (map, filter, reduce) over manual loops
-- 📐 **Use template literals for string interpolation, not concatenation** — Use template literals for string interpolation, not concatenation
-- 📐 **Use optional chaining (?.) and nullish coalescing (??) for safe access** — Use optional chaining (?.) and nullish coalescing (??) for safe access
-- 📐 **Use const by default, let when reassignment needed, never var** — Use const by default, let when reassignment needed, never var
-- 📐 **Version your API from day 1 (/api/v1/)** — Version your API from day 1 (/api/v1/)
-- 📐 **Use consistent response format across all endpoints** — Use consistent response format across all endpoints
-- 📐 **Implement soft d
+- 📐 **Use useMemo for expensive computations, useCallback for stable references** — Use useMemo for expensive computations, useCallback for stable ref
 
 ... [Truncated — see individual observations for full content]

@@ -1,19 +1,19 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T11:42:41.037Z",
-    "observationCount": 135,
+    "lastGenerated": "2026-04-05T12:32:41.270Z",
+    "observationCount": 160,
     "skillCount": 0,
     "domain": "project",
     "triggerGlobs": [
       "**/*"
     ],
-    "description": "Project for paymentsystem. 44 gotchas, 57 conventions, 3 fixes."
+    "description": "Project for paymentsystem. 47 gotchas, 65 conventions, 3 fixes."
   },
   "config": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T11:42:41.035Z",
-    "observationCount": 59,
+    "lastGenerated": "2026-04-05T12:32:41.264Z",
+    "observationCount": 86,
     "skillCount": 0,
     "domain": "config",
     "triggerGlobs": [
@@ -22,11 +22,11 @@
       "**/*.json",
       "**/*.toml"
     ],
-    "description": "Config for paymentsystem. 4 gotchas, 10 conventions, 6 fixes."
+    "description": "Config for paymentsystem. 4 gotchas, 15 conventions, 11 fixes."
   },
   "javascript": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T11:42:41.039Z",
+    "lastGenerated": "2026-04-05T12:32:41.279Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "javascript",
@@ -38,8 +38,8 @@
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T11:42:41.038Z",
-    "observationCount": 23,
+    "lastGenerated": "2026-04-05T12:32:41.275Z",
+    "observationCount": 24,
     "skillCount": 0,
     "domain": "php",
     "triggerGlobs": [
@@ -49,7 +49,7 @@
   },
   "sys-03": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T11:42:41.075Z",
+    "lastGenerated": "2026-04-05T12:32:41.280Z",
     "observationCount": 0,
     "skillCount": 3,
     "domain": "sys_03",
@@ -60,13 +60,46 @@
   },
   "sys-04": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T11:42:41.077Z",
+    "lastGenerated": "2026-04-05T12:32:41.283Z",
     "observationCount": 0,
-    "skillCount": 2,
+    "skillCount": 3,
     "domain": "sys_04",
     "triggerGlobs": [
       "**/*"
     ],
     "description": "Sys 04 for paymentsystem. ."
+  },
+  "html": {
+    "enabled": true,
+    "lastGenerated": "2026-04-05T12:32:41.272Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "html",
+    "triggerGlobs": [
+      "**/*.html"
+    ],
+    "description": "Html for paymentsystem. ."
+  },
+  "typescript-react": {
+    "enabled": true,
+    "lastGenerated": "2026-04-05T12:32:41.273Z",
+    "observationCount": 2,
+    "skillCount": 0,
+    "domain": "typescript-react",
+    "triggerGlobs": [
+      "**/*.tsx"
+    ],
+    "description": "Typescript React for paymentsystem. 1 conventions."
+  },
+  "sys-08": {
+    "enabled": true,
+    "lastGenerated": "2026-04-05T12:32:41.309Z",
+    "observationCount": 0,
+    "skillCount": 3,
+    "domain": "sys_08",
+    "triggerGlobs": [
+      "**/*"
+    ],
+    "description": "Sys 08 for paymentsystem. ."
   }
 }

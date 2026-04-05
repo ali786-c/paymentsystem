@@ -1,6 +1,6 @@
 ---
 name: config
-description: "Config for paymentsystem. 4 gotchas, 10 conventions, 6 fixes."
+description: "Config for paymentsystem. 4 gotchas, 15 conventions, 11 fixes."
 domain: config
 triggers:
   - glob: "**/*.yaml"
@@ -13,7 +13,7 @@ enabled: true
 
 # Config
 
-Auto-compiled from **59 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on config files.
+Auto-compiled from **86 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on config files.
 
 ## ⚠️ Anti-Patterns & Gotchas
 
@@ -27,6 +27,92 @@ Auto-compiled from **59 real patterns** in **paymentsystem**. This skill is auto
 | sys_03 in shared-context.json | -     } +     }, -   ] +     { - } +       "id": "d8af848c4ea3d7e7", +       "ts": "2026-04-05T10:52 |
 
 ## 🔧 Problem Playbooks
+
+### Patched security issue Muhammad — hardens HTTP security headers
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "e7da75c2b2bc8744",
++       "ts": "2026-04-05T12:23:23.628Z",
++       "by": "Muhammad Aliyan",
++       "data": "+4sLdN77tJDUdGafMoCUD96jUH+5LOZajdpHLeFtb5MbzzZlNZIbvFjNxyrdPGEN8Q3n4WzQ74KrHeN6LJSXPpoZvOmaYD2tHg16KVxRr1VPwk2k/upTV8OIk/f/Unr4XCrkpyG0TyeWuI/NF9Glh+zXEDE2kOfmjQA+4cA8qdDpqtUe0oprklN9B8CgPJ8f/o3UbsUEDd1eqn7pbC/xcyAGyNPZNajkBcIWtl3+qHG65Jp
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: CzhLgaTzHljtLAHFDcqpDYGs
+5. identifier: ShHLKQBPMEtiGFYwBwaN
+
+### Patched security issue Muhammad — hardens HTTP security headers
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "cb20faed73553603",
++       "ts": "2026-04-05T12:23:21.430Z",
++       "by": "Muhammad Aliyan",
++       "data": "tHuQrdilW6st/eWeDz9Jvxq6L8bgnYft95Z1beGfQSZ2trObOZM3KdISZgMi/XbcxwDjoXkCYSpgnLXuiZArBJK81K1tp1L8NGPwBU1jVeLV+zTRHwGcAU7AXsf32bTMUjQMvguasOBWeAbNjIVVLcuHlkRIKjFn7q5p93VYBqeWbXLot6M8XnIn01J+mc/BRWHenbX9UtstJZz4wzune8zLw4BjSVCdYJiYCVWzfqBbjge
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: PuJszTwF
+5. identifier: CQoWd
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "572a72272aff8634",
++       "ts": "2026-04-05T12:23:19.222Z",
++       "by": "Muhammad Aliyan",
++       "data": "1wSmcGyrSH5Vy6P8kzWMyJeZL3QwQua4D9fAaJauDNBbXzCleR8fzaZ4ZD0wzYVLEwEiqJjmNjGlvYNVHpe6SFrZvgaqtaMEuXnPkrW5pspMubfY5hsoqsXYheg7odf1JaV+umMY3qsgrBSU2boFjS/RaCCkaTUk9qYgCNb68kr1X+IvKAGsAryQ1D+tASg2cvT7lUHtwGvrHxDOPZU7UAIywco1VxWNddTN0zhiDZp4Dh2
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: OoHcnvhgF
+5. identifier: MBhaHmb
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "0d18644fe0efbad1",
++       "ts": "2026-04-05T12:22:51.526Z",
++       "by": "Muhammad Aliyan",
++       "data": "JTpibj8MIG9WpgTJe67mmZws1lEPHmUP8noOxC4ox6imZuoT6d+6BiH81Mb4Fbx1Pkw0JlzzzEW7/kTG7Y+7UXYlk3Ppk4/CQojy5Zfm5BU7VLp4p+k60BYJT+pQVUFB2dDfiHyYGMKtxoQQFiGKBO39ldnHYs6ZTDSw9TSyrPtuuj/h8EKnM8nFzZvLUCEp8si10zCC5rIku668qG+d2MGtGi4UDnB3qj4YuLq3l9X/V3k
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: JdYaLFUFu
+5. identifier: WaN
+
+### sys_02 in shared-context.json
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "18348985300f1d66",
++       "ts": "2026-04-05T11:53:00.505Z",
++       "by": "Muhammad Aliyan",
++       "data": "3yBgSaSLY8s5e+/CHDsMoiVsE6yORBbN776jUfpHrtg4EuVZVFZSGsBhnRc5WV6er9cSi8A4B/cjWkaKGgFPjV91KwqHsuMxmwPt3a70KvioKp+mIlwGipZSfsKokdgf08rlJzwzYarHYN8OQBwv9QCQvidG8Z+sklynMFwFwdPBQLl9MJEAko0JJQeiWOCsoJ4/ZwJCIrW3MkADlMrSRR2O0MdadM3WrJdMWGptznucVqv
+
+**Actionable Steps:**
+1. Modified 1 files
 
 ### Patched security issue Muhammad
 -     }
@@ -131,6 +217,41 @@ Auto-compiled from **59 real patterns** in **paymentsystem**. This skill is auto
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
+- 📐 **sys_01 in shared-context.json — confirmed 9x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "db1113aa0e8eceee",
++       "ts": "2026-04-05T12:24
+- 📐 **Patched security issue Muhammad — confirmed 5x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "8feae4d1803f2893",
++       "ts": "2026-04-05T12:23
+- 📐 **sys_01 in shared-context.json — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "208561bf3d966c67",
++       "ts": "2026-04-05T12:02
+- 📐 **sys_01 in shared-context.json — confirmed 5x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "41ad74f64cb1cc94",
++       "ts": "2026-04-05T11:47
+- 📐 **sys_02 in shared-context.json — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "bc574188be75a91c",
++       "ts": "2026-04-05T11:42
 - 📐 **sys_01 in shared-context.json — confirmed 4x** — -     }
 +     },
 -   ]
@@ -209,6 +330,13 @@ Auto-compiled from **59 real patterns** in **paymentsystem**. This skill is auto
 -   ]
 +     {
 - }
++       "id": "b5f2defc43a26ca7",
++       "ts": "2026-04-05T11:52
+- **sys_05 in shared-context.json** — -     }
++     },
+-   ]
++     {
+- }
 +       "id": "e0c25546cf0dfd32",
 +       "ts": "2026-04-05T11:02
 - **sys_05 in shared-context.json** — -     }
@@ -220,4 +348,4 @@ Auto-compiled from **59 real patterns** in **paymentsystem**. This skill is auto
 +       "ts": "2026-04-05T10:52
 
 ---
-*Auto-generated by BrainSync 🧠 | 59 patterns | 2026-04-05*
+*Auto-generated by BrainSync 🧠 | 86 patterns | 2026-04-05*

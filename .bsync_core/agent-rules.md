@@ -24,6 +24,9 @@ Example:
 
 ## Known issues
 
+- ⚠️ GOTCHA: Optimized GOTCHA
+- ⚠️ GOTCHA: Optimized GOTCHA
+- ⚠️ GOTCHA: Optimized Strengthened
 - sys_03 in shared-context.json
 - ⚠️ GOTCHA: sys_02 in NotifyMerchantJob.php
 - ⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes
@@ -31,32 +34,30 @@ Example:
 - sys_03 in shared-context.json
 - sys_03 in shared-context.json
 - ⚠️ GOTCHA: Optimized Optimized
-- ⚠️ GOTCHA: Optimized Optimized
-- ⚠️ GOTCHA: Optimized GOTCHA
-- ⚠️ GOTCHA: Optimized Optimized
 
 ## Project patterns
 
 - Added session cookies authentication — prevents null/undefined runtime crashes — confirmed 3x
+- Strengthened types Comprehensive
 - Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x
 - Optimized GOTCHA — confirmed 4x
+- Optimized Optimized — confirmed 3x
+- Strengthened types Optimized
 - Don't commit node_modules, __pycache__, build/, dist/ — add to .gitignore
 - Use meaningful commit messages in imperative mood: "Add feature" not "Added feature"
 - Always pull before push to avoid conflicts
 - Remove unused imports, variables, and dead code
-- Keep functions under 50 lines and single-responsibility
-- Handle edge cases: empty arrays, empty strings, null, undefined, 0, NaN
-- Use constants for magic numbers and strings
 
 ## Architectural decisions
 
 - Optimized Architectural
-- Optimized Optimized
 - Optimized Score — parallelizes async operations for speed
 - Optimized Score — parallelizes async operations for speed
 - Optimized Optimized — ensures atomic multi-step database operations
-- Optimized Optimized
-- Optimized Optimized
+- Optimized Optimized — ensures atomic multi-step database operations
+- Optimized Strengthened — ensures atomic multi-step database operations
+- Optimized Score
+- Optimized Strengthened — ensures atomic multi-step database operations
 
 ## Recent fixes
 
@@ -64,18 +65,17 @@ Example:
 - sys_02 in agent-rules.md
 - sys_02 in test_capture.php
 - sys_02 in NotifyMerchantJob.php
-- sys_02 in shared-context.json
-
-## How things work
-
-- sys_07 in agent-rules.md
+- sys_02 in laravel.log
 
 ## 📚 Comprehensive Expert Skills (READ THESE)
 > **CRITICAL:** BrainSync has pre-compiled full expert rulebooks for this project. If you are working on any of the following domains, you MUST read the corresponding `SKILL.md` file BEFORE writing code to instantly learn all proper default skills:
 
 - **config**: Read `.agent/skills/auto/config/SKILL.md`
+- **html**: Read `.agent/skills/auto/html/SKILL.md`
 - **javascript**: Read `.agent/skills/auto/javascript/SKILL.md`
 - **php**: Read `.agent/skills/auto/php/SKILL.md`
 - **project**: Read `.agent/skills/auto/project/SKILL.md`
 - **sys-03**: Read `.agent/skills/auto/sys-03/SKILL.md`
 - **sys-04**: Read `.agent/skills/auto/sys-04/SKILL.md`
+- **sys-08**: Read `.agent/skills/auto/sys-08/SKILL.md`
+- **typescript-react**: Read `.agent/skills/auto/typescript-react/SKILL.md`

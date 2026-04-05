@@ -1,7 +1,7 @@
 
 
 # Project Memory — paymentsystem
-> 222 notes | Score threshold: >40
+> 277 notes | Score threshold: >40
 
 ## Safety — Never Run Destructive Commands
 
@@ -20,6 +20,12 @@
 
 ## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Important Warnings
 
+- **⚠️ GOTCHA: Optimized GOTCHA** — - - ⚠️ GOTCHA: Optimized Strengthened
++ - ⚠️ GOTCHA: Optimized GOTCHA
+
+- **⚠️ GOTCHA: Optimized GOTCHA** — - - sys_03 in shared-context.json
++ - ⚠️ GOTCHA: Optimized Strengthene
+- **⚠️ GOTCHA: Optimized Strengthened** — - - Fixed null crash in Webhook — prevents null/undefined runtime cras
 - **sys_03 in shared-context.json** — -     }
 +     },
 -   ]
@@ -31,34 +37,17 @@
 +             '
 - **⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes** — -                 }
 +                     $updateData['card_holder_nam
-- **⚠️ GOTCHA: Optimized GOTCHA** — - - ⚠️ GOTCHA: Optimized Optimized
-+ - sys_03 in shared-context.json
--
-- **sys_03 in shared-context.json** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "5ca8b7bd801a75f5",
-+
-- **sys_03 in shared-context.json** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "2269b35116784631",
-+
 
 ## Project Standards
 
+- Strengthened types Optimized
+- Strengthened types Optimized
+- Optimized Score — confirmed 3x
+- Strengthened types Optimized
+- sys_01 in shared-context.json — confirmed 3x
+- Strengthened types Comprehensive
+- Strengthened types Optimized
 - sys_01 in shared-context.json — confirmed 5x
-- Added session cookies authentication — prevents null/undefined runtime crashes — confirmed 3x
-- Optimized Score — parallelizes async operations for speed — confirmed 6x
-- Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x
-- Patched security issue Muhammad — confirmed 3x
-- sys_09 in shared-context.json — confirmed 3x
-- sys_01 in shared-context.json — confirmed 7x
-- Optimized Optimized — confirmed 3x
 
 ## Known Fixes
 
@@ -68,16 +57,16 @@
 
 ## Recent Decisions
 
-- Optimized Score — parallelizes async operations for speed
-- Optimized Score — parallelizes async operations for speed
-- Optimized Score — parallelizes async operations for speed
-- Optimized Score — parallelizes async operations for speed
+- Optimized Strengthened — ensures atomic multi-step database operations
+- Optimized Strengthened — ensures atomic multi-step database operations
+- Optimized Optimized — ensures atomic multi-step database operations
+- Optimized Optimized — ensures atomic multi-step database operations
 
 ## Learned Patterns
 
 - Avoid: ⚠️ GOTCHA: Optimized GOTCHA (seen 5x)
 - Decision: Optimized Score — parallelizes async operations for speed (seen 2x)
-- Avoid: ⚠️ GOTCHA: Optimized Optimized (seen 2x)
+- Decision: Optimized GOTCHA (seen 2x)
 - Agent generates new migration for every change (squash related changes)
 - Agent installs packages without checking if already installed
 
