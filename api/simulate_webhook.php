@@ -72,8 +72,8 @@ ksort($payload);
 $jsonPayload = json_encode($payload, JSON_UNESCAPED_SLASHES);
 $signature = hash_hmac('sha512', $jsonPayload, $ipnSecret);
 
-// Identify the webhook URL (works for both local and production depending on where this is run)
-$webhookUrl = url('/api/payment/webhook/nowpayments');
+// Identify the webhook URL using the actual domain you provided
+$webhookUrl = 'https://www.linkpaypro.online/api/payment/webhook/nowpayments';
 echo "Sending Webhook to: {$webhookUrl}\n";
 echo "Using IPN Secret length: " . strlen($ipnSecret) . "\n\n";
 
