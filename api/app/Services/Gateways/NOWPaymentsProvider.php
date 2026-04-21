@@ -56,14 +56,23 @@ class NOWPaymentsProvider implements PaymentProviderInterface
             return ['success' => false];
         }
 
-        // 1. Sort the payload keys alphabetically
-        ksort($payload);
+        // 1. Get raw JSON to avoid Laravel middleware side-effects (TrimStrings, ConvertEmptyStringsToNull)
+        $requestJson = request()->getContent();
+        $requestData = json_decode($requestJson, true);
+        
+        if (!is_array($requestData)) {
+            $requestData = $payload; // Fallback just in case
+        }
 
-        // 2. Convert to JSON string with unescaped slashes (as per NOWPayments docs)
-        $sortedPayloadJson = json_encode($payload, JSON_UNESCAPED_SLASHES);
+        // 2. Sort the payload keys alphabetically
+        ksort($requestData);
 
-        // 3. Calculate HMAC-SHA512 using the IPN Secret Key
-        $ipnSecret = $config['ipn_secret'] ?? ''; // Merchant must configure this
+        // 3. Convert to JSON string with unescaped slashes (as per NOWPayments docs)
+        $sortedPayloadJson = json_encode($requestData, JSON_UNESCAPED_SLASHES);
+
+        // 4. Calculate HMAC-SHA512 using the IPN Secret Key
+        // Added trim() to prevent invisible trailing spaces during copy-paste
+        $ipnSecret = trim($config['ipn_secret'] ?? ''); 
         if (empty($ipnSecret)) {
             Log::error("NOWPayments Webhook: IPN Secret is not configured.");
             return ['success' => false];
@@ -71,7 +80,7 @@ class NOWPaymentsProvider implements PaymentProviderInterface
 
         $calculatedSig = hash_hmac('sha512', $sortedPayloadJson, $ipnSecret);
 
-        // 4. Compare signatures securely
+        // 5. Compare signatures securely
         if (!hash_equals($calculatedSig, $receivedSig)) {
             Log::warning("NOWPayments Webhook: Signature mismatch.", [
                 'expected' => $calculatedSig,
@@ -80,16 +89,16 @@ class NOWPaymentsProvider implements PaymentProviderInterface
             return ['success' => false];
         }
 
-        // 5. Map statuses
+        // 6. Map statuses
         // Possible statuses: waiting, confirming, confirmed, finished, failed, expired
-        $status = $payload['payment_status'] ?? '';
+        $status = $requestData['payment_status'] ?? '';
         
         if ($status === 'finished') {
             return [
                 'success' => true,
                 'status' => 'paid',
-                'reference' => $payload['payment_id'] ?? $payload['invoice_id'] ?? 'N/A',
-                'external_order_id' => $payload['order_id'] ?? null,
+                'reference' => $requestData['payment_id'] ?? $requestData['invoice_id'] ?? 'N/A',
+                'external_order_id' => $requestData['order_id'] ?? null,
             ];
         }
 
