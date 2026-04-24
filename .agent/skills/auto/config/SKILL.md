@@ -1,6 +1,6 @@
 ---
 name: config
-description: "Config for paymentsystem. 4 gotchas, 15 conventions, 11 fixes."
+description: "Config for paymentsystem. 4 gotchas, 22 conventions, 15 fixes."
 domain: config
 triggers:
   - glob: "**/*.yaml"
@@ -13,7 +13,7 @@ enabled: true
 
 # Config
 
-Auto-compiled from **86 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on config files.
+Auto-compiled from **112 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on config files.
 
 ## ⚠️ Anti-Patterns & Gotchas
 
@@ -27,6 +27,77 @@ Auto-compiled from **86 real patterns** in **paymentsystem**. This skill is auto
 | sys_03 in shared-context.json | -     } +     }, -   ] +     { - } +       "id": "d8af848c4ea3d7e7", +       "ts": "2026-04-05T10:52 |
 
 ## 🔧 Problem Playbooks
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "548abef5376877e1",
++       "ts": "2026-04-07T01:29:27.360Z",
++       "by": "Muhammad Aliyan",
++       "data": "DqSFhuOnyTuZqwZ4134tyRkrNhCTfgNWiKLr/ZpKt1BtSrsApX8w5F0zQQ8YkTwHv9nQ0x3u7gBLqLHWhZ7wS+vxxjp0jo+X7ohzQtbsPghkvVkot6tCnS8IAH5g3Y6/8jcYSQr5zR17v4h3j23TVkg3vdzP8iRjAHKyKDWpIE1hkWQDjKjz7mYuhMoYCZHx9ZbVYsOat/zmnfs0jrhYGTCxCUIXTdiAUpG/CbkmKnFkwaY
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: JqLZyDpPsYtvDpk
+5. identifier: LijUo
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "a059604a6c53c239",
++       "ts": "2026-04-05T14:02:53.443Z",
++       "by": "Muhammad Aliyan",
++       "data": "RlH4ngvt17UQvR9ibCHNU9z11Y/oWTu0+SD2tBNRdAMS9ojtEuP9UP7KXRBZipKWixvJJ/vh5ZiCgabemZXH69yGuyJuwlnYLZ47U5EOZ0KrGsYJ0c7WeCbafl6ek2PQBCr4v5DTnHxgVAmViIvFhlLOm45FphWLsvu/nYeOqGeJmUbT+1He6gK7HSFEkwImUstCPiVd83oFaXeV0Haehz72SLsLajSJ+T+uDTAedgW5OHm
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: LcB
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "2500e0f78c8e3f52",
++       "ts": "2026-04-05T12:42:45.627Z",
++       "by": "Muhammad Aliyan",
++       "data": "3+3u0L7/ar5BuOrePH0VjqyNL54RlpjmXC/iQzF1KuhkwYFMBecWI775k91JZDPNU4tadZ2bFtEYy6CXSLQkNkqxhrufCzBXqxC+Yu4RzrPW9Gwgn50yp7htJE8VMg76DZkc/DhcGx7jGLA4tOMY1wjBRX0lslqWdKi8DMzYM1wsb+EJXLLwUXpXsSciNC1rdRmlpoNvGpH0tvI+HfSrWg0ba/lza1VDSmvRH6KRY2iHmId
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: CIaZvHeZivMez
+5. identifier: LReRgOGUkADSOKcl
+
+### Patched security issue Muhammad
+-     }
++     },
+-   ]
++     {
+- }
++       "id": "3d6aef390238b0a6",
++       "ts": "2026-04-05T12:42:43.396Z",
++       "by": "Muhammad Aliyan",
++       "data": "qojNPkvd447At3c/TyZ3Nmq2t3/sI1hvFmfwyzabqDV2mFUsaBjA/JR8vkaCCqOLhjDylkcigwNzzjhVniSCIlBUFZMAb0b34+7xDgwrqS3+otsFCA0OHP6UaK0W12f5TDK9w5BAkKtS4r5A1y8Dkg1k4Axx9f9h0nuFiAYMIaTrhXMls7j4ABCwFtemLLU7GprpbZd5LoAvx9oi6pOlPb9VHhOhBkQ63q4I1WIE9cc0SDh
+
+**Actionable Steps:**
+1. Modified 1 files
+2. identifier: Muhammad
+3. identifier: Aliyan
+4. identifier: TJoB
+5. identifier: LbRHGDY
 
 ### Patched security issue Muhammad — hardens HTTP security headers
 -     }
@@ -217,6 +288,55 @@ Auto-compiled from **86 real patterns** in **paymentsystem**. This skill is auto
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
+- 📐 **sys_01 in shared-context.json — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "15b491648e154a4b",
++       "ts": "2026-04-07T01:39
+- 📐 **sys_01 in shared-context.json — confirmed 6x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "b6ce9b781732a94e",
++       "ts": "2026-04-07T01:19
+- 📐 **Patched security issue Muhammad — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "7a98c5e3b76d1106",
++       "ts": "2026-04-05T13:52
+- 📐 **sys_01 in shared-context.json — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "fa8f8796f609212f",
++       "ts": "2026-04-05T13:13
+- 📐 **sys_01 in shared-context.json — confirmed 4x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "a23fcb766bc9ca46",
++       "ts": "2026-04-05T13:02
+- 📐 **sys_01 in shared-context.json — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "5b333c4975b7eff3",
++       "ts": "2026-04-05T12:42
+- 📐 **Added JWT tokens authentication — confirmed 3x** — -     }
++     },
+-   ]
++     {
+- }
++       "id": "1ce2ea3c219e2d71",
++       "ts": "2026-04-05T12:42
 - 📐 **sys_01 in shared-context.json — confirmed 9x** — -     }
 +     },
 -   ]
@@ -271,81 +391,6 @@ Auto-compiled from **86 real patterns** in **paymentsystem**. This skill is auto
 -   ]
 +     {
 - }
-+       "id": "5ced4272a5e95d48",
-+       "ts": "2026-04-05T11:23
-- 📐 **sys_09 in shared-context.json — confirmed 3x** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "1c7c09a04adfa32e",
-+       "ts": "2026-04-05T11:22
-- 📐 **sys_01 in shared-context.json — confirmed 7x** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "96ca48259fbb1499",
-+       "ts": "2026-04-05T11:20
-- 📐 **sys_05 in shared-context.json — confirmed 3x** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "6a1d6c208422ba2e",
-+       "ts": "2026-04-05T11:03
-- 📐 **sys_01 in shared-context.json — confirmed 14x** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "eae74d594ced8763",
-+       "ts": "2026-04-05T11:01
-- 📐 **Patched security issue Muhammad — confirmed 3x** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "7cf10e09d229c053",
-+       "ts": "2026-04-05T11:01
-- 📐 **sys_01 in shared-context.json — confirmed 6x** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "701196619dfbb317",
-+       "ts": "2026-04-05T10:43
-- 📐 **sys_01 in shared-context.json — confirmed 4x** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "628fdc89286cbb3b",
-+       "ts": "2026-04-05T10:23
++       "id": "5ced427
 
-## 🤔 Decisions & Trade-offs
-
-- **sys_05 in shared-context.json** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "b5f2defc43a26ca7",
-+       "ts": "2026-04-05T11:52
-- **sys_05 in shared-context.json** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "e0c25546cf0dfd32",
-+       "ts": "2026-04-05T11:02
-- **sys_05 in shared-context.json** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "60df80d0866ddc0b",
-+       "ts": "2026-04-05T10:52
-
----
-*Auto-generated by BrainSync 🧠 | 86 patterns | 2026-04-05*
+... [Truncated — see individual observations for full content]

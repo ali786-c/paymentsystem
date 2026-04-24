@@ -1,41 +1,286 @@
 > **BrainSync Context Pumper** 🧠
 > Dynamically loaded for active file: `api\app\Services\Gateways\StripeProvider.php` (Domain: **Generic Logic**)
 
+### 🔴 Generic Logic Gotchas
+- **⚠️ GOTCHA: sys_02 in NotifyMerchantJob.php**: -             'timestamp' => now()->toIso8601String(),
++             'card_holder_name' => $this->invoice->card_holder_name,
+-         ];
++             'timestamp' => $this->invoice->paid_at ? $this->invoice->paid_at->toIso8601String() : now()->toIso8601String(),
+- 
++         ];
+-         // Sign the payload using the merchant's client_secret
++ 
+-         $payload['signature'] = $signatureService->generate($payload, $merchant->client_secret);
++         // Sign the payload using the merchant's client_secret
+- 
++         $payload['signature'] = $signatureService->generate($payload, $merchant->client_secret);
+-         Log::info("Dispatching webhook to {$merchant->webhook_url} for Invoice #{$this->invoice->id}");
++ 
+- 
++         Log::info("Dispatching webhook to {$merchant->webhook_url} for Invoice #{$this->invoice->id}");
+-         $response = Http::timeout(10)
++ 
+-             ->withHeaders([
++         $response = Http::timeout(10)
+-                 'X-PayHub-Signature' => $payload['signature'],
++             ->withHeaders([
+-                 'Content-Type' => 'application/json',
++                 'X-PayHub-Signature' => $payload['signature'],
+-                 'Accept' => 'application/json',
++                 'Content-Type' => 'application/json',
+-             ])
++                 'Accept' => 'application/json',
+-             ->post($merchant->webhook_url, $payload);
++             ])
+- 
++             ->post($merchant->webhook_url, $payload);
+-         if ($response->failed()) {
++ 
+-             Log::error("Webhook failed for Invoice #{$this->invoice->id}. Status: {$response->status()}. Response: {$response->body()}");
++         if ($response->failed()) {
+-             
++             Log::error("Webhook failed for Invoice #{$this->invoice->id}. Status: {$response->status()}. Response: {$response->body()}");
+-             // This will trigger a retry based on $tries and $backoff
++             
+-             throw new \Exception("Merchant webhook returned error status:
+… [diff truncated]
+- **⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes**: -                 }
++                     $updateData['card_holder_name'] = $result['card_details']['holder_name'] ?? null;
+- 
++                     $updateData['paid_at'] = $result['card_details']['paid_at'] ?? now();
+-                 $invoice->update($updateData);
++                 }
+-                 Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
++                 $invoice->update($updateData);
+-                 
++ 
+-                 // 4. Notify the merchant (Phase 4 Relay)
++                 Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
+-                 $this->notifyMerchant($invoice);
++                 
+-             } else {
++                 // 4. Notify the merchant (Phase 4 Relay)
+-                 Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result));
++                 $this->notifyMerchant($invoice);
+-             }
++             } else {
+- 
++                 Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result));
+-             return response()->json(['success' => $result['success']]);
++             }
+-         } catch (\Throwable $e) {
++ 
+-             Log::error("Webhook CRITICAL Error ({$providerName}): " . $e->getMessage(), [
++             return response()->json(['success' => $result['success']]);
+-                 'type' => get_class($e),
++         } catch (\Throwable $e) {
+-                 'file' => $e->getFile(),
++             Log::error("Webhook CRITICAL Error ({$providerName}): " . $e->getMessage(), [
+-                 'line' => $e->getLine(),
++                 'type' => get_class($e),
+-                 'trace' => $e->getTraceAsString()
++                 'file' => $e->getFile(),
+-             ]);
++                 'line' => $e->getLine(),
+-             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
++                 'trace' => $e->getTraceAsString()
+-         }
++             ]);
+-
+… [diff truncated]
+
 ### 📐 Generic Logic Conventions & Fixes
-- **[sys_01] Added session cookies authentication — prevents null/undefined runtime crashes**: -                     ];
-+                         'holder_name' => null,
-- 
-+                     ];
--                     try {
-+ 
--                         $paymentIntentId = null;
-+                     try {
--                         if ($event->type === 'checkout.session.completed') {
-+                         $paymentIntentId = null;
--                             $paymentIntentId = $object->payment_intent;
-+                         if ($event->type === 'checkout.session.completed') {
--                         } else {
-+                             $paymentIntentId = $object->payment_intent;
--                             $paymentIntentId = $object->id;
-+                         } else {
--                         }
-+                             $paymentIntentId = $object->id;
-- 
-+                         }
--                         if ($paymentIntentId) {
-+ 
--                             $intent = $this->client->paymentIntents->retrieve($paymentIntentId, ['expand' => ['payment_method']]);
-+                         if ($paymentIntentId) {
--                             if ($intent->payment_method && $intent->payment_method->type === 'card') {
-+                             $intent = $this->client->paymentIntents->retrieve($paymentIntentId, ['expand' => ['payment_method']]);
--                                 $cardDetails['last4'] = $intent->payment_method->card->last4;
-+                             if ($intent->payment_method && $intent->payment_method->type === 'card') {
--                                 $cardDetails['brand'] = $intent->payment_method->card->brand;
-+                                 $cardDetails['last4'] = $intent->payment_method->card->last4;
--                                 Log::info("StripeProvider: Extracted card details: {$cardDetails['brand']} **** {$cardDetails['last4']}");
-+                                 $cardDetails['brand'] = $intent->payment_method->card->brand;
+- **[sys_01] Added session cookies authentication — prevents null/undefined runtime crashes**: -                                 Log::info("StripeProvider: Extracted card details: {$cardDetails['brand']} **** {$cardDetails['last4']}");
++                                 $cardDetails['holder_name'] = $intent->payment_method->billing_details->name ?? null;
 -                             }
-+                                 $cardDet
++                                 $cardDetails['paid_at'] = date('Y-m-d H:i:s', $intent->created);
+-                         }
++                                 Log::info("StripeProvider: Extracted card details: {$cardDetails['brand']} **** {$cardDetails['last4']} for {$cardDetails['holder_name']}");
+-                     } catch (\Throwable $ce) {
++                             }
+-                         Log::warning("StripeProvider: Failed to extract card details. " . $ce->getMessage());
++                         }
+-                     }
++                     } catch (\Throwable $ce) {
+- 
++                         Log::warning("StripeProvider: Failed to extract card details. " . $ce->getMessage());
+-                     return [
++                     }
+-                         'success' => true,
++ 
+-                         'status' => 'paid',
++                     return [
+-                         'reference' => $object->id,
++                         'success' => true,
+-                         'external_order_id' => $extOrderId,
++                         'status' => 'paid',
+-                         'card_details' => $cardDetails
++                         'reference' => $object->id,
+-                     ];
++                         'external_order_id' => $extOrderId,
+-                 }
++                         'card_details' => $cardDetails
+-             } catch (\Throwable $e) {
++                     ];
+-                 Log::warning("StripeProvider: Secure verification failed/timed out. Falling back to payload trust. Error: " . $e->getMessage());
++                 }
+-                 
++             } catch (\Throwable $e) {
+-                 // 2. FALLBACK: Trust the
+… [diff truncated]
+- **[sys_08] Added session cookies authentication — prevents null/undefined runtime crashes — confirmed 3x**: -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <?php
++                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+… [diff truncated]
+- **[sys_01] sys_01 in 2026_04_05_164000_add_extra_details_to_invoices_table.php**: File updated (external): api/database/migrations/2026_04_05_164000_add_extra_details_to_invoices_table.php
+
+Content summary (40 lines):
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('invoices', function (Blueprint $table) {
+            if (!Schema::hasColumn('invoices', 'card_last4')) {
+                $table->string('card_last4', 4)->nullable();
+            }
+            if (!Schema::hasColumn('invoices'
+- **[sys_08] sys_01 in Invoice.php — confirmed 4x**: -         'payload' => 'array'
++         'payload' => 'array',
+-     ];
++         'paid_at' => 'datetime'
+- 
++     ];
+-     public function merchant()
++ 
+-     {
++     public function merchant()
+-         return $this->belongsTo(Merchant::class);
++     {
+-     }
++         return $this->belongsTo(Merchant::class);
+- }
++     }
+- 
++ }
++ 
+- **[sys_01] sys_01 in 2026_04_05_112259_add_card_holder_name_to_invoices.php**: -             $table->string('card_holder_name')->nullable()->after('card_brand');
++             //
+-             $table->dropColumn('card_holder_name');
++             //
+- **[sys_02] sys_02 in test_capture.php**: - 
++ echo "Card Holder: " . ($invoice->card_holder_name ?: 'MISSING') . "\n";
+- if ($invoice->card_brand === 'visa' && $invoice->card_last4 === '4242') {
++ 
+-     echo "\n✅ SUCCESS: Card details captured correctly!\n";
++ if ($invoice->card_brand === 'visa' && $invoice->card_last4 === '4242' && $invoice->card_holder_name === 'John Doe') {
+- } else {
++     echo "\n✅ SUCCESS: All card details (including holder name) captured correctly!\n";
+-     echo "\n❌ FAILURE: Card details were not captured.\n";
++ } else {
+- }
++     echo "\n❌ FAILURE: Card details were not fully captured.\n";
+- 
++ }
+- echo "---------------------------\n";
++ 
+- 
++ echo "---------------------------\n";
++ 
+- **[sys_02] sys_02 in NotifyMerchantJob.php**: -             'timestamp' => now()->toIso8601String(),
++             'card_holder_name' => $this->invoice->card_holder_name,
+-         ];
++             'timestamp' => now()->toIso8601String(),
+- 
++         ];
+-         // Sign the payload using the merchant's client_secret
++ 
+-         $payload['signature'] = $signatureService->generate($payload, $merchant->client_secret);
++         // Sign the payload using the merchant's client_secret
+- 
++         $payload['signature'] = $signatureService->generate($payload, $merchant->client_secret);
+-         Log::info("Dispatching webhook to {$merchant->webhook_url} for Invoice #{$this->invoice->id}");
++ 
+- 
++         Log::info("Dispatching webhook to {$merchant->webhook_url} for Invoice #{$this->invoice->id}");
+-         $response = Http::timeout(10)
++ 
+-             ->withHeaders([
++         $response = Http::timeout(10)
+-                 'X-PayHub-Signature' => $payload['signature'],
++             ->withHeaders([
+-                 'Content-Type' => 'application/json',
++                 'X-PayHub-Signature' => $payload['signature'],
+-                 'Accept' => 'application/json',
++                 'Content-Type' => 'application/json',
+-             ])
++                 'Accept' => 'application/json',
+-             ->post($merchant->webhook_url, $payload);
++             ])
+- 
++             ->post($merchant->webhook_url, $payload);
+-         if ($response->failed()) {
++ 
+-             Log::error("Webhook failed for Invoice #{$this->invoice->id}. Status: {$response->status()}. Response: {$response->body()}");
++         if ($response->failed()) {
+-             
++             Log::error("Webhook failed for Invoice #{$this->invoice->id}. Status: {$response->status()}. Response: {$response->body()}");
+-             // This will trigger a retry based on $tries and $backoff
++             
+-             throw new \Exception("Merchant webhook returned error status: " . $response->status());
++             // This will trigger a retry b
+… [diff truncated]
+- **[sys_08] Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x**: -                 }
++                     $updateData['card_holder_name'] = $result['card_details']['holder_name'] ?? null;
+- 
++                 }
+-                 $invoice->update($updateData);
++ 
+- 
++                 $invoice->update($updateData);
+-                 Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
++ 
+-                 
++                 Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
+-                 // 4. Notify the merchant (Phase 4 Relay)
++                 
+-                 $this->notifyMerchant($invoice);
++                 // 4. Notify the merchant (Phase 4 Relay)
+-             } else {
++                 $this->notifyMerchant($invoice);
+-                 Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result));
++             } else {
+-             }
++                 Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result));
+- 
++             }
+-             return response()->json(['success' => $result['success']]);
++ 
+-         } catch (\Throwable $e) {
++             return response()->json(['success' => $result['success']]);
+-             Log::error("Webhook CRITICAL Error ({$providerName}): " . $e->getMessage(), [
++         } catch (\Throwable $e) {
+-                 'type' => get_class($e),
++             Log::error("Webhook CRITICAL Error ({$providerName}): " . $e->getMessage(), [
+-                 'file' => $e->getFile(),
++                 'type' => get_class($e),
+-                 'line' => $e->getLine(),
++                 'file' => $e->getFile(),
+-                 'trace' => $e->getTraceAsString()
++                 'line' => $e->getLine(),
+-             ]);
++                 'trace' => $e->getTraceAsString()
+-             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
++             ]);
+-         }
++             return response()->json(['success' => false, 'error' => $e->getMessage()]
 … [diff truncated]
 - **[sys_01] sys_01 in 2026_04_05_112259_add_card_holder_name_to_invoices.php**: File updated (external): api/database/migrations/2026_04_05_112259_add_card_holder_name_to_invoices.php
 
@@ -138,147 +383,3 @@ $kernel->bootstrap();
 
 use App\Models\Invoice;
 use App\Mo
-- **[sys_02] sys_02 in NotifyMerchantJob.php**: -             'timestamp' => now()->toIso8601String(),
-+             'card_last4' => $this->invoice->card_last4,
--         ];
-+             'card_brand' => $this->invoice->card_brand,
-- 
-+             'timestamp' => now()->toIso8601String(),
--         // Sign the payload using the merchant's client_secret
-+         ];
--         $payload['signature'] = $signatureService->generate($payload, $merchant->client_secret);
-+ 
-- 
-+         // Sign the payload using the merchant's client_secret
--         Log::info("Dispatching webhook to {$merchant->webhook_url} for Invoice #{$this->invoice->id}");
-+         $payload['signature'] = $signatureService->generate($payload, $merchant->client_secret);
--         $response = Http::timeout(10)
-+         Log::info("Dispatching webhook to {$merchant->webhook_url} for Invoice #{$this->invoice->id}");
--             ->withHeaders([
-+ 
--                 'X-PayHub-Signature' => $payload['signature'],
-+         $response = Http::timeout(10)
--                 'Content-Type' => 'application/json',
-+             ->withHeaders([
--                 'Accept' => 'application/json',
-+                 'X-PayHub-Signature' => $payload['signature'],
--             ])
-+                 'Content-Type' => 'application/json',
--             ->post($merchant->webhook_url, $payload);
-+                 'Accept' => 'application/json',
-- 
-+             ])
--         if ($response->failed()) {
-+             ->post($merchant->webhook_url, $payload);
--             Log::error("Webhook failed for Invoice #{$this->invoice->id}. Status: {$response->status()}. Response: {$response->body()}");
-+ 
--             
-+         if ($response->failed()) {
--             // This will trigger a retry based on $tries and $backoff
-+             Log::error("Webhook failed for Invoice #{$this->invoice->id}. Status: {$response->status()}. Response: {$response->body()}");
--             throw new \Exception("Merchant webhook returned error status: " . $response->status());
-+             
--   
-… [diff truncated]
-- **[sys_02] Fixed null crash in Webhook — prevents null/undefined runtime crashes**: -                 $invoice->update([
-+                 
--                     'status' => $result['status'],
-+                 $updateData = [
--                     'payload' => array_merge($invoice->payload ?? [], ['webhook_raw' => $payload])
-+                     'status' => $result['status'],
--                 ]);
-+                     'payload' => array_merge($invoice->payload ?? [], ['webhook_raw' => $payload])
-- 
-+                 ];
--                 Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
-+ 
--                 
-+                 if (isset($result['card_details'])) {
--                 // 4. Notify the merchant (Phase 4 Relay)
-+                     $updateData['card_last4'] = $result['card_details']['last4'];
--                 $this->notifyMerchant($invoice);
-+                     $updateData['card_brand'] = $result['card_details']['brand'];
--             } else {
-+                 }
--                 Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result));
-+ 
--             }
-+                 $invoice->update($updateData);
--             return response()->json(['success' => $result['success']]);
-+                 Log::info("Webhook Step 10: DB Update complete. Dispatched NotifyMerchantJob.");
--         } catch (\Throwable $e) {
-+                 
--             Log::error("Webhook CRITICAL Error ({$providerName}): " . $e->getMessage(), [
-+                 // 4. Notify the merchant (Phase 4 Relay)
--                 'type' => get_class($e),
-+                 $this->notifyMerchant($invoice);
--                 'file' => $e->getFile(),
-+             } else {
--                 'line' => $e->getLine(),
-+                 Log::warning("Webhook Step 9: Verification FAILED. Result: " . json_encode($result));
--                 'trace' => $e->getTraceAsString()
-+             }
--             ]);
-+ 
--             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
-+             
-… [diff truncated]
-- **[sys_01] sys_01 in Invoice.php**: File updated (external): api/app/Models/Invoice.php
-
-Content summary (31 lines):
-<?php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Invoice extends Model
-{
-    protected $fillable = [
-        'merchant_id',
-        'external_order_id',
-        'amount',
-        'currency',
-        'status',
-        'payment_method',
-        'gateway_reference',
-        'card_last4',
-        'card_brand',
-        'payload'
-    ];
-
-    protected $casts = [
-        'payload' => 'array'
-    ];
-
-    public function merchant()
-    {
-        return $this->belongsTo(Merchan
-- **[sys_01] sys_01 in 2026_04_05_103354_add_card_details_to_invoices.php**: File updated (external): api/database/migrations/2026_04_05_103354_add_card_details_to_invoices.php
-
-Content summary (29 lines):
-<?php
-
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::table('invoices', function (Blueprint $table) {
-            //
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::table('invoices', function (Blueprint $table) {
-

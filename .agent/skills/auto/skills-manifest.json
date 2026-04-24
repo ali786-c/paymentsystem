@@ -1,19 +1,19 @@
 {
   "project": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.270Z",
-    "observationCount": 160,
+    "lastGenerated": "2026-04-07T17:21:38.207Z",
+    "observationCount": 278,
     "skillCount": 0,
     "domain": "project",
     "triggerGlobs": [
       "**/*"
     ],
-    "description": "Project for paymentsystem. 47 gotchas, 65 conventions, 3 fixes."
+    "description": "Project for paymentsystem. 53 gotchas, 105 conventions, 3 fixes."
   },
   "config": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.264Z",
-    "observationCount": 86,
+    "lastGenerated": "2026-04-07T17:21:38.209Z",
+    "observationCount": 112,
     "skillCount": 0,
     "domain": "config",
     "triggerGlobs": [
@@ -22,11 +22,11 @@
       "**/*.json",
       "**/*.toml"
     ],
-    "description": "Config for paymentsystem. 4 gotchas, 15 conventions, 11 fixes."
+    "description": "Config for paymentsystem. 4 gotchas, 22 conventions, 15 fixes."
   },
   "javascript": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.279Z",
+    "lastGenerated": "2026-04-07T17:21:38.217Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "javascript",
@@ -38,7 +38,7 @@
   },
   "php": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.275Z",
+    "lastGenerated": "2026-04-07T17:21:38.216Z",
     "observationCount": 24,
     "skillCount": 0,
     "domain": "php",
@@ -49,9 +49,9 @@
   },
   "sys-03": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.280Z",
+    "lastGenerated": "2026-04-07T17:21:38.219Z",
     "observationCount": 0,
-    "skillCount": 3,
+    "skillCount": 5,
     "domain": "sys_03",
     "triggerGlobs": [
       "**/*"
@@ -60,9 +60,9 @@
   },
   "sys-04": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.283Z",
+    "lastGenerated": "2026-04-07T17:21:38.220Z",
     "observationCount": 0,
-    "skillCount": 3,
+    "skillCount": 5,
     "domain": "sys_04",
     "triggerGlobs": [
       "**/*"
@@ -71,7 +71,7 @@
   },
   "html": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.272Z",
+    "lastGenerated": "2026-04-07T17:21:38.211Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "html",
@@ -82,7 +82,7 @@
   },
   "typescript-react": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.273Z",
+    "lastGenerated": "2026-04-07T17:21:38.214Z",
     "observationCount": 2,
     "skillCount": 0,
     "domain": "typescript-react",
@@ -93,9 +93,9 @@
   },
   "sys-08": {
     "enabled": true,
-    "lastGenerated": "2026-04-05T12:32:41.309Z",
+    "lastGenerated": "2026-04-07T17:21:38.224Z",
     "observationCount": 0,
-    "skillCount": 3,
+    "skillCount": 34,
     "domain": "sys_08",
     "triggerGlobs": [
       "**/*"

@@ -1,6 +1,6 @@
 ---
 name: project
-description: "Project for paymentsystem. 47 gotchas, 65 conventions, 3 fixes."
+description: "Project for paymentsystem. 53 gotchas, 105 conventions, 3 fixes."
 domain: project
 triggers:
   - glob: "**/*"
@@ -10,7 +10,7 @@ enabled: true
 
 # Project
 
-Auto-compiled from **160 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
+Auto-compiled from **278 real patterns** in **paymentsystem**. This skill is auto-routed to agents when working on project files.
 
 ## ⚠️ Anti-Patterns & Gotchas
 
@@ -18,6 +18,12 @@ Auto-compiled from **160 real patterns** in **paymentsystem**. This skill is aut
 
 | ❌ Don't | Details |
 |----------|----------|
+| ⚠️ GOTCHA: Added session cookies authentication | - - sys_03 in agent-rules.md + - ⚠️ GOTCHA: Added session cookies authentication — ensures atomic mu |
+| ⚠️ GOTCHA: Added session cookies authentication —  | - - ⚠️ GOTCHA: Added session cookies authentication + - sys_03 in agent-rules.md - - ⚠️ GOTCHA: Opti |
+| sys_03 in agent-rules.md | File updated (external): .bsync_core/agent-rules.md  Content summary (77 lines): # Project Intellige |
+| ⚠️ GOTCHA: Added session cookies authentication | - - ⚠️ GOTCHA: Optimized GOTCHA + - ⚠️ GOTCHA: Added session cookies authentication - - ⚠️ GOTCHA: O |
+| ⚠️ GOTCHA: Added session cookies authentication | - - ⚠️ GOTCHA: Optimized GOTCHA + - ⚠️ GOTCHA: Added session cookies authentication - - ⚠️ GOTCHA: O |
+| ⚠️ GOTCHA: Added session cookies authentication | - - Added session cookies authentication — prevents null/undefined runtime crashes — confirmed 3x +  |
 | ⚠️ GOTCHA: Optimized GOTCHA | - - ⚠️ GOTCHA: Optimized Strengthened + - ⚠️ GOTCHA: Optimized GOTCHA - - sys_03 in shared-context.j |
 | ⚠️ GOTCHA: Optimized GOTCHA | - - sys_03 in shared-context.json + - ⚠️ GOTCHA: Optimized Strengthened - - ⚠️ GOTCHA: sys_02 in Not |
 | ⚠️ GOTCHA: Optimized Strengthened | - - Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x + - Strengt |
@@ -62,9 +68,6 @@ Auto-compiled from **160 real patterns** in **paymentsystem**. This skill is aut
 | Sanitize ALL user input before database queries —  | Sanitize ALL user input before database queries — prevent SQL injection |
 | Never use eval(), exec(), or Function() with user  | Never use eval(), exec(), or Function() with user input |
 | Don't hardcode API keys, passwords, database URLs, | Don't hardcode API keys, passwords, database URLs, or secrets anywhere |
-| Don't leave console.log, print(), debugger, or TOD | Don't leave console.log, print(), debugger, or TODO in production code |
-| Don't commit .env, secrets, API keys, or credentia | Don't commit .env, secrets, API keys, or credentials — add to .gitignore |
-| Never force push to main, master, or production br | Never force push to main, master, or production branches |
 
 ## 🔧 Problem Playbooks
 
@@ -110,87 +113,84 @@ Auto-compiled from **160 real patterns** in **paymentsystem**. This skill is aut
 ## 📐 Conventions & Best Practices
 
 ### Project Conventions
-- 📐 **sys_07 in agent-rules.md — confirmed 4x** — - - Patched security issue Muhammad
-+ - Patched security issue Muhammad — hardens HTTP security head
-- 📐 **Strengthened types Optimized** — - 
-+ - Optimized Strengthened — ensures atomic multi-step database operations
-- ## Recent fixes
-+ 
--
-- 📐 **Strengthened types Optimized** — - - Optimized Score
-+ - Optimized Optimized — ensures atomic multi-step database operations
-- - Opti
-- 📐 **Optimized Score — confirmed 3x** — - > 248 notes | Score threshold: >40
-+ > 252 notes | Score threshold: >40
-- - Strengthened types Com
-- 📐 **Strengthened types Optimized** — - 
-+ - Optimized Score
-- ## Recent fixes
-+ 
-- 
-+ ## Recent fixes
-- - sys_02 in shared-context.json
-+
-- 📐 **Strengthened types Comprehensive** — - 
-+ - sys_07 in agent-rules.md
-- ## 📚 Comprehensive Expert Skills (READ THESE)
-+ 
-- > **CRITICAL:*
-- 📐 **Strengthened types Optimized** — - 
-+ - Optimized Optimized — ensures atomic multi-step database operations
-- ## Recent fixes
-+ 
-- 
-+
-- 📐 **Optimized Optimized — confirmed 3x** — - 
-+ - Optimized Optimized
-- ## Recent fixes
-+ 
-- 
-+ ## Recent fixes
-- - sys_02 in agent-rules.md
-+ 
-- 📐 **Optimized GOTCHA — confirmed 4x** — - - ⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes
-+ - ⚠️ GOTCHA: 
-- 📐 **Optimized Score — parallelizes async operations for speed — confirmed 6x** — - > 190 notes | Score threshold: >40
-+ > 194 notes | Score threshold: >40
-- ## Active: `api/app/Mode
-- 📐 **Optimized Optimized — confirmed 3x** — - 
-+ - Optimized Score — parallelizes async operations for speed
-- ## Recent fixes
-+ 
-- 
-+ ## Recent
-- 📐 **Optimized Score — parallelizes async operations for speed — confirmed 3x** — - > 121 notes | Score threshold: >40
-+ > 161 notes | Score threshold: >40
-- - **⚠️ GOTCHA: Optimized
-- 📐 **Optimized GOTCHA — confirmed 4x** — - - ⚠️ GOTCHA: Optimized Optimized
-+ - ⚠️ GOTCHA: Optimized GOTCHA
-- - ⚠️ GOTCHA: Optimized GOTCHA
-+
-- 📐 **sys_01 in laravel.log — confirmed 3x** — - 
-+ [2026-04-05 10:59:48] local.INFO: Dispatching webhook to https://example.com/webhook for Invoic
-- 📐 **Added session cookies authentication — confirmed 5x** — - 
-+ [2026-04-05 10:59:48] local.INFO: Webhook received for stripe {"payload":{"id":"evt_sim_e1867d6
-- 📐 **Strengthened types Comprehensive** — - ## 📚 Comprehensive Expert Skills (READ THESE)
-+ ## How things work
-- > **CRITICAL:** BrainSync ha
-- 📐 **Added session cookies authentication — evolves the database schema to support... — confirmed 3x** — - - [/] Create database migration for card details columns
-+ - [x] Create database migration for car
-- 📐 **Strengthened types NotifyMerchantJob** — - - Fixed null crash in Webhook — prevents null/undefined runtime crashes
-+ - sys_02 in NotifyMercha
-- 📐 **Strengthened types Fixed** — - - Fixed null crash in Tailwind
-+ - Fixed null crash in Webhook — prevents null/undefined runtime c
-- 📐 **sys_08 in agent-rules.md** — - - **convention**: Read `.agent/skills/auto/convention/SKILL.md`
-+ - **config**: Read `.agent/skill
-- 📐 **Strengthened types Recent** — - ## 📚 Comprehensive Expert Skills (READ THESE)
-+ ## Recent fixes
-- > **CRITICAL:** BrainSync has p
-- 📐 **Extract repeated class patterns into components** — Extract repeated class patterns into components
-- 📐 **Use responsive prefixes consistently (sm:, md:, lg:, xl:)** — Use responsive prefixes consistently (sm:, md:, lg:, xl:)
-- 📐 **Don't use arbitrary values when a utility class exists** — Don't use arbitrary values when a utility class exists
-- 📐 **Use Suspense and Error Boundaries for async operations** — Use Suspense and Error Boundaries for async operations
-- 📐 **Don't prop-drill more than 2 levels — use Context or state management** — Don't prop-drill more than 2 levels — use Context or state management
-- 📐 **Use useMemo for expensive computations, useCallback for stable references** — Use useMemo for expensive computations, useCallback for stable ref
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 418 notes | Score threshold: >40
++ > 419 notes | Score threshold: >40
+- - Added session cookies 
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 416 notes | Score threshold: >40
++ > 417 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 412 notes | Score threshold: >40
++ > 413 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 409 notes | Score threshold: >40
++ > 410 notes | Score threshold: >40
+- - Added session cookies 
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 407 notes | Score threshold: >40
++ > 408 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 403 notes | Score threshold: >40
++ > 404 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 400 notes | Score threshold: >40
++ > 401 notes | Score threshold: >40
+- - Added session cookies 
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 398 notes | Score threshold: >40
++ > 399 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 394 notes | Score threshold: >40
++ > 395 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 391 notes | Score threshold: >40
++ > 392 notes | Score threshold: >40
+- - Added session cookies 
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 389 notes | Score threshold: >40
++ > 390 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 385 notes | Score threshold: >40
++ > 386 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 382 notes | Score threshold: >40
++ > 383 notes | Score threshold: >40
+- - Added session cookies 
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 380 notes | Score threshold: >40
++ > 381 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 376 notes | Score threshold: >40
++ > 377 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 373 notes | Score threshold: >40
++ > 374 notes | Score threshold: >40
+- - Added session cookies 
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 371 notes | Score threshold: >40
++ > 372 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 367 notes | Score threshold: >40
++ > 368 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 364 notes | Score threshold: >40
++ > 365 notes | Score threshold: >40
+- - Added session cookies 
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 362 notes | Score threshold: >40
++ > 363 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **sys_01 in brainsync_auto.md — confirmed 3x** — - > 358 notes | Score threshold: >40
++ > 359 notes | Score threshold: >40
+
+📌 IDE AST Context: Modif
+- 📐 **Added session cookies authentication — confirmed 3x** — - > 355 notes | Score threshold: >40
++ > 
 
 ... [Truncated — see individual observations for full content]

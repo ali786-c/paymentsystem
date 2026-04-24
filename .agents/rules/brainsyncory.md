@@ -1,7 +1,7 @@
 
 
 # Project Memory — paymentsystem
-> 277 notes | Score threshold: >40
+> 421 notes | Score threshold: >40
 
 ## Safety — Never Run Destructive Commands
 
@@ -20,34 +20,24 @@
 
 ## 📝 NOTE: 1 uncommitted file(s) in working tree.\n\n## Important Warnings
 
-- **⚠️ GOTCHA: Optimized GOTCHA** — - - ⚠️ GOTCHA: Optimized Strengthened
-+ - ⚠️ GOTCHA: Optimized GOTCHA
+- **⚠️ GOTCHA: Added session cookies authentication** — - - sys_03 in agent-rules.md
++ - ⚠️ GOTCHA: Added session cookies auth
+- **⚠️ GOTCHA: Added session cookies authentication — ensures atomic multi-step database ope...** — - - ⚠️ GOTCHA: Added session cookies authentication
++ - sys_03 in agen
+- **sys_03 in agent-rules.md** — File updated (external): .bsync_core/agent-rules.md
 
-- **⚠️ GOTCHA: Optimized GOTCHA** — - - sys_03 in shared-context.json
-+ - ⚠️ GOTCHA: Optimized Strengthene
-- **⚠️ GOTCHA: Optimized Strengthened** — - - Fixed null crash in Webhook — prevents null/undefined runtime cras
-- **sys_03 in shared-context.json** — -     }
-+     },
--   ]
-+     {
-- }
-+       "id": "cbb366d3ff2279c3",
-+
-- **⚠️ GOTCHA: sys_02 in NotifyMerchantJob.php** — -             'timestamp' => now()->toIso8601String(),
-+             '
-- **⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes** — -                 }
-+                     $updateData['card_holder_nam
+Content summary (
 
 ## Project Standards
 
-- Strengthened types Optimized
-- Strengthened types Optimized
-- Optimized Score — confirmed 3x
-- Strengthened types Optimized
-- sys_01 in shared-context.json — confirmed 3x
-- Strengthened types Comprehensive
-- Strengthened types Optimized
-- sys_01 in shared-context.json — confirmed 5x
+- Added session cookies authentication — confirmed 3x
+- sys_01 in brainsync_auto.md — confirmed 3x
+- sys_01 in brainsync_auto.md — confirmed 3x
+- Added session cookies authentication — confirmed 3x
+- sys_01 in brainsync_auto.md — confirmed 3x
+- sys_01 in brainsync_auto.md — confirmed 3x
+- Added session cookies authentication — confirmed 3x
+- sys_01 in brainsync_auto.md — confirmed 3x
 
 ## Known Fixes
 
@@ -57,10 +47,10 @@
 
 ## Recent Decisions
 
+- Optimized Score — parallelizes async operations for speed
 - Optimized Strengthened — ensures atomic multi-step database operations
 - Optimized Strengthened — ensures atomic multi-step database operations
-- Optimized Optimized — ensures atomic multi-step database operations
-- Optimized Optimized — ensures atomic multi-step database operations
+- Optimized Strengthened — ensures atomic multi-step database operations
 
 ## Learned Patterns
 

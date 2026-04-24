@@ -24,48 +24,46 @@ Example:
 
 ## Known issues
 
+- ⚠️ GOTCHA: Added session cookies authentication
+- ⚠️ GOTCHA: Added session cookies authentication — ensures atomic multi-step database ope...
+- sys_03 in agent-rules.md
+- ⚠️ GOTCHA: Added session cookies authentication
+- ⚠️ GOTCHA: Added session cookies authentication
+- ⚠️ GOTCHA: Added session cookies authentication
 - ⚠️ GOTCHA: Optimized GOTCHA
 - ⚠️ GOTCHA: Optimized GOTCHA
 - ⚠️ GOTCHA: Optimized Strengthened
 - sys_03 in shared-context.json
-- ⚠️ GOTCHA: sys_02 in NotifyMerchantJob.php
-- ⚠️ GOTCHA: Fixed null crash in Webhook — prevents null/undefined runtime crashes
-- ⚠️ GOTCHA: Optimized GOTCHA
-- sys_03 in shared-context.json
-- sys_03 in shared-context.json
-- ⚠️ GOTCHA: Optimized Optimized
 
 ## Project patterns
 
+- Strengthened types Optimized
 - Added session cookies authentication — prevents null/undefined runtime crashes — confirmed 3x
-- Strengthened types Comprehensive
 - Fixed null crash in Webhook — prevents null/undefined runtime crashes — confirmed 3x
+- Strengthened types Comprehensive
+- Strengthened types Optimized
+- sys_01 in Invoice.php — confirmed 4x
 - Optimized GOTCHA — confirmed 4x
 - Optimized Optimized — confirmed 3x
 - Strengthened types Optimized
 - Don't commit node_modules, __pycache__, build/, dist/ — add to .gitignore
-- Use meaningful commit messages in imperative mood: "Add feature" not "Added feature"
-- Always pull before push to avoid conflicts
-- Remove unused imports, variables, and dead code
 
 ## Architectural decisions
 
 - Optimized Architectural
-- Optimized Score — parallelizes async operations for speed
-- Optimized Score — parallelizes async operations for speed
 - Optimized Optimized — ensures atomic multi-step database operations
 - Optimized Optimized — ensures atomic multi-step database operations
-- Optimized Strengthened — ensures atomic multi-step database operations
+- Optimized Score — parallelizes async operations for speed
+- Optimized Optimized
 - Optimized Score
-- Optimized Strengthened — ensures atomic multi-step database operations
 
 ## Recent fixes
 
+- Patched security issue Muhammad
+- Patched security issue Muhammad
 - sys_02 in shared-context.json
 - sys_02 in agent-rules.md
 - sys_02 in test_capture.php
-- sys_02 in NotifyMerchantJob.php
-- sys_02 in laravel.log
 
 ## 📚 Comprehensive Expert Skills (READ THESE)
 > **CRITICAL:** BrainSync has pre-compiled full expert rulebooks for this project. If you are working on any of the following domains, you MUST read the corresponding `SKILL.md` file BEFORE writing code to instantly learn all proper default skills:

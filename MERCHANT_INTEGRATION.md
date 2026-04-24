@@ -11,8 +11,7 @@ Before you can start, you must be registered as a Merchant in the Pay Hub Admin 
 2.  The Admin will provide you with:
     - **Client ID**: Your unique identifier.
     - **Client Secret**: Used to sign requests (KEEP THIS SECRET).
-    - **Hub URL**: e.g., `https://demo.upgraderproxy.com`
-
+    -
 ---
 
 ## 2. Creating a Checkout Session

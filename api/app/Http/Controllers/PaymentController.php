@@ -72,9 +72,15 @@ class PaymentController extends Controller
             $externalId = null;
 
             if ($providerName === 'stripe') {
+                $type = $payload['type'] ?? 'unknown';
+
+                // Ignore non-payment events to prevent false errors and log spam
+                if (!in_array($type, ['checkout.session.completed', 'payment_intent.succeeded'])) {
+                    return response()->json(['success' => true, 'message' => 'Event ignored by hub']);
+                }
+
                 $object = $payload['data']['object'] ?? [];
                 $externalId = $object['id'] ?? null;
-                $type = $payload['type'] ?? 'unknown';
 
                 Log::info("Webhook [Stripe]: Extracted ID {$externalId} from event {$type}");
                 
