@@ -56,22 +56,21 @@ class NOWPaymentsProvider implements PaymentProviderInterface
             return ['success' => false];
         }
 
-        // 1. Get raw JSON to avoid Laravel middleware side-effects (TrimStrings, ConvertEmptyStringsToNull)
+        // 1. Get raw JSON to avoid Laravel middleware side-effects
         $requestJson = request()->getContent();
         $requestData = json_decode($requestJson, true);
         
         if (!is_array($requestData)) {
-            $requestData = $payload; // Fallback just in case
+            $requestData = $payload; // Fallback
         }
 
-        // 2. Sort the payload keys alphabetically
-        ksort($requestData);
+        // 2. Recursive Sort (As per NOWPayments Official Docs)
+        $this->recursiveKsort($requestData);
 
         // 3. Convert to JSON string with unescaped slashes (as per NOWPayments docs)
         $sortedPayloadJson = json_encode($requestData, JSON_UNESCAPED_SLASHES);
 
         // 4. Calculate HMAC-SHA512 using the IPN Secret Key
-        // Added trim() to prevent invisible trailing spaces during copy-paste
         $ipnSecret = trim($config['ipn_secret'] ?? ''); 
         if (empty($ipnSecret)) {
             Log::error("NOWPayments Webhook: IPN Secret is not configured.");
@@ -84,13 +83,13 @@ class NOWPaymentsProvider implements PaymentProviderInterface
         if (!hash_equals($calculatedSig, $receivedSig)) {
             Log::warning("NOWPayments Webhook: Signature mismatch.", [
                 'expected' => $calculatedSig,
-                'received' => $receivedSig
+                'received' => $receivedSig,
+                'json_payload' => $sortedPayloadJson
             ]);
             return ['success' => false];
         }
 
         // 6. Map statuses
-        // Possible statuses: waiting, confirming, confirmed, finished, failed, expired
         $status = $requestData['payment_status'] ?? '';
         
         if ($status === 'finished') {
@@ -110,12 +109,24 @@ class NOWPaymentsProvider implements PaymentProviderInterface
             ];
         }
 
-        // Any other multi-step status (waiting, confirming) is considered "pending"
         return [
             'success' => false,
             'status' => 'pending',
             'message' => "Payment is currently in {$status} state."
         ];
+    }
+
+    /**
+     * Sort array keys recursively to match NOWPayments signature logic.
+     */
+    private function recursiveKsort(&$array)
+    {
+        ksort($array);
+        foreach ($array as &$value) {
+            if (is_array($value)) {
+                $this->recursiveKsort($value);
+            }
+        }
     }
 
     public function getProviderName(): string
